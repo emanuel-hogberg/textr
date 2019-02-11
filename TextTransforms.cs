@@ -378,5 +378,13 @@ namespace emanuel
         {
             btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is EditableTransform);
         }
+
+        private void txtFind_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (EnterPressed(e))
+            {
+                txtReplace.Select();
+            }
+        }
     }
 }

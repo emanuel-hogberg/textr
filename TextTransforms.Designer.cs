@@ -55,6 +55,8 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnMoveTransformDown = new System.Windows.Forms.Button();
+            this.btnMoveTransformUp = new System.Windows.Forms.Button();
             this.btnAddTableNames = new System.Windows.Forms.Button();
             this.btnEditSelectedTransform = new System.Windows.Forms.Button();
             this.btnMacroSqlValues = new System.Windows.Forms.Button();
@@ -68,8 +70,6 @@
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
-            this.btnMoveTransformUp = new System.Windows.Forms.Button();
-            this.btnMoveTransformDown = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -164,6 +164,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(81, 20);
             this.txtFind.TabIndex = 8;
+            this.txtFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFind_KeyPress);
             // 
             // txtReplace
             // 
@@ -391,6 +392,26 @@
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 224);
             this.pnlActionButtons.TabIndex = 20;
             // 
+            // btnMoveTransformDown
+            // 
+            this.btnMoveTransformDown.Location = new System.Drawing.Point(102, 19);
+            this.btnMoveTransformDown.Name = "btnMoveTransformDown";
+            this.btnMoveTransformDown.Size = new System.Drawing.Size(42, 21);
+            this.btnMoveTransformDown.TabIndex = 29;
+            this.btnMoveTransformDown.Text = "down";
+            this.btnMoveTransformDown.UseVisualStyleBackColor = true;
+            this.btnMoveTransformDown.Click += new System.EventHandler(this.btnMoveTransformDown_Click);
+            // 
+            // btnMoveTransformUp
+            // 
+            this.btnMoveTransformUp.Location = new System.Drawing.Point(102, 0);
+            this.btnMoveTransformUp.Name = "btnMoveTransformUp";
+            this.btnMoveTransformUp.Size = new System.Drawing.Size(42, 23);
+            this.btnMoveTransformUp.TabIndex = 28;
+            this.btnMoveTransformUp.Text = "up";
+            this.btnMoveTransformUp.UseVisualStyleBackColor = true;
+            this.btnMoveTransformUp.Click += new System.EventHandler(this.btnMoveTransformUp_Click);
+            // 
             // btnAddTableNames
             // 
             this.btnAddTableNames.Location = new System.Drawing.Point(74, 88);
@@ -547,26 +568,6 @@
             this.btnDistinct.Text = "Distinct";
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.btnDistinct_Click);
-            // 
-            // btnMoveTransformUp
-            // 
-            this.btnMoveTransformUp.Location = new System.Drawing.Point(102, 0);
-            this.btnMoveTransformUp.Name = "btnMoveTransformUp";
-            this.btnMoveTransformUp.Size = new System.Drawing.Size(42, 23);
-            this.btnMoveTransformUp.TabIndex = 28;
-            this.btnMoveTransformUp.Text = "up";
-            this.btnMoveTransformUp.UseVisualStyleBackColor = true;
-            this.btnMoveTransformUp.Click += new System.EventHandler(this.btnMoveTransformUp_Click);
-            // 
-            // btnMoveTransformDown
-            // 
-            this.btnMoveTransformDown.Location = new System.Drawing.Point(102, 19);
-            this.btnMoveTransformDown.Name = "btnMoveTransformDown";
-            this.btnMoveTransformDown.Size = new System.Drawing.Size(42, 21);
-            this.btnMoveTransformDown.TabIndex = 29;
-            this.btnMoveTransformDown.Text = "down";
-            this.btnMoveTransformDown.UseVisualStyleBackColor = true;
-            this.btnMoveTransformDown.Click += new System.EventHandler(this.btnMoveTransformDown_Click);
             // 
             // TextTransforms
             // 
