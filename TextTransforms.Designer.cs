@@ -70,6 +70,7 @@
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
+            this.btnCopyTab = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -127,10 +128,10 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(0, 438);
+            this.btnApply.Location = new System.Drawing.Point(2, 455);
             this.btnApply.Margin = new System.Windows.Forms.Padding(1);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(95, 38);
+            this.btnApply.Size = new System.Drawing.Size(95, 36);
             this.btnApply.TabIndex = 4;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -139,7 +140,7 @@
             // chkAutoApply
             // 
             this.chkAutoApply.AutoSize = true;
-            this.chkAutoApply.Location = new System.Drawing.Point(0, 420);
+            this.chkAutoApply.Location = new System.Drawing.Point(0, 440);
             this.chkAutoApply.Margin = new System.Windows.Forms.Padding(1);
             this.chkAutoApply.Name = "chkAutoApply";
             this.chkAutoApply.Size = new System.Drawing.Size(75, 17);
@@ -483,6 +484,7 @@
             this.pnlTransforms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTransforms.Controls.Add(this.btnCopyTab);
             this.pnlTransforms.Controls.Add(this.btnParagraphToAsterisk);
             this.pnlTransforms.Controls.Add(this.lblTruncate);
             this.pnlTransforms.Controls.Add(this.btnAsteriskToParagraph);
@@ -569,6 +571,16 @@
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.btnDistinct_Click);
             // 
+            // btnCopyTab
+            // 
+            this.btnCopyTab.Location = new System.Drawing.Point(0, 246);
+            this.btnCopyTab.Name = "btnCopyTab";
+            this.btnCopyTab.Size = new System.Drawing.Size(95, 22);
+            this.btnCopyTab.TabIndex = 30;
+            this.btnCopyTab.Text = "Tab to clipboard";
+            this.btnCopyTab.UseVisualStyleBackColor = true;
+            this.btnCopyTab.Click += new System.EventHandler(this.btnCopyTab_Click);
+            // 
             // TextTransforms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,6 +646,7 @@
         private System.Windows.Forms.Button btnAsteriskToParagraph;
         private System.Windows.Forms.Button btnMoveTransformDown;
         private System.Windows.Forms.Button btnMoveTransformUp;
+        private System.Windows.Forms.Button btnCopyTab;
     }
 }
 

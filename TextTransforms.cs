@@ -386,5 +386,10 @@ namespace emanuel
                 txtReplace.Select();
             }
         }
+
+        private void btnCopyTab_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(@"	");
+        }
     }
 }
