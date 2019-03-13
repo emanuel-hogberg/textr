@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59FEE518-C2A5-4215-A006-36F4E7AB8D3C}</ProjectGuid>
+    <ProjectGuid>{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>textr</RootNamespace>
-    <AssemblyName>textr</AssemblyName>
+    <RootNamespace>JiraHelper</RootNamespace>
+    <AssemblyName>JiraHelper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,35 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BatchEdit.cs">
+    <Compile Include="JiraHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BatchEdit.Designer.cs">
-      <DependentUpon>BatchEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Editables\EditEventController.cs" />
-    <Compile Include="Macros\SqlMacros.cs" />
-    <Compile Include="TextTransforms.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TextTransforms.Designer.cs">
-      <DependentUpon>TextTransforms.cs</DependentUpon>
+    <Compile Include="JiraHelper.Designer.cs">
+      <DependentUpon>JiraHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transforms\BasicTransforms.cs" />
-    <Compile Include="Transforms\BatchEdit\FormatTransform.cs" />
-    <Compile Include="Transforms\BatchEdit\GroupTransform.cs" />
-    <Compile Include="Transforms\BatchEdit\IBatchEditLineTransform.cs" />
-    <Compile Include="Editables\EditableTransform.cs" />
-    <Compile Include="Transforms\ITransform.cs" />
-    <Compile Include="Transforms\ListTransform.cs" />
-    <Compile Include="Transforms\NewLineAfterXOccurencesOfY.cs" />
-    <EmbeddedResource Include="BatchEdit.resx">
-      <DependentUpon>BatchEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TextTransforms.resx">
-      <DependentUpon>TextTransforms.cs</DependentUpon>
+    <EmbeddedResource Include="JiraHelper.resx">
+      <DependentUpon>JiraHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,13 +83,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="emanuelib\emanuelib.csproj">
-      <Project>{df629ad0-b470-4719-9b3a-48f8af8458f6}</Project>
+    <ProjectReference Include="..\emanuelib\emanuelib.csproj">
+      <Project>{DF629AD0-B470-4719-9B3A-48F8AF8458F6}</Project>
       <Name>emanuelib</Name>
-    </ProjectReference>
-    <ProjectReference Include="JiraHelper\JiraHelper.csproj">
-      <Project>{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}</Project>
-      <Name>JiraHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

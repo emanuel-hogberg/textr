@@ -64,13 +64,14 @@
             this.btnMacroListStringComma = new System.Windows.Forms.Button();
             this.btnMacroListComma = new System.Windows.Forms.Button();
             this.pnlTransforms = new System.Windows.Forms.Panel();
+            this.btnCopyTab = new System.Windows.Forms.Button();
             this.btnParagraphToAsterisk = new System.Windows.Forms.Button();
             this.lblTruncate = new System.Windows.Forms.Label();
             this.btnAsteriskToParagraph = new System.Windows.Forms.Button();
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
-            this.btnCopyTab = new System.Windows.Forms.Button();
+            this.btnJira = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -371,6 +372,7 @@
             // 
             // pnlActionButtons
             // 
+            this.pnlActionButtons.Controls.Add(this.btnJira);
             this.pnlActionButtons.Controls.Add(this.btnMoveTransformDown);
             this.pnlActionButtons.Controls.Add(this.btnMoveTransformUp);
             this.pnlActionButtons.Controls.Add(this.btnAddTableNames);
@@ -510,6 +512,16 @@
             this.pnlTransforms.Size = new System.Drawing.Size(95, 548);
             this.pnlTransforms.TabIndex = 1;
             // 
+            // btnCopyTab
+            // 
+            this.btnCopyTab.Location = new System.Drawing.Point(0, 246);
+            this.btnCopyTab.Name = "btnCopyTab";
+            this.btnCopyTab.Size = new System.Drawing.Size(95, 22);
+            this.btnCopyTab.TabIndex = 30;
+            this.btnCopyTab.Text = "Tab to clipboard";
+            this.btnCopyTab.UseVisualStyleBackColor = true;
+            this.btnCopyTab.Click += new System.EventHandler(this.btnCopyTab_Click);
+            // 
             // btnParagraphToAsterisk
             // 
             this.btnParagraphToAsterisk.Location = new System.Drawing.Point(51, 386);
@@ -571,15 +583,15 @@
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.btnDistinct_Click);
             // 
-            // btnCopyTab
+            // btnJira
             // 
-            this.btnCopyTab.Location = new System.Drawing.Point(0, 246);
-            this.btnCopyTab.Name = "btnCopyTab";
-            this.btnCopyTab.Size = new System.Drawing.Size(95, 22);
-            this.btnCopyTab.TabIndex = 30;
-            this.btnCopyTab.Text = "Tab to clipboard";
-            this.btnCopyTab.UseVisualStyleBackColor = true;
-            this.btnCopyTab.Click += new System.EventHandler(this.btnCopyTab_Click);
+            this.btnJira.Location = new System.Drawing.Point(187, 143);
+            this.btnJira.Name = "btnJira";
+            this.btnJira.Size = new System.Drawing.Size(44, 23);
+            this.btnJira.TabIndex = 24;
+            this.btnJira.Text = "jira";
+            this.btnJira.UseVisualStyleBackColor = true;
+            this.btnJira.Click += new System.EventHandler(this.btnJira_Click);
             // 
             // TextTransforms
             // 
@@ -647,6 +659,7 @@
         private System.Windows.Forms.Button btnMoveTransformDown;
         private System.Windows.Forms.Button btnMoveTransformUp;
         private System.Windows.Forms.Button btnCopyTab;
+        private System.Windows.Forms.Button btnJira;
     }
 }
 

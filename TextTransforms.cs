@@ -11,6 +11,7 @@ using emanuel.Extensions;
 using emanuel.Macros;
 using emanuel.Transforms;
 using textr.Editables;
+using JiraHelper;
 
 namespace emanuel
 {
@@ -390,6 +391,11 @@ namespace emanuel
         private void btnCopyTab_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(@"	");
+        }
+
+        private void btnJira_Click(object sender, EventArgs e)
+        {
+            new JiraHelperForm().Show();
         }
     }
 }

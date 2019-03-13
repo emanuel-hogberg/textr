@@ -91,8 +91,8 @@ namespace emanuel.Macros
             .AddTransform(new FindReplaceTransform("where", "WHERE "))
             .AddTransform(new FindReplaceTransform("  ", " "))
             .AddTransform(new FormatTransform("123")
-                .Select("SELECT § FROM * WHERE ")
-                .SetTransform("SELECT '*:' '*:', § FROM * WHERE "))
+                .Select(" § FROM * ")
+                .SetTransform(" '*:' '*:', § FROM * "))
             .AddTransform(new FindReplaceTransform("§", "*"))
             .ToList();
     }
