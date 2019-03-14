@@ -11,6 +11,8 @@ remove duplicates
 new line after x occurences of y
 remove blanks
 
+Jira button gives a few shortcuts to jira commands. Use to easily make a list of attachments, images (with or without thumbnails) or links. mark text in bold/italics using a rich text editor.
+
 Batch edit mode matches a search phrase against each line and performs changes. For example this list:
 select hello, person from friends
 select hello, person from enemies
@@ -34,4 +36,3 @@ will produce this result:
 select 'friends:' 'friends:', hello, person from friends 
 select 'enemies:' 'enemies:', hello, person from enemies 
 select 'frienemies:' 'frienemies:', hello, person from frienemies 
-
