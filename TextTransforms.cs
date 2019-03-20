@@ -131,7 +131,16 @@ namespace emanuel
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(txtResult.Text);
+
+            if (txtResult.Text.AssignForwardIf((s) => !string.IsNullOrEmpty(s), out string value))
+            {
+                Clipboard.SetText(value);
+                txtInfo.Text = $"Clipboard set to: {value.Replace(Environment.NewLine, "\\n").Cutoff(25, "...")}";
+            }
+            else
+            {
+                txtInfo.Text = "Nothing to copy.";
+            }
         }
         private void btnUndoTransform_Click(object sender, EventArgs e)
         {
