@@ -14,6 +14,8 @@ namespace JiraHelper
 {
     public partial class JiraHelperForm : Form
     {
+        private string txtFileNamesDescription = "Paste the path to a directory here to copy a list of its contents to the clipboard";
+
         public JiraHelperForm()
         {
             InitializeComponent();
@@ -23,7 +25,21 @@ namespace JiraHelper
         private bool EnterPressed(KeyPressEventArgs e)
             => e.KeyChar == (char)13;
 
-        private string Clip { set { Clipboard.SetText(value); txtResult.Text = $"Clipboard set to: {value.Replace(Environment.NewLine, "\\n")}"; } }
+        private string Clip
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Clipboard.SetText(value);
+                    txtResult.Text = $"Clipboard set to: {value.Replace(Environment.NewLine, "\\n")}";
+                }
+                else
+                {
+                    txtResult.Text = "Nothing to copy.";
+                }
+            }
+        }
 
         private void txtImage_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -164,7 +180,7 @@ namespace JiraHelper
 
         private void SetRichTextShortcuts()
         {
-            lblRichTextShortcuts.Text = new string[] { "F3 = Bold", "F4 = Italics", "F5 = noformat", "F6 = color" }
+            lblRichTextShortcuts.Text = new string[] { "F3 = Bold", "F4 = Italics", "F5 = noformat", "F6 = color", "F7 = underscore", "F8 = strikethrough" }
                 .AggregateToString(Environment.NewLine);
         }
 
@@ -172,19 +188,40 @@ namespace JiraHelper
         {
             if (txtRichEditor.SelectedText.Any())
             {
+                Func<string, string, string> Concat = (s1, s2) => string.Concat(s1, txtRichEditor.SelectedText, s2);
+                Func<string, string> Surround = (s) => Concat(s, s);
+                Func<string, string, string> SurroundAgain = (s, surrounding) => String.Concat(s, surrounding, s);
+                Func<FontStyle, bool, FontStyle> ToggleFontStyle = (fontStyleToToggle, currentSetting) => (currentSetting ? FontStyle.Regular : fontStyleToToggle);
+
+                FontStyle Italics = txtRichEditor.SelectionFont.Italic ? FontStyle.Italic : FontStyle.Regular;
+                FontStyle Bold = txtRichEditor.SelectionFont.Bold ? FontStyle.Bold : FontStyle.Regular;
+                FontStyle Underline = txtRichEditor.SelectionFont.Underline ? FontStyle.Underline : FontStyle.Regular;
+                FontStyle Strikeout = txtRichEditor.SelectionFont.Strikeout ? FontStyle.Strikeout : FontStyle.Regular;
+                FontStyle AmendFont;
+                
                 switch (e.KeyData)
                 {
                     case Keys.F3:
-                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, (txtRichEditor.SelectionFont.Bold ? FontStyle.Regular : FontStyle.Bold) | (txtRichEditor.SelectionFont.Italic ? FontStyle.Italic : FontStyle.Regular));
+                        AmendFont = ToggleFontStyle(FontStyle.Bold, txtRichEditor.SelectionFont.Bold);
+                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, AmendFont | Italics | Underline | Strikeout);
                         return;
                     case Keys.F4:
-                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, (txtRichEditor.SelectionFont.Italic ? FontStyle.Regular : FontStyle.Italic) | (txtRichEditor.SelectionFont.Bold ? FontStyle.Bold : FontStyle.Regular));
+                        AmendFont = ToggleFontStyle(FontStyle.Italic, txtRichEditor.SelectionFont.Italic);
+                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, AmendFont | Bold | Underline | Strikeout);
                         return;
                     case Keys.F5:
-                        txtRichEditor.SelectedText = string.Concat(Environment.NewLine, "{noformat}", txtRichEditor.SelectedText, "{noformat}", Environment.NewLine);
+                        txtRichEditor.SelectedText = SurroundAgain(Environment.NewLine, Surround("{noformat}"));
                         return;
                     case Keys.F6:
-                        txtRichEditor.SelectedText = string.Concat("{color:red}", txtRichEditor.SelectedText, "{color}");
+                        txtRichEditor.SelectedText = Concat("{color:red}", "{color}");
+                        return;
+                    case Keys.F7:
+                        AmendFont = ToggleFontStyle(FontStyle.Strikeout, txtRichEditor.SelectionFont.Strikeout);
+                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, AmendFont | Bold | Italics | Underline);
+                        return;
+                    case Keys.F8:
+                        AmendFont = ToggleFontStyle(FontStyle.Underline, txtRichEditor.SelectionFont.Underline);
+                        txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, AmendFont | Bold | Italics | Strikeout);
                         return;
                     default:
                         return;
@@ -202,24 +239,26 @@ namespace JiraHelper
         }
 
         /// <summary>
-        /// tuple (bold, italics) returns *txt* or _txt_.
+        /// tuple (bold, italics, underline, strikeout) returns *txt*, _txt_, -txt- or +txt+.
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
         private IEnumerable<string> EnumeratePerFont(RichTextBox t)
         {
-            (int s, int i) = (0, 0);
-            var font = (false, false);
+            (int s, int i, string newLine) = (0, 0, string.Empty);
+            var font = (false, false, false, false);
 
-            Func<Font, (bool, bool)> tuple = f => (f.Bold, f.Italic);
-            Func<int, int, (bool, bool)> getFont = (a, b) =>
+            Func<Font, (bool, bool, bool, bool)> tuple = f => (f.Bold, f.Italic, f.Underline, f.Strikeout);
+            Func<int, int, (bool, bool, bool, bool)> getFont = (a, b) =>
             {
                 t.SelectionStart = a;
                 t.SelectionLength = b - a + 1;
                 return tuple(t.SelectionFont);
             };
+            Func<bool> currentCharIsNewline = () => t.Text.Substring(i, 1) == "\n";
+            Func<bool> nextCharIsNewline = () => t.Text.Length > i + 1 && t.Text.Substring(i + 1, 1) == "\n";
             Func<bool> notSameFont = () => getFont(i + 1, i + 1)
-                .Forward(iFont => font.Item1 != iFont.Item1 || font.Item2 != iFont.Item2);
+                .Forward(iFont => font.Item1 != iFont.Item1 || font.Item2 != iFont.Item2 || font.Item3 != iFont.Item3 || font.Item4 != iFont.Item4);
             Func<string> yieldSelection = () => t
                 .Forward(r =>
                 {
@@ -228,22 +267,44 @@ namespace JiraHelper
                     return t.SelectedText;
                 })
                 .Forward(sel => font.Item1 ? $"*{sel}*" : sel)
-                .Forward(sel => font.Item2 ? $"_{sel}_" : sel);
+                .Forward(sel => font.Item2 ? $"_{sel}_" : sel)
+                .Forward(sel => font.Item3 ? $"-{sel}-" : sel)
+                .Forward(sel => font.Item4 ? $"+{sel}+" : sel);
 
             for (i = 0; i < t.Text.Length; i++)
             {
                 if (s == i)
                 {
+                    if (currentCharIsNewline())
+                    {
+                        if (i == 0 || nextCharIsNewline())
+                            yield return Environment.NewLine;
+                        s = i + 1;
+                        continue;
+                    }
                     font = getFont(s, i);
                 }
                 
-                if (notSameFont())
+                if (notSameFont().OrForceEvaluation(() => nextCharIsNewline().AssignForward(isNewLine => isNewLine ? Environment.NewLine : string.Empty, out newLine)))
                 {
-                    yield return yieldSelection();
+                    yield return yieldSelection() + newLine;
                     s = i + 1;
                 }
             }
             yield return yieldSelection();
+        }
+
+
+        private void txtFileNames_Leave(object sender, EventArgs e)
+        {
+            if (txtFileNames.Text == "")
+                txtFileNames.Text = txtFileNamesDescription;
+        }
+
+        private void txtFileNames_Enter(object sender, EventArgs e)
+        {
+            if (txtFileNames.Text == txtFileNamesDescription)
+                txtFileNames.Text = "";
         }
     }
 }

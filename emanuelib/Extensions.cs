@@ -43,6 +43,12 @@ namespace emanuel.Extensions
             assign = t;
             return t;
         }
+        public static T AssignForward<T, TForward>(this T t, Func<T, TForward> select, out TForward assign)
+        {
+            assign = select(t);
+            return t;
+        }
+
         public static bool AssignForwardIf<T>(this T t, Func<T, bool> condition, out T assign)
         {
             assign = t;
@@ -74,6 +80,24 @@ namespace emanuel.Extensions
             => (bool?)b;
         public static bool NotNullNorFalse(this bool? b)
             => b.HasValue && b.Value;
+        public static bool OrForceEvaluation(this bool b, params Func<bool>[] bs)
+        {
+            bool r = false;
+            for (int i = 0; i < bs.Length; i++)
+            {
+                r = bs[i]() || r;
+            }
+            return r || b;
+        }
+        public static bool AndForceEvaluation(this bool b, params Func<bool>[] bs)
+        {
+            bool r = true;
+            for (int i = 0; i < bs.Length; i++)
+            {
+                r = bs[i]() && r;
+            }
+            return r && b;
+        }
     }
 
     public static class StringExtensions
@@ -94,6 +118,8 @@ namespace emanuel.Extensions
         public static (bool Found, string Head, string Tail) Crunch(this string t, string sought)
         => t.IndexOf(sought).Forward(i => i < 0 ? (false, t, string.Empty) :
             (true, t.Substring(0, i), t.Substring(i + sought.Length, t.Length - i - sought.Length)));
+
+        public static string Cutoff(this string t, int n, string addTail = "") => string.Concat(t.Take(n).AggregateToString(string.Empty), t.Length > n ? addTail : string.Empty);
     }
 
     public static class IntExtensions
