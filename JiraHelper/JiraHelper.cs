@@ -14,6 +14,8 @@ namespace JiraHelper
 {
     public partial class JiraHelperForm : Form
     {
+        private string txtFileNamesDescription = "Paste the path to a directory here to copy a list of its contents to the clipboard";
+
         public JiraHelperForm()
         {
             InitializeComponent();
@@ -164,7 +166,7 @@ namespace JiraHelper
 
         private void SetRichTextShortcuts()
         {
-            lblRichTextShortcuts.Text = new string[] { "F3 = Bold", "F4 = Italics", "F5 = noformat", "F6 = color" }
+            lblRichTextShortcuts.Text = new string[] { "F3 = Bold", "F4 = Italics", "F5 = noformat", "F6 = color", "F7 = underscore", "F8 = strikethrough" }
                 .AggregateToString(Environment.NewLine);
         }
 
@@ -172,6 +174,9 @@ namespace JiraHelper
         {
             if (txtRichEditor.SelectedText.Any())
             {
+                Func<string, string, string> Concat = (s1, s2) => string.Concat(s1, txtRichEditor.SelectedText, s2);
+                Func<string, string> Surround = (s) => Concat(s, s);
+
                 switch (e.KeyData)
                 {
                     case Keys.F3:
@@ -181,10 +186,16 @@ namespace JiraHelper
                         txtRichEditor.SelectionFont = new Font(txtRichEditor.SelectionFont, (txtRichEditor.SelectionFont.Italic ? FontStyle.Regular : FontStyle.Italic) | (txtRichEditor.SelectionFont.Bold ? FontStyle.Bold : FontStyle.Regular));
                         return;
                     case Keys.F5:
-                        txtRichEditor.SelectedText = string.Concat(Environment.NewLine, "{noformat}", txtRichEditor.SelectedText, "{noformat}", Environment.NewLine);
+                        txtRichEditor.SelectedText = Concat(Environment.NewLine + "{noformat}", "{noformat}" + Environment.NewLine);
                         return;
                     case Keys.F6:
-                        txtRichEditor.SelectedText = string.Concat("{color:red}", txtRichEditor.SelectedText, "{color}");
+                        txtRichEditor.SelectedText = Concat("{color:red}", "{color}");
+                        return;
+                    case Keys.F7:
+                        txtRichEditor.SelectedText = Surround("+");
+                        return;
+                    case Keys.F8:
+                        txtRichEditor.SelectedText = Surround("-");
                         return;
                     default:
                         return;
@@ -244,6 +255,19 @@ namespace JiraHelper
                 }
             }
             yield return yieldSelection();
+        }
+
+
+        private void txtFileNames_Leave(object sender, EventArgs e)
+        {
+            if (txtFileNames.Text == "")
+                txtFileNames.Text = txtFileNamesDescription;
+        }
+
+        private void txtFileNames_Enter(object sender, EventArgs e)
+        {
+            if (txtFileNames.Text == txtFileNamesDescription)
+                txtFileNames.Text = "";
         }
     }
 }
