@@ -22,10 +22,22 @@ namespace emanuel
         }
         public event EventHandler TransformFound;
         private IBatchEditLineTransform foundTransform;
-        public IBatchEditLineTransform FoundTransform
+        public List<ITransform> FoundTransforms
         {
-            get => foundTransform;
-            set { foundTransform = value; foundTransform.OnlyViewAffectedLines = true; }
+            get => foundTransform
+                .With(t =>
+                {
+                    t.OnlyViewAffectedLines = true;
+                    t.Predecessor = null;
+                })
+                .Forward(t => chkChangeAsteriskIntoParagraph.Checked ?
+                    new List<ITransform>()
+                    {
+                        findReplaceAsterisk,
+                        t,
+                        new FindReplaceTransform("§", "*")
+                    }
+                : new List<ITransform>() { t });
         }
 
         private bool justOpened = true;
@@ -36,6 +48,8 @@ namespace emanuel
         public string Transform { get; set; }
 
         private List<IBatchEditLineTransform> Lines { get; set; }
+
+        private FindReplaceTransform findReplaceAsterisk = new FindReplaceTransform("*", "§");
 
         private enum UpdatePart
         {
@@ -107,7 +121,7 @@ namespace emanuel
         }
 
         private IBatchEditLineTransform NewTransform(string text)
-            => rdoSelection.Checked ? new GroupTransform(text) : new FormatTransform(text);
+            => rdoSelection.Checked ? new GroupTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null } : new FormatTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null };
 
         private void UpdateResult(UpdatePart part)
         {
@@ -116,7 +130,7 @@ namespace emanuel
             if (part == UpdatePart.Source || Lines == null)
             {
                 Lines = txtSource.Text
-                    .Split(new string[]{ Environment.NewLine }, StringSplitOptions.None)
+                    .Split(new string[] { Environment.NewLine }, StringSplitOptions.None)
                     .Select(text => NewTransform(text))
                     .ToList();
                 sourceUpdated = true;
@@ -158,7 +172,7 @@ namespace emanuel
         {
             if (TransformFound != null && Lines.Any(line => line.Match))
             {
-                FoundTransform = Lines.First(line => line.Match);
+                foundTransform = Lines.First(line => line.Match);
                 TransformFound(this, new EventArgs());
                 this.Close();
             }
@@ -199,6 +213,13 @@ namespace emanuel
             string t;
             (txtSource.Text, t) = (string.Empty, txtSource.Text);
             txtSource.Text = t;
+        }
+
+        private void chkChangeAsteriskIntoParagraph_CheckedChanged(object sender, EventArgs e)
+        {
+            Lines
+                .Do(line => line.Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null);
+            UpdateResult(UpdatePart.Selection);
         }
     }
 }

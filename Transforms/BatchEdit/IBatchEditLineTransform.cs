@@ -14,5 +14,6 @@
 
         string GetDescription();
         string GetTransformDescription();
+        ITransform Predecessor { get; set; }
     }
 }

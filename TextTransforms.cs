@@ -277,7 +277,7 @@ namespace emanuel
         private void BatchEdit_TransformFound(object sender, EventArgs e)
         {
             var be = (BatchEdit)sender;
-            AddTransform(be.FoundTransform);
+            AddMacro(be.FoundTransforms);
         }
 
         #endregion

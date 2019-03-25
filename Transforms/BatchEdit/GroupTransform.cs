@@ -27,11 +27,23 @@ namespace emanuel.Transforms
             }
             return results.ToString();
         }
-        public string Line { get; set; }
+        private string line;
+        public string Line
+        {
+            get
+            {
+                return Predecessor?.Transform(line) ?? line;
+            }
+            set
+            {
+                line = value;
+            }
+        }
         public string Selection { get; internal set; }
         public bool Match { get; internal set; }
         public string Result { get; internal set; }
         public bool OnlyViewAffectedLines { get; set; }
+        public ITransform Predecessor { get; set; }
 
         internal string select;
 
@@ -62,7 +74,7 @@ namespace emanuel.Transforms
             if (!string.IsNullOrEmpty(select))
             {
                 string found = string.Empty;
-                string rest = Line;
+                string rest = Selection;
 
                 bool selectStartsWithAsterisk = select.StartsWith("*"),
                     selectEndsWithAsterisk = select.EndsWith("*");
