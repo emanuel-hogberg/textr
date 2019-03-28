@@ -126,5 +126,8 @@ namespace emanuel.Transforms
 
         override public string GetTransformDescription()
             => "Transform selection (e.g. 'hello * of *s!' gives the new text 'hello friend of friends!')";
+
+        public override string GetTransformHint()
+        => "";
     }
 }

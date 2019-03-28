@@ -192,6 +192,8 @@ namespace emanuel
                 {
                     label1.Text = t.GetDescription();
                     label2.Text = t.GetTransformDescription();
+                    lblHint.Text = t.GetTransformHint()
+                        .Forward(hint => string.IsNullOrEmpty(hint) ? string.Empty : string.Concat("Hint: ", hint));
                 });
         }
 

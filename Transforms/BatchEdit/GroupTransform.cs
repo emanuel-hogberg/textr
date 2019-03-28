@@ -143,7 +143,7 @@ namespace emanuel.Transforms
                     .AssignForwardIf(foundPartInRest => foundPartInRest >= 0, out int index))
                 {
                     if (part == string.Empty && i == parts.Count() - 1)
-                        index = rest.Count();
+                        index = rest.Count(); // if last part, grab entire rest
 
                     // Selection
                     found = string.Concat(found,
@@ -154,8 +154,18 @@ namespace emanuel.Transforms
                     if (performTransform)
                     {
                         var newPart = newParts[i];
+
+                        var asteriskPart = rest.Substring(0, index);
+
+                        // writing \* should remove the asterisk part.
+                        if (Result.EndsWith("\\"))
+                        {
+                            asteriskPart = string.Empty;
+                            Result = Result.Substring(0, Result.Length - 1);
+                        }
+
                         Result = string.Concat(Result,
-                            rest.Substring(0, index),
+                            asteriskPart,
                             newPart);
                     }
 
@@ -194,6 +204,10 @@ namespace emanuel.Transforms
          => "Selection (e.g. text*where* selects two groups in this text: \"text hello where something\")";
         public virtual string GetTransformDescription()
          => "Transform text from the above selection (e.g. text2*wear gives the new text \"text2 hello wear something\")";
+
+
+        public virtual string GetTransformHint()
+        => "Replace a * group by typing \\*";
 
         public IBatchEditLineTransform CopyTo(IBatchEditLineTransform newTransform)
         => newTransform

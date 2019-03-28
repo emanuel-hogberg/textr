@@ -41,6 +41,7 @@
             this.rdoFormat = new System.Windows.Forms.RadioButton();
             this.btnReInit = new System.Windows.Forms.Button();
             this.chkChangeAsteriskIntoParagraph = new System.Windows.Forms.CheckBox();
+            this.lblHint = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtSource
@@ -186,11 +187,22 @@
             this.chkChangeAsteriskIntoParagraph.UseVisualStyleBackColor = true;
             this.chkChangeAsteriskIntoParagraph.CheckedChanged += new System.EventHandler(this.chkChangeAsteriskIntoParagraph_CheckedChanged);
             // 
+            // lblHint
+            // 
+            this.lblHint.AutoSize = true;
+            this.lblHint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHint.Location = new System.Drawing.Point(5, 391);
+            this.lblHint.Name = "lblHint";
+            this.lblHint.Size = new System.Drawing.Size(32, 13);
+            this.lblHint.TabIndex = 13;
+            this.lblHint.Text = "Hint: ";
+            // 
             // BatchEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 419);
+            this.Controls.Add(this.lblHint);
             this.Controls.Add(this.chkChangeAsteriskIntoParagraph);
             this.Controls.Add(this.btnReInit);
             this.Controls.Add(this.rdoFormat);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.RadioButton rdoFormat;
         private System.Windows.Forms.Button btnReInit;
         private System.Windows.Forms.CheckBox chkChangeAsteriskIntoParagraph;
+        private System.Windows.Forms.Label lblHint;
     }
 }
