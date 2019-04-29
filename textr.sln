@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "emanuelib", "emanuelib\eman
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiraHelper", "JiraHelper\JiraHelper.csproj", "{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "textrTests", "textrTests\textrTests.csproj", "{68D87560-74B2-4845-BE78-187FFBB4605C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D87560-74B2-4845-BE78-187FFBB4605C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D87560-74B2-4845-BE78-187FFBB4605C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D87560-74B2-4845-BE78-187FFBB4605C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D87560-74B2-4845-BE78-187FFBB4605C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

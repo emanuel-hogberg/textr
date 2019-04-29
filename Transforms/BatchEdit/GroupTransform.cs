@@ -74,7 +74,7 @@ namespace emanuel.Transforms
             if (!string.IsNullOrEmpty(select))
             {
                 string found = string.Empty;
-                string rest = Selection;
+                string rest = Line;
 
                 bool selectStartsWithAsterisk = select.StartsWith("*"),
                     selectEndsWithAsterisk = select.EndsWith("*");
