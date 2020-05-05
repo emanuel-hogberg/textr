@@ -72,6 +72,23 @@ namespace emanuel
         private void txtMain_TextChanged(object sender, EventArgs e)
         {
             UpdateResult();
+            UpdateStatusText();
+        }
+
+        private void UpdateStatusText()
+        {
+            try
+            {
+                lblStatusBar.Text =
+                    $"Selection start: {txtMain.SelectionStart}, " +
+                    $"length: {txtMain.SelectionLength}, " +
+                    $"line: {0 + txtMain.GetLineFromCharIndex(txtMain.SelectionStart)}, " +
+                    $"total length: {txtMain.TextLength}";
+            }
+            catch (Exception ex)
+            {
+                lblStatusBar.Text = ex.ToString();
+            }
         }
         #endregion
 
@@ -405,6 +422,21 @@ namespace emanuel
         private void btnJira_Click(object sender, EventArgs e)
         {
             new JiraHelperForm().Show();
+        }
+
+        private void txtMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UpdateStatusText();
+        }
+
+        private void txtMain_Click(object sender, EventArgs e)
+        {
+            UpdateStatusText();
+        }
+
+        private void txtMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            UpdateStatusText();
         }
     }
 }

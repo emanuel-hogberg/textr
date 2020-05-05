@@ -55,6 +55,7 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnJira = new System.Windows.Forms.Button();
             this.btnMoveTransformDown = new System.Windows.Forms.Button();
             this.btnMoveTransformUp = new System.Windows.Forms.Button();
             this.btnAddTableNames = new System.Windows.Forms.Button();
@@ -71,7 +72,7 @@
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
-            this.btnJira = new System.Windows.Forms.Button();
+            this.lblStatusBar = new System.Windows.Forms.Label();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -90,7 +91,10 @@
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMain.Size = new System.Drawing.Size(343, 491);
             this.txtMain.TabIndex = 0;
+            this.txtMain.Click += new System.EventHandler(this.txtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.txtMain_TextChanged);
+            this.txtMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyDown);
+            this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMain_KeyPress);
             // 
             // txtResult
             // 
@@ -395,6 +399,16 @@
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 224);
             this.pnlActionButtons.TabIndex = 20;
             // 
+            // btnJira
+            // 
+            this.btnJira.Location = new System.Drawing.Point(187, 143);
+            this.btnJira.Name = "btnJira";
+            this.btnJira.Size = new System.Drawing.Size(44, 23);
+            this.btnJira.TabIndex = 24;
+            this.btnJira.Text = "jira";
+            this.btnJira.UseVisualStyleBackColor = true;
+            this.btnJira.Click += new System.EventHandler(this.btnJira_Click);
+            // 
             // btnMoveTransformDown
             // 
             this.btnMoveTransformDown.Location = new System.Drawing.Point(102, 19);
@@ -583,21 +597,22 @@
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.btnDistinct_Click);
             // 
-            // btnJira
+            // lblStatusBar
             // 
-            this.btnJira.Location = new System.Drawing.Point(187, 143);
-            this.btnJira.Name = "btnJira";
-            this.btnJira.Size = new System.Drawing.Size(44, 23);
-            this.btnJira.TabIndex = 24;
-            this.btnJira.Text = "jira";
-            this.btnJira.UseVisualStyleBackColor = true;
-            this.btnJira.Click += new System.EventHandler(this.btnJira_Click);
+            this.lblStatusBar.AutoSize = true;
+            this.lblStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblStatusBar.Location = new System.Drawing.Point(0, 573);
+            this.lblStatusBar.Name = "lblStatusBar";
+            this.lblStatusBar.Size = new System.Drawing.Size(119, 13);
+            this.lblStatusBar.TabIndex = 24;
+            this.lblStatusBar.Text = "Left textbox: Line: Char:";
             // 
             // TextTransforms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1053, 586);
+            this.Controls.Add(this.lblStatusBar);
             this.Controls.Add(this.tblLayout);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "TextTransforms";
@@ -611,6 +626,7 @@
             this.pnlTransforms.ResumeLayout(false);
             this.pnlTransforms.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -660,6 +676,7 @@
         private System.Windows.Forms.Button btnMoveTransformUp;
         private System.Windows.Forms.Button btnCopyTab;
         private System.Windows.Forms.Button btnJira;
+        private System.Windows.Forms.Label lblStatusBar;
     }
 }
 
