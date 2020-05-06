@@ -93,7 +93,7 @@
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.txtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.txtMain_TextChanged);
-            this.txtMain.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyDown);
+            this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyUp);
             this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMain_KeyPress);
             // 
             // txtResult

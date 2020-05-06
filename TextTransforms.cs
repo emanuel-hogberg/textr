@@ -434,7 +434,7 @@ namespace emanuel
             UpdateStatusText();
         }
 
-        private void txtMain_KeyDown(object sender, KeyEventArgs e)
+        private void txtMain_KeyUp(object sender, KeyEventArgs e)
         {
             UpdateStatusText();
         }
