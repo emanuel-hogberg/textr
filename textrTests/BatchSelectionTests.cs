@@ -171,7 +171,7 @@ namespace textrTests
                     .Result == subject.Selection,
                 errorMsg(2));
             
-            sel = "out"; transform = "*oout*";
+            (sel, transform) = ("out", "*oout*");
             Assert.IsTrue(
                 subject
                     .Select(sel)
@@ -179,7 +179,7 @@ namespace textrTests
                     .Result == subject.Selection,
                 errorMsg(3));
 
-            sel = "let*out"; transform = "oout*leet*";
+            (sel, transform) = ("let*out", "oout*leet*");
             Assert.IsTrue(
                 subject
                     .Select(sel)

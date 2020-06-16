@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextTransforms));
             this.txtMain = new System.Windows.Forms.TextBox();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
@@ -93,8 +94,8 @@
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.txtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.txtMain_TextChanged);
-            this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyUp);
             this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMain_KeyPress);
+            this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyUp);
             // 
             // txtResult
             // 
@@ -614,6 +615,7 @@
             this.ClientSize = new System.Drawing.Size(1053, 586);
             this.Controls.Add(this.lblStatusBar);
             this.Controls.Add(this.tblLayout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "TextTransforms";
             this.Text = "textr";

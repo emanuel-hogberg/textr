@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BatchEdit));
             this.txtSource = new System.Windows.Forms.TextBox();
             this.txtSelectionView = new System.Windows.Forms.TextBox();
             this.txtSelection = new System.Windows.Forms.TextBox();
@@ -47,7 +48,7 @@
             // txtSource
             // 
             this.txtSource.Location = new System.Drawing.Point(5, 5);
-            this.txtSource.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtSource.Margin = new System.Windows.Forms.Padding(1);
             this.txtSource.Multiline = true;
             this.txtSource.Name = "txtSource";
             this.txtSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -58,7 +59,7 @@
             // txtSelectionView
             // 
             this.txtSelectionView.Location = new System.Drawing.Point(293, 5);
-            this.txtSelectionView.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtSelectionView.Margin = new System.Windows.Forms.Padding(1);
             this.txtSelectionView.Multiline = true;
             this.txtSelectionView.Name = "txtSelectionView";
             this.txtSelectionView.ReadOnly = true;
@@ -69,7 +70,7 @@
             // txtSelection
             // 
             this.txtSelection.Location = new System.Drawing.Point(5, 332);
-            this.txtSelection.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtSelection.Margin = new System.Windows.Forms.Padding(1);
             this.txtSelection.Name = "txtSelection";
             this.txtSelection.Size = new System.Drawing.Size(490, 20);
             this.txtSelection.TabIndex = 2;
@@ -78,7 +79,7 @@
             // txtTransform
             // 
             this.txtTransform.Location = new System.Drawing.Point(5, 368);
-            this.txtTransform.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtTransform.Margin = new System.Windows.Forms.Padding(1);
             this.txtTransform.Name = "txtTransform";
             this.txtTransform.Size = new System.Drawing.Size(490, 20);
             this.txtTransform.TabIndex = 3;
@@ -87,7 +88,7 @@
             // btnCopyToClipboard
             // 
             this.btnCopyToClipboard.Location = new System.Drawing.Point(782, 315);
-            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
             this.btnCopyToClipboard.Size = new System.Drawing.Size(78, 50);
             this.btnCopyToClipboard.TabIndex = 4;
@@ -98,7 +99,7 @@
             // btnUseAsTransform
             // 
             this.btnUseAsTransform.Location = new System.Drawing.Point(782, 368);
-            this.btnUseAsTransform.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnUseAsTransform.Margin = new System.Windows.Forms.Padding(1);
             this.btnUseAsTransform.Name = "btnUseAsTransform";
             this.btnUseAsTransform.Size = new System.Drawing.Size(78, 46);
             this.btnUseAsTransform.TabIndex = 5;
@@ -109,7 +110,7 @@
             // txtResult
             // 
             this.txtResult.Location = new System.Drawing.Point(581, 5);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(1);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
@@ -144,7 +145,7 @@
             this.rdoSelection.AutoSize = true;
             this.rdoSelection.Checked = true;
             this.rdoSelection.Location = new System.Drawing.Point(511, 315);
-            this.rdoSelection.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.rdoSelection.Margin = new System.Windows.Forms.Padding(1);
             this.rdoSelection.Name = "rdoSelection";
             this.rdoSelection.Size = new System.Drawing.Size(69, 17);
             this.rdoSelection.TabIndex = 9;
@@ -157,7 +158,7 @@
             // 
             this.rdoFormat.AutoSize = true;
             this.rdoFormat.Location = new System.Drawing.Point(511, 332);
-            this.rdoFormat.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.rdoFormat.Margin = new System.Windows.Forms.Padding(1);
             this.rdoFormat.Name = "rdoFormat";
             this.rdoFormat.Size = new System.Drawing.Size(57, 17);
             this.rdoFormat.TabIndex = 10;
@@ -168,7 +169,7 @@
             // btnReInit
             // 
             this.btnReInit.Location = new System.Drawing.Point(507, 351);
-            this.btnReInit.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnReInit.Margin = new System.Windows.Forms.Padding(1);
             this.btnReInit.Name = "btnReInit";
             this.btnReInit.Size = new System.Drawing.Size(58, 29);
             this.btnReInit.TabIndex = 11;
@@ -216,7 +217,8 @@
             this.Controls.Add(this.txtSelection);
             this.Controls.Add(this.txtSelectionView);
             this.Controls.Add(this.txtSource);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "BatchEdit";
             this.Text = "BatchEdit";
             this.ResumeLayout(false);

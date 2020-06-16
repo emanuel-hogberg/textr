@@ -56,7 +56,8 @@ namespace emanuel.Transforms
                     bool crunched = false;
                     string rest = transform;
                     Result = string.Empty;
-                    while(rest.Crunch("*").AssignForward(out var crunch)
+                    while(rest.Crunch("*")
+                        .AssignForward(out var crunch)
                         .Forward(c => c.Tail != string.Empty || c.Found))
                     {
                         crunched = true;

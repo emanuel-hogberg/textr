@@ -1,13 +1,10 @@
 ﻿using emanuel.Extensions;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JiraHelper
@@ -238,6 +235,22 @@ namespace JiraHelper
             }
         }
 
+        private struct FontDecoration
+        {
+            public bool Bold { get; private set; }
+            public bool Italics { get; private set; }
+            public bool Underline { get; private set; }
+            public bool Strikeout { get; private set; }
+
+            public FontDecoration(bool bold, bool italics, bool underline, bool strikeout)
+            {
+                Bold = bold;
+                Italics = italics;
+                Underline = underline;
+                Strikeout = strikeout;
+            }
+        }
+
         /// <summary>
         /// tuple (bold, italics, underline, strikeout) returns *txt*, _txt_, -txt- or +txt+.
         /// </summary>
@@ -246,19 +259,19 @@ namespace JiraHelper
         private IEnumerable<string> EnumeratePerFont(RichTextBox t)
         {
             (int s, int i, string newLine) = (0, 0, string.Empty);
-            var font = (false, false, false, false);
+            var font = new FontDecoration(false, false, false, false);
 
-            Func<Font, (bool, bool, bool, bool)> tuple = f => (f.Bold, f.Italic, f.Underline, f.Strikeout);
-            Func<int, int, (bool, bool, bool, bool)> getFont = (a, b) =>
+            Func<Font, FontDecoration> decorate = f => new FontDecoration(f.Bold, f.Italic, f.Underline, f.Strikeout);
+            Func<int, int, FontDecoration> getFont = (a, b) =>
             {
                 t.SelectionStart = a;
                 t.SelectionLength = b - a + 1;
-                return tuple(t.SelectionFont);
+                return decorate(t.SelectionFont);
             };
             Func<bool> currentCharIsNewline = () => t.Text.Substring(i, 1) == "\n";
             Func<bool> nextCharIsNewline = () => t.Text.Length > i + 1 && t.Text.Substring(i + 1, 1) == "\n";
             Func<bool> notSameFont = () => getFont(i + 1, i + 1)
-                .Forward(iFont => font.Item1 != iFont.Item1 || font.Item2 != iFont.Item2 || font.Item3 != iFont.Item3 || font.Item4 != iFont.Item4);
+                .Forward(iFont => font.Bold != iFont.Bold || font.Italics != iFont.Italics || font.Underline != iFont.Underline || font.Strikeout != iFont.Strikeout);
             Func<string> yieldSelection = () => t
                 .Forward(r =>
                 {
@@ -266,10 +279,10 @@ namespace JiraHelper
                     t.SelectionLength = i - s + 1;
                     return t.SelectedText;
                 })
-                .Forward(sel => font.Item1 ? $"*{sel}*" : sel)
-                .Forward(sel => font.Item2 ? $"_{sel}_" : sel)
-                .Forward(sel => font.Item3 ? $"-{sel}-" : sel)
-                .Forward(sel => font.Item4 ? $"+{sel}+" : sel);
+                .Forward(sel => font.Bold ? $"*{sel}*" : sel)
+                .Forward(sel => font.Italics? $"_{sel}_" : sel)
+                .Forward(sel => font.Underline ? $"-{sel}-" : sel)
+                .Forward(sel => font.Strikeout ? $"+{sel}+" : sel);
 
             for (i = 0; i < t.Text.Length; i++)
             {
