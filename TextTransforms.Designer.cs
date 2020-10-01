@@ -92,10 +92,10 @@
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMain.Size = new System.Drawing.Size(343, 491);
             this.txtMain.TabIndex = 0;
-            this.txtMain.Click += new System.EventHandler(this.txtMain_Click);
-            this.txtMain.TextChanged += new System.EventHandler(this.txtMain_TextChanged);
-            this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMain_KeyPress);
-            this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMain_KeyUp);
+            this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
+            this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
+            this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMain_KeyPress);
+            this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtMain_KeyUp);
             // 
             // txtResult
             // 
@@ -108,7 +108,7 @@
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtResult.Size = new System.Drawing.Size(343, 491);
             this.txtResult.TabIndex = 1;
-            this.txtResult.TextChanged += new System.EventHandler(this.txtResult_TextChanged);
+            this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
             // 
             // btnCopyToClipboard
             // 
@@ -119,7 +119,7 @@
             this.btnCopyToClipboard.TabIndex = 2;
             this.btnCopyToClipboard.Text = "Copy to clipboard";
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
-            this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            this.btnCopyToClipboard.Click += new System.EventHandler(this.BtnCopyToClipboard_Click);
             // 
             // btnRemoveNewLines
             // 
@@ -130,7 +130,7 @@
             this.btnRemoveNewLines.TabIndex = 3;
             this.btnRemoveNewLines.Text = "Remove new lines";
             this.btnRemoveNewLines.UseVisualStyleBackColor = true;
-            this.btnRemoveNewLines.Click += new System.EventHandler(this.btnRemoveNewLines_Click);
+            this.btnRemoveNewLines.Click += new System.EventHandler(this.BtnRemoveNewLines_Click);
             // 
             // btnApply
             // 
@@ -141,7 +141,7 @@
             this.btnApply.TabIndex = 4;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.btnApply.Click += new System.EventHandler(this.BtnApply_Click);
             // 
             // chkAutoApply
             // 
@@ -171,7 +171,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(81, 20);
             this.txtFind.TabIndex = 8;
-            this.txtFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFind_KeyPress);
+            this.txtFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFind_KeyPress);
             // 
             // txtReplace
             // 
@@ -180,7 +180,7 @@
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(81, 20);
             this.txtReplace.TabIndex = 9;
-            this.txtReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReplace_KeyPress);
+            this.txtReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReplace_KeyPress);
             // 
             // btnUndoTransform
             // 
@@ -191,7 +191,7 @@
             this.btnUndoTransform.TabIndex = 10;
             this.btnUndoTransform.Text = "undo last";
             this.btnUndoTransform.UseVisualStyleBackColor = true;
-            this.btnUndoTransform.Click += new System.EventHandler(this.btnUndoTransform_Click);
+            this.btnUndoTransform.Click += new System.EventHandler(this.BtnUndoTransform_Click);
             // 
             // txtNewLineAfterXOccurences
             // 
@@ -200,6 +200,7 @@
             this.txtNewLineAfterXOccurences.Name = "txtNewLineAfterXOccurences";
             this.txtNewLineAfterXOccurences.Size = new System.Drawing.Size(45, 20);
             this.txtNewLineAfterXOccurences.TabIndex = 11;
+            this.txtNewLineAfterXOccurences.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNewLineAfterXOccurences_KeyPress);
             // 
             // txtNewLineAfterXOccurencesOfY
             // 
@@ -208,7 +209,7 @@
             this.txtNewLineAfterXOccurencesOfY.Name = "txtNewLineAfterXOccurencesOfY";
             this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(45, 20);
             this.txtNewLineAfterXOccurencesOfY.TabIndex = 12;
-            this.txtNewLineAfterXOccurencesOfY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNewLineAfterXOccurencesOfY_KeyPress);
+            this.txtNewLineAfterXOccurencesOfY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNewLineAfterXOccurencesOfY_KeyPress);
             // 
             // lblNewLineAfterX
             // 
@@ -249,7 +250,7 @@
             this.btnMacroSqlQuery.TabIndex = 16;
             this.btnMacroSqlQuery.Text = "Sql formatter";
             this.btnMacroSqlQuery.UseVisualStyleBackColor = true;
-            this.btnMacroSqlQuery.Click += new System.EventHandler(this.btnMacroSqlQuery_Click);
+            this.btnMacroSqlQuery.Click += new System.EventHandler(this.BtnMacroSqlQuery_Click);
             // 
             // btnMacroSqlSelectFormatter
             // 
@@ -260,7 +261,7 @@
             this.btnMacroSqlSelectFormatter.TabIndex = 17;
             this.btnMacroSqlSelectFormatter.Text = "SELECT";
             this.btnMacroSqlSelectFormatter.UseVisualStyleBackColor = true;
-            this.btnMacroSqlSelectFormatter.Click += new System.EventHandler(this.btnMacroSqlSelectFormatter_Click);
+            this.btnMacroSqlSelectFormatter.Click += new System.EventHandler(this.BtnMacroSqlSelectFormatter_Click);
             // 
             // btnClearTransforms
             // 
@@ -271,7 +272,7 @@
             this.btnClearTransforms.TabIndex = 18;
             this.btnClearTransforms.Text = "clear";
             this.btnClearTransforms.UseVisualStyleBackColor = true;
-            this.btnClearTransforms.Click += new System.EventHandler(this.btnClearTransforms_Click);
+            this.btnClearTransforms.Click += new System.EventHandler(this.BtnClearTransforms_Click);
             // 
             // btnBatchEdit
             // 
@@ -282,7 +283,7 @@
             this.btnBatchEdit.TabIndex = 19;
             this.btnBatchEdit.Text = "Batch edit";
             this.btnBatchEdit.UseVisualStyleBackColor = true;
-            this.btnBatchEdit.Click += new System.EventHandler(this.btnBatchEdit_Click);
+            this.btnBatchEdit.Click += new System.EventHandler(this.BtnBatchEdit_Click);
             // 
             // btnNewLineChars
             // 
@@ -293,7 +294,7 @@
             this.btnNewLineChars.TabIndex = 20;
             this.btnNewLineChars.Text = "\\n or \\r to new line";
             this.btnNewLineChars.UseVisualStyleBackColor = true;
-            this.btnNewLineChars.Click += new System.EventHandler(this.btnNewLineChars_Click);
+            this.btnNewLineChars.Click += new System.EventHandler(this.BtnNewLineChars_Click);
             // 
             // chkCaseSensitive
             // 
@@ -317,7 +318,7 @@
             this.chkBeforeOrAfter.Size = new System.Drawing.Size(15, 14);
             this.chkBeforeOrAfter.TabIndex = 22;
             this.chkBeforeOrAfter.UseVisualStyleBackColor = true;
-            this.chkBeforeOrAfter.CheckedChanged += new System.EventHandler(this.chkBeforeOrAfter_CheckedChanged);
+            this.chkBeforeOrAfter.CheckedChanged += new System.EventHandler(this.ChkBeforeOrAfter_CheckedChanged);
             // 
             // tblLayout
             // 
@@ -373,7 +374,7 @@
             this.lstTransforms.Name = "lstTransforms";
             this.lstTransforms.Size = new System.Drawing.Size(230, 303);
             this.lstTransforms.TabIndex = 21;
-            this.lstTransforms.SelectedValueChanged += new System.EventHandler(this.lstTransforms_SelectedValueChanged);
+            this.lstTransforms.SelectedValueChanged += new System.EventHandler(this.LstTransforms_SelectedValueChanged);
             // 
             // pnlActionButtons
             // 
@@ -408,7 +409,7 @@
             this.btnJira.TabIndex = 24;
             this.btnJira.Text = "jira";
             this.btnJira.UseVisualStyleBackColor = true;
-            this.btnJira.Click += new System.EventHandler(this.btnJira_Click);
+            this.btnJira.Click += new System.EventHandler(this.BtnJira_Click);
             // 
             // btnMoveTransformDown
             // 
@@ -418,7 +419,7 @@
             this.btnMoveTransformDown.TabIndex = 29;
             this.btnMoveTransformDown.Text = "down";
             this.btnMoveTransformDown.UseVisualStyleBackColor = true;
-            this.btnMoveTransformDown.Click += new System.EventHandler(this.btnMoveTransformDown_Click);
+            this.btnMoveTransformDown.Click += new System.EventHandler(this.BtnMoveTransformDown_Click);
             // 
             // btnMoveTransformUp
             // 
@@ -428,7 +429,7 @@
             this.btnMoveTransformUp.TabIndex = 28;
             this.btnMoveTransformUp.Text = "up";
             this.btnMoveTransformUp.UseVisualStyleBackColor = true;
-            this.btnMoveTransformUp.Click += new System.EventHandler(this.btnMoveTransformUp_Click);
+            this.btnMoveTransformUp.Click += new System.EventHandler(this.BtnMoveTransformUp_Click);
             // 
             // btnAddTableNames
             // 
@@ -438,7 +439,7 @@
             this.btnAddTableNames.TabIndex = 24;
             this.btnAddTableNames.Text = "tbl names";
             this.btnAddTableNames.UseVisualStyleBackColor = true;
-            this.btnAddTableNames.Click += new System.EventHandler(this.btnAddTableNames_Click);
+            this.btnAddTableNames.Click += new System.EventHandler(this.BtnAddTableNames_Click);
             // 
             // btnEditSelectedTransform
             // 
@@ -450,7 +451,7 @@
             this.btnEditSelectedTransform.TabIndex = 23;
             this.btnEditSelectedTransform.Text = "Edit";
             this.btnEditSelectedTransform.UseVisualStyleBackColor = true;
-            this.btnEditSelectedTransform.Click += new System.EventHandler(this.btnEditSelectedTransform_Click);
+            this.btnEditSelectedTransform.Click += new System.EventHandler(this.BtnEditSelectedTransform_Click);
             // 
             // btnMacroSqlValues
             // 
@@ -461,7 +462,7 @@
             this.btnMacroSqlValues.TabIndex = 24;
             this.btnMacroSqlValues.Text = "Values()";
             this.btnMacroSqlValues.UseVisualStyleBackColor = true;
-            this.btnMacroSqlValues.Click += new System.EventHandler(this.btnMacroSqlValues_Click);
+            this.btnMacroSqlValues.Click += new System.EventHandler(this.BtnMacroSqlValues_Click);
             // 
             // btnRemoveSelectedTransform
             // 
@@ -472,7 +473,7 @@
             this.btnRemoveSelectedTransform.TabIndex = 22;
             this.btnRemoveSelectedTransform.Text = "del";
             this.btnRemoveSelectedTransform.UseVisualStyleBackColor = true;
-            this.btnRemoveSelectedTransform.Click += new System.EventHandler(this.btnRemoveSelectedTransform_Click);
+            this.btnRemoveSelectedTransform.Click += new System.EventHandler(this.BtnRemoveSelectedTransform_Click);
             // 
             // btnMacroListStringComma
             // 
@@ -483,7 +484,7 @@
             this.btnMacroListStringComma.TabIndex = 27;
             this.btnMacroListStringComma.Text = "\'List\',";
             this.btnMacroListStringComma.UseVisualStyleBackColor = true;
-            this.btnMacroListStringComma.Click += new System.EventHandler(this.btnMacroListStringComma_Click);
+            this.btnMacroListStringComma.Click += new System.EventHandler(this.BtnMacroListStringComma_Click);
             // 
             // btnMacroListComma
             // 
@@ -494,7 +495,7 @@
             this.btnMacroListComma.TabIndex = 20;
             this.btnMacroListComma.Text = "List,";
             this.btnMacroListComma.UseVisualStyleBackColor = true;
-            this.btnMacroListComma.Click += new System.EventHandler(this.btnMacroListComma_Click);
+            this.btnMacroListComma.Click += new System.EventHandler(this.BtnMacroListComma_Click);
             // 
             // pnlTransforms
             // 
@@ -535,7 +536,7 @@
             this.btnCopyTab.TabIndex = 30;
             this.btnCopyTab.Text = "Tab to clipboard";
             this.btnCopyTab.UseVisualStyleBackColor = true;
-            this.btnCopyTab.Click += new System.EventHandler(this.btnCopyTab_Click);
+            this.btnCopyTab.Click += new System.EventHandler(this.BtnCopyTab_Click);
             // 
             // btnParagraphToAsterisk
             // 
@@ -545,7 +546,7 @@
             this.btnParagraphToAsterisk.TabIndex = 29;
             this.btnParagraphToAsterisk.Text = "§=>*";
             this.btnParagraphToAsterisk.UseVisualStyleBackColor = true;
-            this.btnParagraphToAsterisk.Click += new System.EventHandler(this.btnParagraphToAsterisk_Click);
+            this.btnParagraphToAsterisk.Click += new System.EventHandler(this.BtnParagraphToAsterisk_Click);
             // 
             // lblTruncate
             // 
@@ -565,7 +566,7 @@
             this.btnAsteriskToParagraph.TabIndex = 28;
             this.btnAsteriskToParagraph.Text = "*=>§";
             this.btnAsteriskToParagraph.UseVisualStyleBackColor = true;
-            this.btnAsteriskToParagraph.Click += new System.EventHandler(this.btnAsteriskToParagraph_Click);
+            this.btnAsteriskToParagraph.Click += new System.EventHandler(this.BtnAsteriskToParagraph_Click);
             // 
             // txtTruncate
             // 
@@ -574,7 +575,7 @@
             this.txtTruncate.Name = "txtTruncate";
             this.txtTruncate.Size = new System.Drawing.Size(94, 20);
             this.txtTruncate.TabIndex = 25;
-            this.txtTruncate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTruncate_KeyPress);
+            this.txtTruncate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTruncate_KeyPress);
             // 
             // btnRemoveBlankLines
             // 
@@ -585,7 +586,7 @@
             this.btnRemoveBlankLines.TabIndex = 24;
             this.btnRemoveBlankLines.Text = "remove blank lines";
             this.btnRemoveBlankLines.UseVisualStyleBackColor = true;
-            this.btnRemoveBlankLines.Click += new System.EventHandler(this.btnRemoveBlankLines_Click);
+            this.btnRemoveBlankLines.Click += new System.EventHandler(this.BtnRemoveBlankLines_Click);
             // 
             // btnDistinct
             // 
@@ -596,7 +597,7 @@
             this.btnDistinct.TabIndex = 23;
             this.btnDistinct.Text = "Distinct";
             this.btnDistinct.UseVisualStyleBackColor = true;
-            this.btnDistinct.Click += new System.EventHandler(this.btnDistinct_Click);
+            this.btnDistinct.Click += new System.EventHandler(this.BtnDistinct_Click);
             // 
             // lblStatusBar
             // 

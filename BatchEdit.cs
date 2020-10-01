@@ -202,11 +202,6 @@ namespace emanuel
             ChangeBatchEditMode();
         }
 
-        private void rdoFormat_CheckedChanged(object sender, EventArgs e)
-        {
-            // ChangeBatchEditMode();
-        }
-
         private void btnReInit_Click(object sender, EventArgs e)
         {
             txtSelection.Text = txtTransform.Text = string.Empty;

@@ -102,8 +102,8 @@ namespace textrTests
                 }
                 else
                 {
-                    if (transform is string)
-                        TransformAssertion(select, (string)transform, transformResult, targetName);
+                    if (transform is string singleStringTransform)
+                        TransformAssertion(select, singleStringTransform, transformResult, targetName);
                     else
                         foreach (string s in (transform as string[]))
                             TransformAssertion(select, s, transformResult, targetName);

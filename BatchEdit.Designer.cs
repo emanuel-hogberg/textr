@@ -164,7 +164,6 @@
             this.rdoFormat.TabIndex = 10;
             this.rdoFormat.Text = "Format";
             this.rdoFormat.UseVisualStyleBackColor = true;
-            this.rdoFormat.CheckedChanged += new System.EventHandler(this.rdoFormat_CheckedChanged);
             // 
             // btnReInit
             // 

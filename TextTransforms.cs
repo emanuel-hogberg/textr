@@ -25,7 +25,7 @@ namespace emanuel
             InitEditableTransforms();
         }
 
-        List<ITransform> transforms = new List<ITransform>();
+        readonly List<ITransform> transforms = new List<ITransform>();
         public string MainText { get => txtMain.Text; }
 
         private TextTransforms AddTransform(ITransform transform)
@@ -62,14 +62,14 @@ namespace emanuel
         }
         
         #region text changed
-        private void txtResult_TextChanged(object sender, EventArgs e)
+        private void TxtResult_TextChanged(object sender, EventArgs e)
         {
             if (chkAutoApply.Checked)
             {
                 ApplyEdits();
             }
         }
-        private void txtMain_TextChanged(object sender, EventArgs e)
+        private void TxtMain_TextChanged(object sender, EventArgs e)
         {
             UpdateResult();
             UpdateStatusText();
@@ -97,7 +97,7 @@ namespace emanuel
         private bool EnterPressed(KeyPressEventArgs e)
         => e.KeyChar == (char)13;
 
-        private void txtReplace_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtReplace_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (EnterPressed(e))
             {
@@ -105,7 +105,7 @@ namespace emanuel
             }
         }
 
-        private void txtNewLineAfterXOccurencesOfY_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtNewLineAfterXOccurencesOfY_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (EnterPressed(e))
             {
@@ -119,7 +119,7 @@ namespace emanuel
                 }
             }
         }
-        private void txtTruncate_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtTruncate_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (EnterPressed(e))
             {
@@ -136,17 +136,17 @@ namespace emanuel
         #endregion
 
         #region  Button clicks
-        private void btnApply_Click(object sender, EventArgs e)
+        private void BtnApply_Click(object sender, EventArgs e)
         {
             ApplyEdits();
         }
 
-        private void btnRemoveNewLines_Click(object sender, EventArgs e)
+        private void BtnRemoveNewLines_Click(object sender, EventArgs e)
         {
             AddTransform(new RemoveNewLineTransform());
         }
 
-        private void btnCopyToClipboard_Click(object sender, EventArgs e)
+        private void BtnCopyToClipboard_Click(object sender, EventArgs e)
         {
 
             if (txtResult.Text.AssignForwardIf((s) => !string.IsNullOrEmpty(s), out string value))
@@ -159,14 +159,14 @@ namespace emanuel
                 txtInfo.Text = "Nothing to copy.";
             }
         }
-        private void btnUndoTransform_Click(object sender, EventArgs e)
+        private void BtnUndoTransform_Click(object sender, EventArgs e)
         {
             if (transforms.Any())
                 transforms.Remove(transforms.Last());
             UpdateResult();
         }
 
-        private void btnClearTransforms_Click(object sender, EventArgs e)
+        private void BtnClearTransforms_Click(object sender, EventArgs e)
         {
             transforms.Clear();
             UpdateResult();
@@ -180,7 +180,7 @@ namespace emanuel
                         action(i);
                 });
 
-        private void btnRemoveSelectedTransform_Click(object sender, EventArgs e)
+        private void BtnRemoveSelectedTransform_Click(object sender, EventArgs e)
         {
             IfValidIndexSelected(i =>
             {
@@ -193,7 +193,7 @@ namespace emanuel
             });
         }
 
-        private void btnMoveTransformUp_Click(object sender, EventArgs e)
+        private void BtnMoveTransformUp_Click(object sender, EventArgs e)
         {
             IfValidIndexSelected(i =>
             {
@@ -209,7 +209,7 @@ namespace emanuel
             });
         }
 
-        private void btnMoveTransformDown_Click(object sender, EventArgs e)
+        private void BtnMoveTransformDown_Click(object sender, EventArgs e)
         {
             IfValidIndexSelected(i =>
             {
@@ -225,24 +225,24 @@ namespace emanuel
             });
         }
 
-        private void btnBatchEdit_Click(object sender, EventArgs e)
+        private void BtnBatchEdit_Click(object sender, EventArgs e)
         {
             var be = new BatchEdit(txtResult.Text);
             be.TransformFound += BatchEdit_TransformFound;
             be.Show();
         }
 
-        private void btnNewLineChars_Click(object sender, EventArgs e)
+        private void BtnNewLineChars_Click(object sender, EventArgs e)
         {
             AddTransform(new NewLineCharFix());
         }
 
-        private void btnDistinct_Click(object sender, EventArgs e)
+        private void BtnDistinct_Click(object sender, EventArgs e)
         {
             AddTransform(new DistinctTransform());
         }
 
-        private void btnRemoveBlankLines_Click(object sender, EventArgs e)
+        private void BtnRemoveBlankLines_Click(object sender, EventArgs e)
         {
             AddTransform(new RemoveBlankLinesTransform());
         }
@@ -253,36 +253,36 @@ namespace emanuel
 
         private void AddMacro(IEnumerable<ITransform> list) { list.DoForEach(t => AddTransform(t)); }
 
-        private void btnMacroListStringComma_Click(object sender, EventArgs e)
+        private void BtnMacroListStringComma_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlListStringComma()
                 .Do(list => AddMacro(list));
         }
 
-        private void btnMacroListComma_Click(object sender, EventArgs e)
+        private void BtnMacroListComma_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlListComma()
                 .Do(list => AddMacro(list));
         }
 
-        private void btnMacroSqlSelectFormatter_Click(object sender, EventArgs e)
+        private void BtnMacroSqlSelectFormatter_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlSelectFormat()
                 .Do(list => AddMacro(list));
         }
 
-        private void btnMacroSqlQuery_Click(object sender, EventArgs e)
+        private void BtnMacroSqlQuery_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlQueryFormat()
                 .Do(list => AddMacro(list));
         }
-        private void btnMacroSqlValues_Click(object sender, EventArgs e)
+        private void BtnMacroSqlValues_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlValues()
                 .Do(list => AddMacro(list));
         }
 
-        private void btnAddTableNames_Click(object sender, EventArgs e)
+        private void BtnAddTableNames_Click(object sender, EventArgs e)
         {
             SqlMacros.SqlAddTableNamesToSelect()
                 .Do(list => AddMacro(list));
@@ -301,7 +301,7 @@ namespace emanuel
 
         #region Checked changed
 
-        private void chkBeforeOrAfter_CheckedChanged(object sender, EventArgs e)
+        private void ChkBeforeOrAfter_CheckedChanged(object sender, EventArgs e)
         {
             lblNewLineAfterX.Text = chkBeforeOrAfter.Checked
                 .Forward(c => c ? "before" : "after")
@@ -325,6 +325,7 @@ namespace emanuel
             lstTransforms.Enabled = false;
             btnEditSelectedTransform.Text = "Cancel";
             btnApply.Enabled = false;
+            btnClearTransforms.Enabled = false;
         }
 
         private void StopEditing()
@@ -333,6 +334,7 @@ namespace emanuel
             btnEditSelectedTransform.Text = "Edit";
             editing = null;
             btnApply.Enabled = true;
+            btnClearTransforms.Enabled = true;
         }
 
         public TextTransforms ApplyEdits()
@@ -365,7 +367,7 @@ namespace emanuel
 
         #endregion
 
-        private void btnEditSelectedTransform_Click(object sender, EventArgs e)
+        private void BtnEditSelectedTransform_Click(object sender, EventArgs e)
         {
             if (btnEditSelectedTransform.Text == "Edit")
             {
@@ -391,22 +393,22 @@ namespace emanuel
             }
         }
 
-        private void btnAsteriskToParagraph_Click(object sender, EventArgs e)
+        private void BtnAsteriskToParagraph_Click(object sender, EventArgs e)
         {
             AddTransform(new FindReplaceTransform("*", "§"));
         }
 
-        private void btnParagraphToAsterisk_Click(object sender, EventArgs e)
+        private void BtnParagraphToAsterisk_Click(object sender, EventArgs e)
         {
             AddTransform(new FindReplaceTransform("§", "*"));
         }
 
-        private void lstTransforms_SelectedValueChanged(object sender, EventArgs e)
+        private void LstTransforms_SelectedValueChanged(object sender, EventArgs e)
         {
             btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is EditableTransform);
         }
 
-        private void txtFind_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtFind_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (EnterPressed(e))
             {
@@ -414,29 +416,39 @@ namespace emanuel
             }
         }
 
-        private void btnCopyTab_Click(object sender, EventArgs e)
+        private void BtnCopyTab_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(@"	");
         }
 
-        private void btnJira_Click(object sender, EventArgs e)
+        private void BtnJira_Click(object sender, EventArgs e)
         {
             new JiraHelperForm().Show();
         }
 
-        private void txtMain_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtMain_KeyPress(object sender, KeyPressEventArgs e)
         {
             UpdateStatusText();
         }
 
-        private void txtMain_Click(object sender, EventArgs e)
+        private void TxtMain_Click(object sender, EventArgs e)
         {
             UpdateStatusText();
         }
 
-        private void txtMain_KeyUp(object sender, KeyEventArgs e)
+        private void TxtMain_KeyUp(object sender, KeyEventArgs e)
         {
             UpdateStatusText();
+        }
+
+        private void txtNewLineAfterXOccurences_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (EnterPressed(e) && !int.TryParse(txtNewLineAfterXOccurences.Text, out _))
+            {
+                txtNewLineAfterXOccurencesOfY.Text = txtNewLineAfterXOccurences.Text;
+                txtNewLineAfterXOccurences.Text = "1";
+                txtNewLineAfterXOccurencesOfY.Focus();
+            }
         }
     }
 }
