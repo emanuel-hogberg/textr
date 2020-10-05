@@ -450,5 +450,25 @@ namespace emanuel
                 txtNewLineAfterXOccurencesOfY.Focus();
             }
         }
+
+        private void btnAsciiTo_Click(object sender, EventArgs e)
+        {
+            AddTransform(new FindReplaceTransform("\u00e5", @"\u00e5"))
+                .AddTransform(new FindReplaceTransform("\u00e4", @"\u00e4"))
+                .AddTransform(new FindReplaceTransform("\u00f6", @"\u00f6"))
+                .AddTransform(new FindReplaceTransform("\u00c5", @"\u00c5"))
+                .AddTransform(new FindReplaceTransform("\u00c4", @"\u00c4"))
+                .AddTransform(new FindReplaceTransform("\u00d6", @"\u00d6"));
+        }
+
+        private void btnAsciiFrom_Click(object sender, EventArgs e)
+        {
+            AddTransform(new FindReplaceTransform(@"\u00e5", "\u00e5"))
+                .AddTransform(new FindReplaceTransform(@"\u00e4", "\u00e4"))
+                .AddTransform(new FindReplaceTransform(@"\u00f6", "\u00f6"))
+                .AddTransform(new FindReplaceTransform(@"\u00c5", "\u00c5"))
+                .AddTransform(new FindReplaceTransform(@"\u00c4", "\u00c4"))
+                .AddTransform(new FindReplaceTransform(@"\u00d6", "\u00d6"));
+        }
     }
 }

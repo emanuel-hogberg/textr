@@ -66,10 +66,12 @@
             this.btnMacroListStringComma = new System.Windows.Forms.Button();
             this.btnMacroListComma = new System.Windows.Forms.Button();
             this.pnlTransforms = new System.Windows.Forms.Panel();
+            this.btnAsciiFrom = new System.Windows.Forms.Button();
             this.btnCopyTab = new System.Windows.Forms.Button();
             this.btnParagraphToAsterisk = new System.Windows.Forms.Button();
             this.lblTruncate = new System.Windows.Forms.Label();
             this.btnAsteriskToParagraph = new System.Windows.Forms.Button();
+            this.btnAsciiTo = new System.Windows.Forms.Button();
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
@@ -90,7 +92,7 @@
             this.txtMain.Multiline = true;
             this.txtMain.Name = "txtMain";
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMain.Size = new System.Drawing.Size(343, 491);
+            this.txtMain.Size = new System.Drawing.Size(343, 471);
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
@@ -106,7 +108,7 @@
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(343, 491);
+            this.txtResult.Size = new System.Drawing.Size(343, 471);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
             // 
@@ -169,7 +171,7 @@
             this.txtFind.Location = new System.Drawing.Point(2, 65);
             this.txtFind.Margin = new System.Windows.Forms.Padding(1);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(81, 20);
+            this.txtFind.Size = new System.Drawing.Size(90, 20);
             this.txtFind.TabIndex = 8;
             this.txtFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFind_KeyPress);
             // 
@@ -178,7 +180,7 @@
             this.txtReplace.Location = new System.Drawing.Point(2, 83);
             this.txtReplace.Margin = new System.Windows.Forms.Padding(1);
             this.txtReplace.Name = "txtReplace";
-            this.txtReplace.Size = new System.Drawing.Size(81, 20);
+            this.txtReplace.Size = new System.Drawing.Size(90, 20);
             this.txtReplace.TabIndex = 9;
             this.txtReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReplace_KeyPress);
             // 
@@ -207,7 +209,7 @@
             this.txtNewLineAfterXOccurencesOfY.Location = new System.Drawing.Point(2, 199);
             this.txtNewLineAfterXOccurencesOfY.Margin = new System.Windows.Forms.Padding(1);
             this.txtNewLineAfterXOccurencesOfY.Name = "txtNewLineAfterXOccurencesOfY";
-            this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(45, 20);
+            this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(90, 20);
             this.txtNewLineAfterXOccurencesOfY.TabIndex = 12;
             this.txtNewLineAfterXOccurencesOfY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNewLineAfterXOccurencesOfY_KeyPress);
             // 
@@ -338,8 +340,9 @@
             this.tblLayout.Location = new System.Drawing.Point(16, 14);
             this.tblLayout.Margin = new System.Windows.Forms.Padding(1);
             this.tblLayout.Name = "tblLayout";
-            this.tblLayout.RowCount = 1;
+            this.tblLayout.RowCount = 2;
             this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblLayout.Size = new System.Drawing.Size(1019, 550);
             this.tblLayout.TabIndex = 23;
             // 
@@ -352,13 +355,13 @@
             this.pnlActions.Location = new System.Drawing.Point(788, 1);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(1);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(230, 548);
+            this.pnlActions.Size = new System.Drawing.Size(230, 528);
             this.pnlActions.TabIndex = 0;
             // 
             // txtInfo
             // 
             this.txtInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtInfo.Location = new System.Drawing.Point(0, 304);
+            this.txtInfo.Location = new System.Drawing.Point(0, 284);
             this.txtInfo.Margin = new System.Windows.Forms.Padding(1);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
@@ -395,7 +398,7 @@
             this.pnlActionButtons.Controls.Add(this.btnBatchEdit);
             this.pnlActionButtons.Controls.Add(this.lblMacros);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 324);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 304);
             this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(1);
             this.pnlActionButtons.Name = "pnlActionButtons";
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 224);
@@ -502,10 +505,12 @@
             this.pnlTransforms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTransforms.Controls.Add(this.btnAsciiFrom);
             this.pnlTransforms.Controls.Add(this.btnCopyTab);
             this.pnlTransforms.Controls.Add(this.btnParagraphToAsterisk);
             this.pnlTransforms.Controls.Add(this.lblTruncate);
             this.pnlTransforms.Controls.Add(this.btnAsteriskToParagraph);
+            this.pnlTransforms.Controls.Add(this.btnAsciiTo);
             this.pnlTransforms.Controls.Add(this.txtTruncate);
             this.pnlTransforms.Controls.Add(this.btnRemoveBlankLines);
             this.pnlTransforms.Controls.Add(this.btnDistinct);
@@ -525,8 +530,18 @@
             this.pnlTransforms.Location = new System.Drawing.Point(346, 1);
             this.pnlTransforms.Margin = new System.Windows.Forms.Padding(1);
             this.pnlTransforms.Name = "pnlTransforms";
-            this.pnlTransforms.Size = new System.Drawing.Size(95, 548);
+            this.pnlTransforms.Size = new System.Drawing.Size(95, 528);
             this.pnlTransforms.TabIndex = 1;
+            // 
+            // btnAsciiFrom
+            // 
+            this.btnAsciiFrom.Location = new System.Drawing.Point(54, 411);
+            this.btnAsciiFrom.Name = "btnAsciiFrom";
+            this.btnAsciiFrom.Size = new System.Drawing.Size(38, 23);
+            this.btnAsciiFrom.TabIndex = 31;
+            this.btnAsciiFrom.Text = "=>";
+            this.btnAsciiFrom.UseVisualStyleBackColor = true;
+            this.btnAsciiFrom.Click += new System.EventHandler(this.btnAsciiFrom_Click);
             // 
             // btnCopyTab
             // 
@@ -567,6 +582,16 @@
             this.btnAsteriskToParagraph.Text = "*=>§";
             this.btnAsteriskToParagraph.UseVisualStyleBackColor = true;
             this.btnAsteriskToParagraph.Click += new System.EventHandler(this.BtnAsteriskToParagraph_Click);
+            // 
+            // btnAsciiTo
+            // 
+            this.btnAsciiTo.Location = new System.Drawing.Point(3, 410);
+            this.btnAsciiTo.Name = "btnAsciiTo";
+            this.btnAsciiTo.Size = new System.Drawing.Size(52, 24);
+            this.btnAsciiTo.TabIndex = 2;
+            this.btnAsciiTo.Text = "=> Ascii";
+            this.btnAsciiTo.UseVisualStyleBackColor = true;
+            this.btnAsciiTo.Click += new System.EventHandler(this.btnAsciiTo_Click);
             // 
             // txtTruncate
             // 
@@ -680,6 +705,8 @@
         private System.Windows.Forms.Button btnCopyTab;
         private System.Windows.Forms.Button btnJira;
         private System.Windows.Forms.Label lblStatusBar;
+        private System.Windows.Forms.Button btnAsciiFrom;
+        private System.Windows.Forms.Button btnAsciiTo;
     }
 }
 
