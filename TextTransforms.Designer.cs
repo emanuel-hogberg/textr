@@ -66,6 +66,7 @@
             this.btnMacroListStringComma = new System.Windows.Forms.Button();
             this.btnMacroListComma = new System.Windows.Forms.Button();
             this.pnlTransforms = new System.Windows.Forms.Panel();
+            this.btnMath = new System.Windows.Forms.Button();
             this.btnAsciiFrom = new System.Windows.Forms.Button();
             this.btnCopyTab = new System.Windows.Forms.Button();
             this.btnParagraphToAsterisk = new System.Windows.Forms.Button();
@@ -88,11 +89,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMain.Location = new System.Drawing.Point(1, 1);
-            this.txtMain.Margin = new System.Windows.Forms.Padding(1, 1, 1, 58);
+            this.txtMain.Margin = new System.Windows.Forms.Padding(1, 1, 1, 18);
             this.txtMain.Multiline = true;
             this.txtMain.Name = "txtMain";
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMain.Size = new System.Drawing.Size(343, 471);
+            this.txtMain.Size = new System.Drawing.Size(343, 511);
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
@@ -103,12 +104,12 @@
             // 
             this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtResult.Location = new System.Drawing.Point(443, 1);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(1, 1, 1, 58);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(1, 1, 1, 18);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(343, 471);
+            this.txtResult.Size = new System.Drawing.Size(343, 511);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
             // 
@@ -136,7 +137,7 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(2, 455);
+            this.btnApply.Location = new System.Drawing.Point(0, 474);
             this.btnApply.Margin = new System.Windows.Forms.Padding(1);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(95, 36);
@@ -148,7 +149,7 @@
             // chkAutoApply
             // 
             this.chkAutoApply.AutoSize = true;
-            this.chkAutoApply.Location = new System.Drawing.Point(0, 440);
+            this.chkAutoApply.Location = new System.Drawing.Point(-2, 459);
             this.chkAutoApply.Margin = new System.Windows.Forms.Padding(1);
             this.chkAutoApply.Name = "chkAutoApply";
             this.chkAutoApply.Size = new System.Drawing.Size(75, 17);
@@ -505,6 +506,7 @@
             this.pnlTransforms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTransforms.Controls.Add(this.btnMath);
             this.pnlTransforms.Controls.Add(this.btnAsciiFrom);
             this.pnlTransforms.Controls.Add(this.btnCopyTab);
             this.pnlTransforms.Controls.Add(this.btnParagraphToAsterisk);
@@ -532,6 +534,18 @@
             this.pnlTransforms.Name = "pnlTransforms";
             this.pnlTransforms.Size = new System.Drawing.Size(95, 528);
             this.pnlTransforms.TabIndex = 1;
+            // 
+            // btnMath
+            // 
+            this.btnMath.Location = new System.Drawing.Point(2, 435);
+            this.btnMath.Name = "btnMath";
+            this.btnMath.Size = new System.Drawing.Size(90, 20);
+            this.btnMath.TabIndex = 32;
+            this.btnMath.Text = "Math expr";
+            this.btnMath.UseVisualStyleBackColor = true;
+            this.btnMath.Click += new System.EventHandler(this.btnMath_Click);
+            this.btnMath.MouseEnter += new System.EventHandler(this.btnMath_MouseEnter);
+            this.btnMath.MouseLeave += new System.EventHandler(this.btnMath_MouseLeave);
             // 
             // btnAsciiFrom
             // 
@@ -707,6 +721,7 @@
         private System.Windows.Forms.Label lblStatusBar;
         private System.Windows.Forms.Button btnAsciiFrom;
         private System.Windows.Forms.Button btnAsciiTo;
+        private System.Windows.Forms.Button btnMath;
     }
 }
 

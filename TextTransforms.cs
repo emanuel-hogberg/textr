@@ -12,12 +12,15 @@ using emanuel.Macros;
 using emanuel.Transforms;
 using textr.Editables;
 using JiraHelper;
+using textr.Helpers;
+using textr.Transforms;
 
 namespace emanuel
 {
     public partial class TextTransforms : Form
     {
         IEditableProperties editing = null;
+        private string MathTooltip = string.Empty;
 
         public TextTransforms()
         {
@@ -80,6 +83,7 @@ namespace emanuel
             try
             {
                 lblStatusBar.Text =
+                    MathTooltip +
                     $"Selection start: {txtMain.SelectionStart}, " +
                     $"length: {txtMain.SelectionLength}, " +
                     $"line: {0 + txtMain.GetLineFromCharIndex(txtMain.SelectionStart)}, " +
@@ -469,6 +473,47 @@ namespace emanuel
                 .AddTransform(new FindReplaceTransform(@"\u00c5", "\u00c5"))
                 .AddTransform(new FindReplaceTransform(@"\u00c4", "\u00c4"))
                 .AddTransform(new FindReplaceTransform(@"\u00d6", "\u00d6"));
+        }
+
+        private void btnMath_Click(object sender, EventArgs e)
+        {
+            AddTransform(new MathTransform());
+        }
+
+        private void btnMath_MouseEnter(object sender, EventArgs e)
+        {
+            string selection = txtMain.SelectionLength > 0 ?
+                txtMain.SelectedText :
+                MathHelper.SplitOutHooks(txtMain.Text);
+
+            if (string.IsNullOrEmpty(selection))
+            {
+                MathTooltip = "Math expression using https://mathparser.org/.";
+            }
+            else
+            {
+                string resultString = "error";
+
+                if (MathHelper.MathExpression(selection, out string error, out double result))
+                {
+                    resultString = result.ToString();
+                }
+                else
+                {
+                    resultString = error;
+                }
+
+                MathTooltip = $"{selection} = {resultString} (from https://mathparser.org/)";
+            }
+
+            UpdateStatusText();
+        }
+
+        private void btnMath_MouseLeave(object sender, EventArgs e)
+        {
+            MathTooltip = "";
+
+            UpdateStatusText();
         }
     }
 }
