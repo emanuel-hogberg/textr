@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using emanuel.Extensions;
 using emanuel.Macros;
@@ -19,8 +14,9 @@ namespace emanuel
 {
     public partial class TextTransforms : Form
     {
-        IEditableProperties editing = null;
-        private string MathTooltip = string.Empty;
+        IEditableProperties _editing = null;
+        private string _mathTooltip = string.Empty;
+        private TextBox _txtSelectionTarget = null;
 
         public TextTransforms()
         {
@@ -33,7 +29,7 @@ namespace emanuel
 
         private TextTransforms AddTransform(ITransform transform)
         {
-            if (editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
+            if (_editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
             {
                 StopEditing();
             }
@@ -82,12 +78,17 @@ namespace emanuel
         {
             try
             {
+                if (_txtSelectionTarget == null)
+                {
+                    _txtSelectionTarget = txtMain;
+                }
+
                 lblStatusBar.Text =
-                    MathTooltip +
-                    $"Selection start: {txtMain.SelectionStart}, " +
-                    $"length: {txtMain.SelectionLength}, " +
-                    $"line: {0 + txtMain.GetLineFromCharIndex(txtMain.SelectionStart)}, " +
-                    $"total length: {txtMain.TextLength}";
+                    _mathTooltip +
+                    $"Selection start: {_txtSelectionTarget.SelectionStart}, " +
+                    $"length: {_txtSelectionTarget.SelectionLength}, " +
+                    $"line: {0 + _txtSelectionTarget.GetLineFromCharIndex(txtMain.SelectionStart)}, " +
+                    $"total length: {_txtSelectionTarget.TextLength}";
             }
             catch (Exception ex)
             {
@@ -336,7 +337,7 @@ namespace emanuel
         {
             lstTransforms.Enabled = true;
             btnEditSelectedTransform.Text = "Edit";
-            editing = null;
+            _editing = null;
             btnApply.Enabled = true;
             btnClearTransforms.Enabled = true;
         }
@@ -377,7 +378,7 @@ namespace emanuel
             {
                 if (lstTransforms.SelectedItem.AssignForwardIf(s => s != null && s is EditableTransform, out object selectedTransform))
                 {
-                    editing = (selectedTransform as EditableTransform).Edit();
+                    _editing = (selectedTransform as EditableTransform).Edit();
                     txtInfo.Text = $"Editing {selectedTransform}";
                 }
                 else if (lstTransforms.SelectedItem is EditableTransform)
@@ -437,11 +438,30 @@ namespace emanuel
 
         private void TxtMain_Click(object sender, EventArgs e)
         {
+            _txtSelectionTarget = txtMain;
+
             UpdateStatusText();
         }
 
         private void TxtMain_KeyUp(object sender, KeyEventArgs e)
         {
+            UpdateStatusText();
+        }
+
+        private void txtMain_Enter(object sender, EventArgs e)
+        {
+            _txtSelectionTarget = txtMain;
+        }
+
+        private void txtResult_Enter(object sender, EventArgs e)
+        {
+            _txtSelectionTarget = txtResult;
+        }
+
+        private void txtReplace_Click(object sender, EventArgs e)
+        {
+            _txtSelectionTarget = txtMain;
+
             UpdateStatusText();
         }
 
@@ -488,7 +508,7 @@ namespace emanuel
 
             if (string.IsNullOrEmpty(selection))
             {
-                MathTooltip = "Math expression using https://mathparser.org/.";
+                _mathTooltip = "Math expression using https://mathparser.org/.";
             }
             else
             {
@@ -503,7 +523,7 @@ namespace emanuel
                     resultString = error;
                 }
 
-                MathTooltip = $"{selection} = {resultString} (from https://mathparser.org/)";
+                _mathTooltip = $"{selection} = {resultString} (from https://mathparser.org/)";
             }
 
             UpdateStatusText();
@@ -511,9 +531,32 @@ namespace emanuel
 
         private void btnMath_MouseLeave(object sender, EventArgs e)
         {
-            MathTooltip = "";
+            _mathTooltip = "";
 
             UpdateStatusText();
+        }
+
+        private void btnJsonToXml_Click(object sender, EventArgs e)
+        {
+            AddTransform(new JsonXmlTransform());
+
+            if (txtFind.Text.Length == 0 && txtReplace.Text.Length == 0)
+            {
+                txtFind.Text = JsonXmlTransform.DeserializeRootElementName;
+                txtReplace.Select();
+            }
+        }
+
+        private void btnXmlToJson_Click(object sender, EventArgs e)
+        {
+            AddTransform(new XmlJsonTransform());
+        }
+
+        private void chkXmlCasing_CheckedChanged(object sender, EventArgs e)
+        {
+            chkXmlCasing.Text = chkXmlCasing.Checked
+                ? "<PascalCase>"
+                : "<anyCase>";
         }
     }
 }

@@ -56,27 +56,30 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnXmlToJson = new System.Windows.Forms.Button();
+            this.btnJsonToXml = new System.Windows.Forms.Button();
             this.btnJira = new System.Windows.Forms.Button();
+            this.btnAsciiFrom = new System.Windows.Forms.Button();
             this.btnMoveTransformDown = new System.Windows.Forms.Button();
             this.btnMoveTransformUp = new System.Windows.Forms.Button();
             this.btnAddTableNames = new System.Windows.Forms.Button();
             this.btnEditSelectedTransform = new System.Windows.Forms.Button();
             this.btnMacroSqlValues = new System.Windows.Forms.Button();
+            this.btnAsciiTo = new System.Windows.Forms.Button();
             this.btnRemoveSelectedTransform = new System.Windows.Forms.Button();
             this.btnMacroListStringComma = new System.Windows.Forms.Button();
             this.btnMacroListComma = new System.Windows.Forms.Button();
             this.pnlTransforms = new System.Windows.Forms.Panel();
             this.btnMath = new System.Windows.Forms.Button();
-            this.btnAsciiFrom = new System.Windows.Forms.Button();
             this.btnCopyTab = new System.Windows.Forms.Button();
             this.btnParagraphToAsterisk = new System.Windows.Forms.Button();
             this.lblTruncate = new System.Windows.Forms.Label();
             this.btnAsteriskToParagraph = new System.Windows.Forms.Button();
-            this.btnAsciiTo = new System.Windows.Forms.Button();
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
+            this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -97,6 +100,7 @@
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
+            this.txtMain.Enter += new System.EventHandler(this.txtMain_Enter);
             this.txtMain.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMain_KeyPress);
             this.txtMain.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtMain_KeyUp);
             // 
@@ -112,10 +116,11 @@
             this.txtResult.Size = new System.Drawing.Size(343, 511);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
+            this.txtResult.Enter += new System.EventHandler(this.txtResult_Enter);
             // 
             // btnCopyToClipboard
             // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(5, 119);
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(3, 160);
             this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
             this.btnCopyToClipboard.Size = new System.Drawing.Size(95, 47);
@@ -183,6 +188,7 @@
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(90, 20);
             this.txtReplace.TabIndex = 9;
+            this.txtReplace.Click += new System.EventHandler(this.txtReplace_Click);
             this.txtReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReplace_KeyPress);
             // 
             // btnUndoTransform
@@ -279,7 +285,7 @@
             // 
             // btnBatchEdit
             // 
-            this.btnBatchEdit.Location = new System.Drawing.Point(108, 131);
+            this.btnBatchEdit.Location = new System.Drawing.Point(106, 172);
             this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(1);
             this.btnBatchEdit.Name = "btnBatchEdit";
             this.btnBatchEdit.Size = new System.Drawing.Size(75, 35);
@@ -382,12 +388,17 @@
             // 
             // pnlActionButtons
             // 
+            this.pnlActionButtons.Controls.Add(this.chkXmlCasing);
+            this.pnlActionButtons.Controls.Add(this.btnXmlToJson);
+            this.pnlActionButtons.Controls.Add(this.btnJsonToXml);
             this.pnlActionButtons.Controls.Add(this.btnJira);
+            this.pnlActionButtons.Controls.Add(this.btnAsciiFrom);
             this.pnlActionButtons.Controls.Add(this.btnMoveTransformDown);
             this.pnlActionButtons.Controls.Add(this.btnMoveTransformUp);
             this.pnlActionButtons.Controls.Add(this.btnAddTableNames);
             this.pnlActionButtons.Controls.Add(this.btnEditSelectedTransform);
             this.pnlActionButtons.Controls.Add(this.btnMacroSqlValues);
+            this.pnlActionButtons.Controls.Add(this.btnAsciiTo);
             this.pnlActionButtons.Controls.Add(this.btnRemoveSelectedTransform);
             this.pnlActionButtons.Controls.Add(this.btnMacroListStringComma);
             this.pnlActionButtons.Controls.Add(this.btnMacroListComma);
@@ -405,15 +416,45 @@
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 224);
             this.pnlActionButtons.TabIndex = 20;
             // 
+            // btnXmlToJson
+            // 
+            this.btnXmlToJson.Location = new System.Drawing.Point(168, 115);
+            this.btnXmlToJson.Name = "btnXmlToJson";
+            this.btnXmlToJson.Size = new System.Drawing.Size(32, 23);
+            this.btnXmlToJson.TabIndex = 33;
+            this.btnXmlToJson.Text = "<=";
+            this.btnXmlToJson.UseVisualStyleBackColor = true;
+            this.btnXmlToJson.Click += new System.EventHandler(this.btnXmlToJson_Click);
+            // 
+            // btnJsonToXml
+            // 
+            this.btnJsonToXml.Location = new System.Drawing.Point(98, 115);
+            this.btnJsonToXml.Name = "btnJsonToXml";
+            this.btnJsonToXml.Size = new System.Drawing.Size(71, 23);
+            this.btnJsonToXml.TabIndex = 32;
+            this.btnJsonToXml.Text = "json => xml";
+            this.btnJsonToXml.UseVisualStyleBackColor = true;
+            this.btnJsonToXml.Click += new System.EventHandler(this.btnJsonToXml_Click);
+            // 
             // btnJira
             // 
-            this.btnJira.Location = new System.Drawing.Point(187, 143);
+            this.btnJira.Location = new System.Drawing.Point(185, 184);
             this.btnJira.Name = "btnJira";
             this.btnJira.Size = new System.Drawing.Size(44, 23);
             this.btnJira.TabIndex = 24;
             this.btnJira.Text = "jira";
             this.btnJira.UseVisualStyleBackColor = true;
             this.btnJira.Click += new System.EventHandler(this.BtnJira_Click);
+            // 
+            // btnAsciiFrom
+            // 
+            this.btnAsciiFrom.Location = new System.Drawing.Point(54, 115);
+            this.btnAsciiFrom.Name = "btnAsciiFrom";
+            this.btnAsciiFrom.Size = new System.Drawing.Size(38, 23);
+            this.btnAsciiFrom.TabIndex = 31;
+            this.btnAsciiFrom.Text = "<=";
+            this.btnAsciiFrom.UseVisualStyleBackColor = true;
+            this.btnAsciiFrom.Click += new System.EventHandler(this.btnAsciiFrom_Click);
             // 
             // btnMoveTransformDown
             // 
@@ -468,6 +509,16 @@
             this.btnMacroSqlValues.UseVisualStyleBackColor = true;
             this.btnMacroSqlValues.Click += new System.EventHandler(this.BtnMacroSqlValues_Click);
             // 
+            // btnAsciiTo
+            // 
+            this.btnAsciiTo.Location = new System.Drawing.Point(3, 114);
+            this.btnAsciiTo.Name = "btnAsciiTo";
+            this.btnAsciiTo.Size = new System.Drawing.Size(52, 24);
+            this.btnAsciiTo.TabIndex = 2;
+            this.btnAsciiTo.Text = "=> Ascii";
+            this.btnAsciiTo.UseVisualStyleBackColor = true;
+            this.btnAsciiTo.Click += new System.EventHandler(this.btnAsciiTo_Click);
+            // 
             // btnRemoveSelectedTransform
             // 
             this.btnRemoveSelectedTransform.Location = new System.Drawing.Point(69, 3);
@@ -507,12 +558,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTransforms.Controls.Add(this.btnMath);
-            this.pnlTransforms.Controls.Add(this.btnAsciiFrom);
             this.pnlTransforms.Controls.Add(this.btnCopyTab);
             this.pnlTransforms.Controls.Add(this.btnParagraphToAsterisk);
             this.pnlTransforms.Controls.Add(this.lblTruncate);
             this.pnlTransforms.Controls.Add(this.btnAsteriskToParagraph);
-            this.pnlTransforms.Controls.Add(this.btnAsciiTo);
             this.pnlTransforms.Controls.Add(this.txtTruncate);
             this.pnlTransforms.Controls.Add(this.btnRemoveBlankLines);
             this.pnlTransforms.Controls.Add(this.btnDistinct);
@@ -546,16 +595,6 @@
             this.btnMath.Click += new System.EventHandler(this.btnMath_Click);
             this.btnMath.MouseEnter += new System.EventHandler(this.btnMath_MouseEnter);
             this.btnMath.MouseLeave += new System.EventHandler(this.btnMath_MouseLeave);
-            // 
-            // btnAsciiFrom
-            // 
-            this.btnAsciiFrom.Location = new System.Drawing.Point(54, 411);
-            this.btnAsciiFrom.Name = "btnAsciiFrom";
-            this.btnAsciiFrom.Size = new System.Drawing.Size(38, 23);
-            this.btnAsciiFrom.TabIndex = 31;
-            this.btnAsciiFrom.Text = "=>";
-            this.btnAsciiFrom.UseVisualStyleBackColor = true;
-            this.btnAsciiFrom.Click += new System.EventHandler(this.btnAsciiFrom_Click);
             // 
             // btnCopyTab
             // 
@@ -597,16 +636,6 @@
             this.btnAsteriskToParagraph.UseVisualStyleBackColor = true;
             this.btnAsteriskToParagraph.Click += new System.EventHandler(this.BtnAsteriskToParagraph_Click);
             // 
-            // btnAsciiTo
-            // 
-            this.btnAsciiTo.Location = new System.Drawing.Point(3, 410);
-            this.btnAsciiTo.Name = "btnAsciiTo";
-            this.btnAsciiTo.Size = new System.Drawing.Size(52, 24);
-            this.btnAsciiTo.TabIndex = 2;
-            this.btnAsciiTo.Text = "=> Ascii";
-            this.btnAsciiTo.UseVisualStyleBackColor = true;
-            this.btnAsciiTo.Click += new System.EventHandler(this.btnAsciiTo_Click);
-            // 
             // txtTruncate
             // 
             this.txtTruncate.Location = new System.Drawing.Point(2, 136);
@@ -647,6 +676,19 @@
             this.lblStatusBar.Size = new System.Drawing.Size(119, 13);
             this.lblStatusBar.TabIndex = 24;
             this.lblStatusBar.Text = "Left textbox: Line: Char:";
+            // 
+            // chkXmlCasing
+            // 
+            this.chkXmlCasing.AutoSize = true;
+            this.chkXmlCasing.Checked = true;
+            this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkXmlCasing.Location = new System.Drawing.Point(98, 137);
+            this.chkXmlCasing.Name = "chkXmlCasing";
+            this.chkXmlCasing.Size = new System.Drawing.Size(94, 17);
+            this.chkXmlCasing.TabIndex = 34;
+            this.chkXmlCasing.Text = "<PascalCase>";
+            this.chkXmlCasing.UseVisualStyleBackColor = true;
+            this.chkXmlCasing.CheckedChanged += new System.EventHandler(this.chkXmlCasing_CheckedChanged);
             // 
             // TextTransforms
             // 
@@ -722,6 +764,9 @@
         private System.Windows.Forms.Button btnAsciiFrom;
         private System.Windows.Forms.Button btnAsciiTo;
         private System.Windows.Forms.Button btnMath;
+        private System.Windows.Forms.Button btnXmlToJson;
+        private System.Windows.Forms.Button btnJsonToXml;
+        private System.Windows.Forms.CheckBox chkXmlCasing;
     }
 }
 
