@@ -45,7 +45,7 @@ namespace textr.Transforms
         private void SetPascalCasing(XElement node)
         {
             node.Name = node.Name.ToString()
-                .Forward(name => name[0].ToString().ToUpperInvariant() + name[1..];
+                .Forward(name => name[0].ToString().ToUpperInvariant() + (name.Length > 1 ? name.Substring(1) : string.Empty));
 
             var childNodes = node.Elements();
             if (childNodes.Any())

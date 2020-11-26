@@ -538,7 +538,10 @@ namespace emanuel
 
         private void btnJsonToXml_Click(object sender, EventArgs e)
         {
-            AddTransform(new JsonXmlTransform());
+            AddTransform(new JsonXmlTransform
+            {
+                PascalCasing = chkXmlCasing.Checked
+            });
 
             if (txtFind.Text.Length == 0 && txtReplace.Text.Length == 0)
             {
