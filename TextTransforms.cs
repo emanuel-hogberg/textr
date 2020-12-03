@@ -9,17 +9,29 @@ using textr.Editables;
 using JiraHelper;
 using textr.Helpers;
 using textr.Transforms;
+using textr.Interfaces;
+using StringTransforms.Interfaces;
 
 namespace emanuel
 {
-    public partial class TextTransforms : Form
+    public partial class TextTransforms : Form, ITextTransformations
     {
         IEditableProperties _editing = null;
         private string _mathTooltip = string.Empty;
         private TextBox _txtSelectionTarget = null;
+        private ITransformFactoryService _transformFactoryService;
+        private ITransformMacroFactoryService _transformMacroFactoryService;
+        private ITransformService _transformService;
 
-        public TextTransforms()
+        public TextTransforms(
+            ITransformFactoryService transformFactoryService,
+            ITransformMacroFactoryService transformMacroFactoryService,
+            ITransformService transformService)
         {
+            _transformFactoryService = transformFactoryService;
+            _transformMacroFactoryService = transformMacroFactoryService;
+            _transformService = transformService;
+
             InitializeComponent();
             InitEditableTransforms();
         }

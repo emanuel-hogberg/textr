@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "textr", "textr.csproj", "{59FEE518-C2A5-4215-A006-36F4E7AB8D3C}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiraHelper", "JiraHelper\JiraHelper.csproj", "{D1EFF96F-3AF0-49B6-92AB-AB6483AFBF16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "textrTests", "textrTests\textrTests.csproj", "{68D87560-74B2-4845-BE78-187FFBB4605C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringTransforms", "StringTransforms\StringTransforms.csproj", "{500D8359-040F-4866-9FE4-9D9711432082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{68D87560-74B2-4845-BE78-187FFBB4605C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68D87560-74B2-4845-BE78-187FFBB4605C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68D87560-74B2-4845-BE78-187FFBB4605C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{500D8359-040F-4866-9FE4-9D9711432082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500D8359-040F-4866-9FE4-9D9711432082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500D8359-040F-4866-9FE4-9D9711432082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500D8359-040F-4866-9FE4-9D9711432082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

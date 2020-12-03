@@ -56,6 +56,7 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.btnXmlToJson = new System.Windows.Forms.Button();
             this.btnJsonToXml = new System.Windows.Forms.Button();
             this.btnJira = new System.Windows.Forms.Button();
@@ -79,7 +80,6 @@
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
-            this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -416,6 +416,19 @@
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 224);
             this.pnlActionButtons.TabIndex = 20;
             // 
+            // chkXmlCasing
+            // 
+            this.chkXmlCasing.AutoSize = true;
+            this.chkXmlCasing.Checked = true;
+            this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkXmlCasing.Location = new System.Drawing.Point(98, 137);
+            this.chkXmlCasing.Name = "chkXmlCasing";
+            this.chkXmlCasing.Size = new System.Drawing.Size(94, 17);
+            this.chkXmlCasing.TabIndex = 34;
+            this.chkXmlCasing.Text = "<PascalCase>";
+            this.chkXmlCasing.UseVisualStyleBackColor = true;
+            this.chkXmlCasing.CheckedChanged += new System.EventHandler(this.chkXmlCasing_CheckedChanged);
+            // 
             // btnXmlToJson
             // 
             this.btnXmlToJson.Location = new System.Drawing.Point(168, 115);
@@ -676,19 +689,6 @@
             this.lblStatusBar.Size = new System.Drawing.Size(119, 13);
             this.lblStatusBar.TabIndex = 24;
             this.lblStatusBar.Text = "Left textbox: Line: Char:";
-            // 
-            // chkXmlCasing
-            // 
-            this.chkXmlCasing.AutoSize = true;
-            this.chkXmlCasing.Checked = true;
-            this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkXmlCasing.Location = new System.Drawing.Point(98, 137);
-            this.chkXmlCasing.Name = "chkXmlCasing";
-            this.chkXmlCasing.Size = new System.Drawing.Size(94, 17);
-            this.chkXmlCasing.TabIndex = 34;
-            this.chkXmlCasing.Text = "<PascalCase>";
-            this.chkXmlCasing.UseVisualStyleBackColor = true;
-            this.chkXmlCasing.CheckedChanged += new System.EventHandler(this.chkXmlCasing_CheckedChanged);
             // 
             // TextTransforms
             // 
