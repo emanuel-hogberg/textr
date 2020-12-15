@@ -92,9 +92,7 @@
     <Compile Include="BatchEdit.Designer.cs">
       <DependentUpon>BatchEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editables\EditEventController.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
-    <Compile Include="Interfaces\ITextTransformations.cs" />
     <Compile Include="Macros\SqlMacros.cs" />
     <Compile Include="Extensions\Startup.cs" />
     <Compile Include="TextTransforms.cs">
@@ -109,9 +107,7 @@
     <Compile Include="Transforms\BatchEdit\FormatTransform.cs" />
     <Compile Include="Transforms\BatchEdit\GroupTransform.cs" />
     <Compile Include="Transforms\BatchEdit\IBatchEditLineTransform.cs" />
-    <Compile Include="Editables\EditableTransform.cs" />
     <Compile Include="Transforms\DistinctTransform.cs" />
-    <Compile Include="Transforms\ITransform.cs" />
     <Compile Include="Transforms\JsonXmlTransform.cs" />
     <Compile Include="Transforms\ListTransform.cs" />
     <Compile Include="Transforms\MathTransform.cs" />
@@ -168,6 +164,8 @@
   <ItemGroup>
     <Content Include="horse.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Editables\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

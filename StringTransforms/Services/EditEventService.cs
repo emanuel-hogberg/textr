@@ -1,31 +1,30 @@
 ﻿using emanuel.Extensions;
-using emanuel.Transforms;
+using StringTransforms.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace textr.Editables
+namespace StringTransforms.Services
 {
-    public class EditEventController
+    public class EditEventService
     {
         private Dictionary<Type, Action<IEditableProperties>> types = new Dictionary<Type, Action<IEditableProperties>>();
         private EditableTransform editing = null;
 
-        private EditEventController()
+        private EditEventService()
         {
 
         }
 
         public event EventHandler Editing;
 
-        private static EditEventController instance = new EditEventController();
-        public static EditEventController Instance { get => instance; }
+        private static EditEventService instance = new EditEventService();
+        public static EditEventService Instance { get => instance; }
 
-        public void NewTransformAdded(List<ITransform> transforms)
+        public void NewTransformAdded(TransformCollectionSelector selector)
         {
-            transforms
-                .Where(t => t is EditableTransform)
-                .Select(t => t as EditableTransform)
+            selector
+                .GetEditableTransforms()
                 .Do(t =>
                 {
                     if (types.ContainsKey(t.GetType()))

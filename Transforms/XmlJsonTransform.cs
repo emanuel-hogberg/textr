@@ -1,5 +1,5 @@
-﻿using emanuel.Transforms;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using StringTransforms.Interfaces;
 using System;
 using System.Xml;
 

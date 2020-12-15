@@ -1,6 +1,6 @@
 ﻿using emanuel.Extensions;
-using emanuel.Transforms;
 using Newtonsoft.Json;
+using StringTransforms.Interfaces;
 using System;
 using System.Linq;
 using System.Xml.Linq;

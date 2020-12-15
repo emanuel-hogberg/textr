@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StringTransforms.Interfaces;
+using System;
 
 namespace emanuel.Transforms
 {

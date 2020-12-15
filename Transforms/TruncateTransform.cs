@@ -1,4 +1,6 @@
 ﻿using emanuel.Extensions;
+using StringTransforms;
+using StringTransforms.Interfaces;
 
 namespace emanuel.Transforms
 {
@@ -37,7 +39,7 @@ namespace emanuel.Transforms
             return text;
         }
 
-        internal override IEditableProperties GetEditableProperties()
+        public override IEditableProperties GetEditableProperties()
             => new TruncateEdit() { Truncate = Truncate, FromStart = FromStart, IgnoreCase = IgnoreCase };
 
         public class TruncateEdit : IEditableProperties

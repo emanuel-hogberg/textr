@@ -1,4 +1,6 @@
 ﻿using emanuel.Extensions;
+using StringTransforms;
+using StringTransforms.Interfaces;
 
 namespace emanuel.Transforms
 {
@@ -24,7 +26,7 @@ namespace emanuel.Transforms
             .Forward(c => c ? "" : ", case insensitive")
             .Forward(sensitivity => $"Replace('{find}', '{replace}'{sensitivity})");
 
-        internal override IEditableProperties GetEditableProperties()
+        public override IEditableProperties GetEditableProperties()
         => new FindReplaceEdit() { CaseSensitive = caseSensitive, Find = find, Replace = replace };
 
         public override void Save(IEditableProperties amendments)

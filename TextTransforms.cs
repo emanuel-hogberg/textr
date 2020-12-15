@@ -5,12 +5,12 @@ using System.Windows.Forms;
 using emanuel.Extensions;
 using emanuel.Macros;
 using emanuel.Transforms;
-using textr.Editables;
 using JiraHelper;
 using textr.Helpers;
 using textr.Transforms;
-using textr.Interfaces;
 using StringTransforms.Interfaces;
+using StringTransforms.Services;
+using StringTransforms;
 
 namespace emanuel
 {
@@ -34,21 +34,27 @@ namespace emanuel
 
             InitializeComponent();
             InitEditableTransforms();
+
+            _transformCollection = _transformService.GetNewTransformCollection();
         }
 
-        readonly List<ITransform> transforms = new List<ITransform>();
+        TransformCollection _transformCollection;
         public string MainText { get => txtMain.Text; }
 
         private TextTransforms AddTransform(ITransform transform)
         {
-            if (_editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
+            if (_editing != null &&
+                transform is EditableTransform &&
+                EditEventService.Instance
+                    .Save((transform as EditableTransform)
+                    .GetEditableProperties()))
             {
                 StopEditing();
             }
             else
             {
-                transforms.Add(transform);
-                EditEventController.Instance.NewTransformAdded(transforms);
+                _transformService.AddTransform(transform, _transformCollection);
+                EditEventService.Instance.NewTransformAdded(_transformCollection.Selector);
             }
 
             UpdateResult();
@@ -59,19 +65,12 @@ namespace emanuel
         {
             txtResult.Text = ApplyTransforms();
             lstTransforms.DataSource = null;
-            lstTransforms.DataSource = transforms;
+            lstTransforms.DataSource = _transformCollection;
         }
 
         private string ApplyTransforms()
-        {
-            string r = txtMain.Text;
-            foreach(ITransform t in transforms)
-            {
-                r = t.Transform(r);
-            }
-            return r;
-        }
-        
+        => _transformService.ApplyTransforms(_transformCollection, txtMain.Text);
+
         #region text changed
         private void TxtResult_TextChanged(object sender, EventArgs e)
         {
@@ -178,68 +177,27 @@ namespace emanuel
         }
         private void BtnUndoTransform_Click(object sender, EventArgs e)
         {
-            if (transforms.Any())
-                transforms.Remove(transforms.Last());
-            UpdateResult();
+            _transformService.Undo(_transformCollection);
         }
 
         private void BtnClearTransforms_Click(object sender, EventArgs e)
         {
-            transforms.Clear();
-            UpdateResult();
+            _transformService.RemoveAllTransforms(_transformCollection);
         }
-
-        private void IfValidIndexSelected(Action<int> action)
-            => lstTransforms.SelectedIndex
-                .Do(i =>
-                {
-                    if (i.Between(0, transforms.Count - 1))
-                        action(i);
-                });
 
         private void BtnRemoveSelectedTransform_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                transforms.RemoveAt(i);
-                UpdateResult();
-                if (i.Between(0, transforms.Count - 1))
-                    lstTransforms.SelectedIndex = i;
-                if (i == transforms.Count && transforms.Any())
-                    lstTransforms.SelectedIndex = i - 1;
-            });
+            _transformService.RemoveTranform(_transformCollection);
         }
 
         private void BtnMoveTransformUp_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                if (i > 0)
-                {
-                    var t = transforms[i];
-                    transforms.Remove(t);
-                    transforms.Insert(i - 1, t);
-
-                    UpdateResult();
-                    lstTransforms.SelectedIndex = i - 1;
-                }
-            });
+            _transformService.MoveSelectedTransform(_transformCollection, up: true);
         }
 
         private void BtnMoveTransformDown_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                if (i < transforms.Count - 1)
-                {
-                    var t = transforms[i];
-                    transforms.Remove(t);
-                    transforms.Insert(i + 1, t);
-
-                    UpdateResult();
-                    lstTransforms.SelectedIndex = i + 1;
-                }
-            });
+            _transformService.MoveSelectedTransform(_transformCollection, up: false);
         }
 
         private void BtnBatchEdit_Click(object sender, EventArgs e)
@@ -322,19 +280,19 @@ namespace emanuel
         {
             lblNewLineAfterX.Text = chkBeforeOrAfter.Checked
                 .Forward(c => c ? "before" : "after")
-                .Forward(beforeOrAfter => $"New line {beforeOrAfter}:"); 
+                .Forward(beforeOrAfter => $"New line {beforeOrAfter}:");
         }
 
 
         #endregion
 
         #region Edit
-        
+
         private void InitEditableTransforms()
         {
-            EditEventController.Instance.Editing += EditEventcontroller_Editing;
-            EditEventController.Instance.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
-            EditEventController.Instance.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
+            EditEventService.Instance.Editing += EditEventcontroller_Editing;
+            EditEventService.Instance.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
+            EditEventService.Instance.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
         }
 
         private void EditEventcontroller_Editing(object sender, EventArgs e)
@@ -356,7 +314,7 @@ namespace emanuel
 
         public TextTransforms ApplyEdits()
         {
-            transforms.Clear();
+            _transformCollection.Clear();
             txtMain.Text = txtResult.Text;
             return this;
         }
@@ -404,7 +362,7 @@ namespace emanuel
             }
             else
             {
-                EditEventController.Instance.CancelEdit();
+                EditEventService.Instance.CancelEdit();
                 StopEditing();
                 txtInfo.Text = "Cancelled edit.";
             }

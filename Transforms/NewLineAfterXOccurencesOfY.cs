@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using emanuel.Extensions;
+using StringTransforms.Interfaces;
 
 namespace emanuel.Transforms
 {
