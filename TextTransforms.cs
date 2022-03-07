@@ -59,7 +59,7 @@ namespace emanuel
             }
             return r;
         }
-        
+
         #region text changed
         private void TxtResult_TextChanged(object sender, EventArgs e)
         {
@@ -310,14 +310,14 @@ namespace emanuel
         {
             lblNewLineAfterX.Text = chkBeforeOrAfter.Checked
                 .Forward(c => c ? "before" : "after")
-                .Forward(beforeOrAfter => $"New line {beforeOrAfter}:"); 
+                .Forward(beforeOrAfter => $"New line {beforeOrAfter}:");
         }
 
 
         #endregion
 
         #region Edit
-        
+
         private void InitEditableTransforms()
         {
             EditEventController.Instance.Editing += EditEventcontroller_Editing;
@@ -560,6 +560,22 @@ namespace emanuel
             chkXmlCasing.Text = chkXmlCasing.Checked
                 ? "<PascalCase>"
                 : "<anyCase>";
+        }
+
+        private void btnGremlin_Click(object sender, EventArgs e)
+        {
+            GremlinMacros.GremlinFormat()
+                .Do(list => AddMacro(list));
+        }
+
+        private void btnToMd5_Click(object sender, EventArgs e)
+        {
+            AddTransform(new Base64EncodeTransform());
+        }
+
+        private void btnFromBase64_Click(object sender, EventArgs e)
+        {
+            AddTransform(new Base64DecodeTransform());
         }
     }
 }

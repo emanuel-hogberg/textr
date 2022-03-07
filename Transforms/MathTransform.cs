@@ -3,7 +3,7 @@ using textr.Helpers;
 
 namespace textr.Transforms
 {
-    class MathTransform : ITransform
+    public class MathTransform : ITransform
     {
         public string Transform(string text)
             => MathHelper.SplitOutHooks(text) +
