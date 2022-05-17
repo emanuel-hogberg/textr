@@ -223,7 +223,8 @@ namespace emanuel
             FoundTransforms.InsertRange(FoundTransforms.Count, new[]
             {
                 new FindReplaceTransform("'true'", "true"),
-                new FindReplaceTransform("'false'", "false")
+                new FindReplaceTransform("'false'", "false"),
+                new FindReplaceTransform("(label)", "('label')"),
             });
 
             TransformFound(this, new EventArgs());
