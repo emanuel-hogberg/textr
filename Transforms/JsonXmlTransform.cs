@@ -12,6 +12,10 @@ namespace textr.Transforms
         public static readonly string DeserializeRootElementName = "__Root__";
         public bool PascalCasing { get; set; }
 
+        public override string ToString() => PascalCasing
+            ? "Json => Xml"
+            : "json => xml";
+
         public string Transform(string text)
         {
             if (text == string.Empty)

@@ -56,6 +56,7 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnFromBase64 = new System.Windows.Forms.Button();
             this.btnToBase64 = new System.Windows.Forms.Button();
             this.btnGremlin = new System.Windows.Forms.Button();
             this.chkXmlCasing = new System.Windows.Forms.CheckBox();
@@ -82,7 +83,7 @@
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
-            this.btnFromBase64 = new System.Windows.Forms.Button();
+            this.btnBetterGremlin = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -391,6 +392,7 @@
             // 
             // pnlActionButtons
             // 
+            this.pnlActionButtons.Controls.Add(this.btnBetterGremlin);
             this.pnlActionButtons.Controls.Add(this.btnFromBase64);
             this.pnlActionButtons.Controls.Add(this.btnToBase64);
             this.pnlActionButtons.Controls.Add(this.btnGremlin);
@@ -421,6 +423,16 @@
             this.pnlActionButtons.Name = "pnlActionButtons";
             this.pnlActionButtons.Size = new System.Drawing.Size(230, 271);
             this.pnlActionButtons.TabIndex = 20;
+            // 
+            // btnFromBase64
+            // 
+            this.btnFromBase64.Location = new System.Drawing.Point(62, 170);
+            this.btnFromBase64.Name = "btnFromBase64";
+            this.btnFromBase64.Size = new System.Drawing.Size(38, 23);
+            this.btnFromBase64.TabIndex = 35;
+            this.btnFromBase64.Text = "<=";
+            this.btnFromBase64.UseVisualStyleBackColor = true;
+            this.btnFromBase64.Click += new System.EventHandler(this.btnFromBase64_Click);
             // 
             // btnToBase64
             // 
@@ -716,15 +728,15 @@
             this.lblStatusBar.TabIndex = 24;
             this.lblStatusBar.Text = "Left textbox: Line: Char:";
             // 
-            // btnFromBase64
+            // btnBetterGremlin
             // 
-            this.btnFromBase64.Location = new System.Drawing.Point(62, 170);
-            this.btnFromBase64.Name = "btnFromBase64";
-            this.btnFromBase64.Size = new System.Drawing.Size(38, 23);
-            this.btnFromBase64.TabIndex = 35;
-            this.btnFromBase64.Text = "<=";
-            this.btnFromBase64.UseVisualStyleBackColor = true;
-            this.btnFromBase64.Click += new System.EventHandler(this.btnFromBase64_Click);
+            this.btnBetterGremlin.Location = new System.Drawing.Point(74, 114);
+            this.btnBetterGremlin.Name = "btnBetterGremlin";
+            this.btnBetterGremlin.Size = new System.Drawing.Size(78, 23);
+            this.btnBetterGremlin.TabIndex = 25;
+            this.btnBetterGremlin.Text = "better gremlin";
+            this.btnBetterGremlin.UseVisualStyleBackColor = true;
+            this.btnBetterGremlin.Click += new System.EventHandler(this.btnBetterGremlin_Click);
             // 
             // TextTransforms
             // 
@@ -806,6 +818,7 @@
         private System.Windows.Forms.Button btnGremlin;
         private System.Windows.Forms.Button btnToBase64;
         private System.Windows.Forms.Button btnFromBase64;
+        private System.Windows.Forms.Button btnBetterGremlin;
     }
 }
 

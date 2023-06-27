@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Base64Tests.cs" />
     <Compile Include="BatchSelectionTests.cs" />
+    <Compile Include="GremlinTests.cs" />
     <Compile Include="MathTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\emanuelib\emanuelib.csproj">
+      <Project>{DF629AD0-B470-4719-9B3A-48F8AF8458F6}</Project>
+      <Name>emanuelib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\textr.csproj">
       <Project>{59fee518-c2a5-4215-a006-36f4e7ab8d3c}</Project>
       <Name>textr</Name>

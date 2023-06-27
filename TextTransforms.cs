@@ -578,5 +578,10 @@ namespace emanuel
         {
             AddTransform(new Base64DecodeTransform());
         }
+
+        private void btnBetterGremlin_Click(object sender, EventArgs e)
+        {
+            AddTransform(GremlinMacros.GremlinTransform);
+        }
     }
 }

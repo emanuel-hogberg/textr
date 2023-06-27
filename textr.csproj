@@ -78,6 +78,7 @@
     <Compile Include="Extensions\Base64Extensions.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Macros\GremlinMacros.cs" />
+    <Compile Include="Transforms\GremlinTransform.cs" />
     <Compile Include="Macros\Macros.cs" />
     <Compile Include="Macros\SqlMacros.cs" />
     <Compile Include="TextTransforms.cs">

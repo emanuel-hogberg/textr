@@ -7,6 +7,8 @@ namespace textr.Transforms
 {
     class XmlJsonTransform : ITransform
     {
+        public override string ToString() => "xml => json";
+
         public string Transform(string text)
         {
             if (text == string.Empty)
