@@ -76,6 +76,7 @@ namespace emanuelib.Gremlin
                 .Replace(@"\r", string.Empty)
                 .Replace(Environment.NewLine, string.Empty);
 
+            // First ensure the text is in the for g.V(...)... or g.E(...)...
             var match = Regex.Match(text, @"(g\.[VE]\(.+?\))(.+)", RegexOptions);
             if (!match.Success)
             {
@@ -83,6 +84,7 @@ namespace emanuelib.Gremlin
             }
 
             var start = match.Groups[1].Value;
+            // Let any of the Statements stay on the first row next to g.[VE]
             Skip(match.Groups[2].Value, Statements, out var skipped, out var rest);
 
             return start + skipped + NewLine + IndentUntil(rest, Projections, 1);
@@ -105,6 +107,9 @@ namespace emanuelib.Gremlin
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Indents new lines until a stopper is found.
+        /// </summary>
         public static string IndentUntil(string text, string[] stoppers, int indentLevel)
         {
             if (string.IsNullOrEmpty(text))
@@ -112,26 +117,28 @@ namespace emanuelib.Gremlin
                 return string.Empty;
             }
 
-            var match = RegexMatchArray(text, Statements);
+            var match = RegexMatchArray(text, stoppers);
 
             if (match?.Success != true)
             {
-                return Next(text, indentLevel - 1);
+                return InsertNewLines(text, indentLevel - 1);
             }
 
-            var head = Next(match.Groups[1].Value, indentLevel);
+            var head = InsertNewLines(match.Groups[1].Value, indentLevel);
             var stopper = match.Groups[2].Value + match.Groups[3].Value;
-            var rest = Next(match.Value + match.Groups[1].Value, indentLevel);
+            var rest = InsertNewLines(match.Value + match.Groups[1].Value, indentLevel);
 
             return Indent(indentLevel) + head + NewLine + stopper + NewLine + Indent(indentLevel) + rest;
         }
 
         /// <summary>
-        /// Recursively identifies the first statement, then Next(next statement).
+        /// Recursively identifies the first statement, then Next(next statement), adding new lines.
         /// </summary>
-        public static string Next(string text, int indentLevel)
+        public static string InsertNewLines(string text, int indentLevel)
         {
-            if (text.StartsWith(@"'") && text.StartsWith(@"'") || string.IsNullOrEmpty(text))
+            if (text.StartsWith(@"'") && text.EndsWith(@"'") ||
+                text.StartsWith("\"") && text.EndsWith("\"") ||
+                string.IsNullOrEmpty(text))
             {
                 return text;
             }
@@ -145,20 +152,29 @@ namespace emanuelib.Gremlin
                 outer = NewLine + outer;
             }
 
-            var nextInner = Next(inner, indentLevel + 1);
-            var nextRest = Next(rest, indentLevel);
+            var nextInner = InsertNewLines(inner, indentLevel + 1);
+            var nextRest = InsertNewLines(rest, indentLevel);
 
             return skipped + outerPrefix + outer + nextInner + nextRest;
 
         }
 
+        /// <summary>
+        /// The Skip method breaks out any parts matching a "skipper" into the skipped string,
+        /// and returns the rest in the rest string.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="skippers"></param>
+        /// <param name="skipped"></param>
+        /// <param name="rest"></param>
         public static void Skip(string text, string[] skippers, out string skipped, out string rest)
         {
             skipped = string.Empty;
+            var textRest = text;
 
             while (true)
             {
-                var inner = GetInner(text, out var prefix, out var outer, out text);
+                var inner = GetInner(textRest, out var prefix, out var outer, out textRest);
 
                 if (skippers.Contains(outer))
                 {
@@ -166,7 +182,7 @@ namespace emanuelib.Gremlin
                 }
                 else
                 {
-                    rest = text;
+                    rest = textRest;
 
                     break;
                 }
