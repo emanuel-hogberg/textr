@@ -37,6 +37,7 @@ namespace emanuelib.Gremlin
     {
         private static readonly RegexOptions RegexOptions = RegexOptions.CultureInvariant | RegexOptions.IgnoreCase;
         private const string IndentSpace = "  ";
+        private const string GremlinStartNodeOrEdgePattern = @"(g\.[VE]\(.+?\))(.+)";
         private static readonly string NewLine = Environment.NewLine;
         private static readonly string[] Projections =
         {
@@ -71,13 +72,10 @@ namespace emanuelib.Gremlin
 
         public static string Start(string text)
         {
-            text = text
-                .Replace(@"\n", string.Empty)
-                .Replace(@"\r", string.Empty)
-                .Replace(Environment.NewLine, string.Empty);
+            text = RemoveNewLine(text);
 
-            // First ensure the text is in the for g.V(...)... or g.E(...)...
-            var match = Regex.Match(text, @"(g\.[VE]\(.+?\))(.+)", RegexOptions);
+            // First ensure the text is in the form g.V(...)... or g.E(...)...
+            var match = Regex.Match(text, GremlinStartNodeOrEdgePattern, RegexOptions);
             if (!match.Success)
             {
                 return text;
@@ -88,6 +86,15 @@ namespace emanuelib.Gremlin
             Skip(match.Groups[2].Value, Statements, out var skipped, out var rest);
 
             return start + skipped + NewLine + IndentUntil(rest, Projections, 1);
+        }
+
+        private static string RemoveNewLine(string text)
+        {
+            text = text
+                .Replace(@"\n", string.Empty)
+                .Replace(@"\r", string.Empty)
+                .Replace(Environment.NewLine, string.Empty);
+            return text;
         }
 
         private static Match RegexMatchArray(string text, string[] targets)
@@ -176,13 +183,14 @@ namespace emanuelib.Gremlin
             {
                 var inner = GetInner(textRest, out var prefix, out var outer, out textRest);
 
+                string outerWithInner = prefix + outer + $"({inner})";
                 if (skippers.Contains(outer))
                 {
-                    skipped += prefix + outer + $"({inner})";
+                    skipped += outerWithInner;
                 }
                 else
                 {
-                    rest = textRest;
+                    rest = outerWithInner + textRest;
 
                     break;
                 }
@@ -204,19 +212,41 @@ namespace emanuelib.Gremlin
                 text = text.TrimStart('.');
             }
 
-            var match = Regex.Match(text, @"(.+?)\((.*?)\)(.*)");
             outer = string.Empty;
             rest = string.Empty;
 
-            if (match.Success != true)
+            // e.g. .by(select('n').id()).by('id')
+            var match = Regex.Match(text, @"(.+?)\((.*?\))\)(.*)");
+            if (match.Success == true)
             {
-                return text;
+                outer = match.Groups[1].Value;
+                rest = match.Groups[3].Value;
+
+                return match.Groups[2].Value;
             }
 
-            outer = match.Groups[1].Value;
-            rest = match.Groups[3].Value;
+            // e.g. .by().by('id')
+            match = Regex.Match(text, @"(.+?)\(.*\)\.(.*)");
+            if (match.Success)
+            {
+                outer = match.Groups[1].Value;
+                rest = $".{match.Groups[2].Value}";
 
-            return match.Groups[2].Value;
+                return string.Empty;
+            }
+
+            // e.g. .by()
+            match = Regex.Match(text, @"(.+?)\(\)");
+            if (match.Success)
+            {
+                outer = match.Groups[1].Value;
+
+                return string.Empty;
+            }
+
+            /* ChatGpt says this regex might work, but I find the above easier to maintain:
+             * var match = Regex.Match(text, @"(.+?)\(((?:.*?\.?.*?)?)\)(.*)"); */
+            return text;
         }
     }
 
@@ -264,4 +294,4 @@ namespace emanuelib.Gremlin
 
     }
     */
-}
+        }

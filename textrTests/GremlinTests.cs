@@ -57,20 +57,22 @@ namespace textrTests
             Assert.AreEqual(expectedSkipped, skipped);
         }
 
-        [TestMethod]
-        public void Gremlin_GetInner()
+        [DataTestMethod]
+        [DataRow("by", "", "")]
+        [DataRow("by", "", ".by(...)")]
+        [DataRow("by", "select('s')", "")]
+        [DataRow("by", "select('s')", ".by(...)")]
+        [DataRow("by", "select('s').id()", ".by(...)")]
+        public void Gremlin_GetInner(string expectedOuter, string expectedInner, string expectedRest)
         {
-            const string expectedOuter = "by";
-            const string expectedInner = "select('s').id()";
-            const string expectedRest = ".by(...)";
-            const string testQuery = "." + expectedOuter + "("+ expectedInner + ")" + expectedRest;
+            var testQuery = "." + expectedOuter + "("+ expectedInner + ")" + expectedRest;
 
             var inner = GremlinBuilder.GetInner(testQuery, out var prefix, out var outer, out var rest);
 
             Assert.AreEqual(".", prefix);
-            Assert.AreEqual(expectedRest, rest);
-            Assert.AreEqual(expectedInner, inner);
             Assert.AreEqual(expectedOuter, outer);
+            Assert.AreEqual(expectedInner, inner);
+            Assert.AreEqual(expectedRest, rest);
         }
     }
 }
