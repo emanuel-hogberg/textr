@@ -1,0 +1,10 @@
+g.V(['123']).as('start')
+.where(
+  out('x')
+    .has('id', '123')
+)
+.out('ut')
+  .hasId('432')
+  .has('prop', 144)
+  .has('prop2','422')
+.project('asd','qwefd').by('hej').by('då')

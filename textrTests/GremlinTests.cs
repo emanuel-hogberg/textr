@@ -38,12 +38,13 @@ namespace textrTests
             Assert.AreEqual(ExpectedPrettifiedQuery, prettified);
         }
 
-        [TestMethod]
-        public void Gremlin_Skip()
+        [DataTestMethod]
+        [DataRow(".as('s').limit(1)", ".out()")]
+        [DataRow(".as('start')", ".hasLabel('item')")]
+        [DataRow("", ".hasLabel('item')")]
+        public void Gremlin_Skip(string expectedSkipped, string expectedRest)
         {
-            const string expectedSkipped = ".as('s').limit(1)";
-            const string expectedRest = ".out()";
-            const string testQuery = expectedSkipped + expectedRest;
+            var testQuery = expectedSkipped + expectedRest;
 
             var skippers = new[]
             {
@@ -61,6 +62,8 @@ namespace textrTests
         [DataRow("by", "", "")]
         [DataRow("by", "", ".by(...)")]
         [DataRow("by", "select('s')", "")]
+        [DataRow("by", "'str'", "")]
+        [DataRow("by", "'str'", ".by(...)")]
         [DataRow("by", "select('s')", ".by(...)")]
         [DataRow("by", "select('s').id()", ".by(...)")]
         public void Gremlin_GetInner(string expectedOuter, string expectedInner, string expectedRest)

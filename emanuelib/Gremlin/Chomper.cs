@@ -225,24 +225,34 @@ namespace emanuelib.Gremlin
                 return match.Groups[2].Value;
             }
 
-            // e.g. .by().by('id')
-            match = Regex.Match(text, @"(.+?)\(.*\)\.(.*)");
-            if (match.Success)
+            // e.g. .by('str').by('id')
+            match = Regex.Match(text, @"(.+?)\((.*?)\)(\.(.*))*");
+            if (match.Success == true)
             {
                 outer = match.Groups[1].Value;
-                rest = $".{match.Groups[2].Value}";
+                rest = match.Groups[3].Value;
 
-                return string.Empty;
+                return match.Groups[2].Value;
             }
 
-            // e.g. .by()
-            match = Regex.Match(text, @"(.+?)\(\)");
-            if (match.Success)
-            {
-                outer = match.Groups[1].Value;
+            //// e.g. .by().by('id')
+            //match = Regex.Match(text, @"(.+?)\(.*\)\.(.*)");
+            //if (match.Success)
+            //{
+            //    outer = match.Groups[1].Value;
+            //    rest = $".{match.Groups[2].Value}";
 
-                return string.Empty;
-            }
+            //    return string.Empty;
+            //}
+
+            //// e.g. .by()
+            //match = Regex.Match(text, @"(.+?)\(\)");
+            //if (match.Success)
+            //{
+            //    outer = match.Groups[1].Value;
+
+            //    return string.Empty;
+            //}
 
             /* ChatGpt says this regex might work, but I find the above easier to maintain:
              * var match = Regex.Match(text, @"(.+?)\(((?:.*?\.?.*?)?)\)(.*)"); */
