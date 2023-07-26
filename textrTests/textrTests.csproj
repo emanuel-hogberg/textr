@@ -56,9 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\emanuelib\emanuelib.csproj">
       <Project>{DF629AD0-B470-4719-9B3A-48F8AF8458F6}</Project>
       <Name>emanuelib</Name>
@@ -67,6 +64,9 @@
       <Project>{59fee518-c2a5-4215-a006-36f4e7ab8d3c}</Project>
       <Name>textr</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
