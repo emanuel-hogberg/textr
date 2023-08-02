@@ -59,7 +59,7 @@ namespace StringTransforms.Services
             }
         }
 
-        internal void CancelEdit()
+        public void CancelEdit()
         {
             editing = null;
         }
