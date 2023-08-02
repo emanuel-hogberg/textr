@@ -1,19 +1,19 @@
 ﻿using StringTransforms.Interfaces;
 using System;
 
-namespace emanuel.Transforms
+namespace textr.Transforms
 {
     public abstract class ListTransform : ITransform
     {
-        public StringSplitOptions StringSplitOptions { get; set; }
-
-        public ListTransform(StringSplitOptions stringSplitOptions = StringSplitOptions.None)
+        public ListTransform()
         {
-            StringSplitOptions = stringSplitOptions;
+
         }
 
-        public string Transform(string text)
-        => TransformList(text.Split(new[] { Environment.NewLine }, StringSplitOptions));
+        public string Transform(string text, StringSplitOptions options)
+        => TransformList(text.Split(new[] { Environment.NewLine }, options));
+
+        public string Transform(string text) => Transform(text, StringSplitOptions.None);
 
         public abstract string TransformList(string[] lines);
     }

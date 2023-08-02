@@ -22,10 +22,10 @@ namespace emanuel
         public List<ITransform> FoundTransforms
         {
             get => foundTransform
-                .With(t =>
+                .With(transform =>
                 {
-                    t.OnlyViewAffectedLines = true;
-                    t.Predecessor = null;
+                    transform.OnlyViewAffectedLines = true;
+                    transform.Predecessor = null;
                 })
                 .Forward(t => chkChangeAsteriskIntoParagraph.Checked ?
                     new List<ITransform>()

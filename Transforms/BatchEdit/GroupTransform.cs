@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using emanuel.Extensions;
 using StringTransforms.Interfaces;
+using textr.Transforms;
 
 namespace emanuel.Transforms
 {
