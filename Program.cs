@@ -19,7 +19,7 @@ namespace emanuel
             var services = new ServiceCollection();
 
             var serviceProvider = services
-                .ConfigureServices()
+                .ConfigureTextrServices()
                 .BuildServiceProvider();
 
             var form = serviceProvider.GetRequiredService<Form>();

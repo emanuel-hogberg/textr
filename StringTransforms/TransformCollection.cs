@@ -1,6 +1,8 @@
 ﻿using emanuel.Extensions;
 using StringTransforms.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StringTransforms
 {
@@ -9,11 +11,16 @@ namespace StringTransforms
         private readonly List<ITransform> transforms = new List<ITransform>();
         private readonly TransformCollectionSelector selector;
 
-        public TransformCollectionSelector Selector => selector;
+        public ITransformCollectionSelector GetSelector() => selector;
 
         public TransformCollection(TransformCollectionSelector selector)
         {
             this.selector = selector;
+        }
+
+        public void AddTransform(ITransform transform)
+        {
+            transforms.Add(transform);
         }
 
         public void MoveSelectedTransform(bool up)
@@ -64,5 +71,22 @@ namespace StringTransforms
         {
             transforms.Remove(transforms[transforms.Count - 1]);
         }
+
+        internal string ApplyTransforms(string text)
+        {
+            var updatedText = text;
+
+            foreach (var t in transforms)
+            {
+                updatedText = t.Transform(updatedText);
+            }
+            
+            return updatedText;
+        }
+
+        internal IEnumerable<EditableTransform> GetEditableTransforms()
+            => transforms
+                .Where(t => t is EditableTransform)
+                .Select(t => t as EditableTransform);
     }
 }

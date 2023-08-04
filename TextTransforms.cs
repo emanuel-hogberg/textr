@@ -22,30 +22,32 @@ namespace emanuel
         private ITransformFactoryService _transformFactoryService;
         private ITransformMacroFactoryService _transformMacroFactoryService;
         private ITransformService _transformService;
+        private readonly IEditEventService _editEventService;
+        ITransformCollection _transformCollection;
 
         public TextTransforms(
             ITransformFactoryService transformFactoryService,
             ITransformMacroFactoryService transformMacroFactoryService,
-            ITransformService transformService)
+            ITransformService transformService,
+            IEditEventService editEventService)
         {
             _transformFactoryService = transformFactoryService;
             _transformMacroFactoryService = transformMacroFactoryService;
             _transformService = transformService;
-
+            _editEventService = editEventService;
             InitializeComponent();
             InitEditableTransforms();
 
             _transformCollection = _transformService.GetNewTransformCollection();
         }
 
-        TransformCollection _transformCollection;
         public string MainText { get => txtMain.Text; }
 
         private TextTransforms AddTransform(ITransform transform)
         {
             if (_editing != null &&
                 transform is EditableTransform &&
-                EditEventService.Instance
+                _editEventService
                     .Save((transform as EditableTransform)
                     .GetEditableProperties()))
             {
@@ -54,7 +56,7 @@ namespace emanuel
             else
             {
                 _transformService.AddTransform(transform, _transformCollection);
-                EditEventService.Instance.NewTransformAdded(_transformCollection.Selector);
+                _editEventService.NewTransformAdded(_transformCollection.GetSelector());
             }
 
             UpdateResult();
@@ -290,9 +292,10 @@ namespace emanuel
 
         private void InitEditableTransforms()
         {
-            EditEventService.Instance.Editing += EditEventcontroller_Editing;
-            EditEventService.Instance.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
-            EditEventService.Instance.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
+            _editEventService.SetEditingEvent(EditEventcontroller_Editing);
+
+            _editEventService.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
+            _editEventService.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
         }
 
         private void EditEventcontroller_Editing(object sender, EventArgs e)
@@ -362,7 +365,7 @@ namespace emanuel
             }
             else
             {
-                EditEventService.Instance.CancelEdit();
+                _editEventService.CancelEdit();
                 StopEditing();
                 txtInfo.Text = "Cancelled edit.";
             }

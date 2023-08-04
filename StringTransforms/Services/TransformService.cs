@@ -15,30 +15,32 @@ namespace StringTransforms.Services
         }
         public ITransformService AddTransform(ITransform transform, ITransformCollection transforms)
         {
-            throw new NotImplementedException();
+            //if (_editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
+            //{
+            //    StopEditing();
+            //}
+            //else
+            //{
+            transforms.Concrete().AddTransform(transform);
+            
+
+            return this;
         }
 
         public string ApplyTransforms(ITransformCollection transforms, string text)
+            => transforms.Concrete().ApplyTransforms(text);
+
+        public void Clear(ITransformCollection transforms)
+        {
+            transforms.Concrete().Clear();
+        }
+
+        public ITransformService EditTransform(ITransform transform, ITransformCollection transforms)
         {
             throw new NotImplementedException();
         }
 
-        public void Clear(ITransformCollection transformCollection)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITransformService EditTranform(ITransform transform, ITransformCollection transforms)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITransformService EditTranform(ITransformCollection transforms)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITransformCollection GetNewTransformCollection()
+        public ITransformService EditTransform(ITransformCollection transforms)
         {
             throw new NotImplementedException();
         }
@@ -77,7 +79,7 @@ namespace StringTransforms.Services
             return this;
         }
 
-        TransformCollection ITransformService.GetNewTransformCollection()
-        => new TransformCollection(new TransformCollectionSelector());
+        ITransformCollection ITransformService.GetNewTransformCollection()
+            => new TransformCollection(new TransformCollectionSelector());
     }
 }

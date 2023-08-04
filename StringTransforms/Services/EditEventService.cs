@@ -6,24 +6,19 @@ using System.Linq;
 
 namespace StringTransforms.Services
 {
-    public class EditEventService
+    public class EditEventService : IEditEventService
     {
         private Dictionary<Type, Action<IEditableProperties>> types = new Dictionary<Type, Action<IEditableProperties>>();
         private EditableTransform editing = null;
+        private event EventHandler Editing;
 
         private EditEventService()
         {
 
         }
 
-        public event EventHandler Editing;
-
-        private static EditEventService instance = new EditEventService();
-        public static EditEventService Instance { get => instance; }
-
-        public void NewTransformAdded(TransformCollectionSelector selector)
-        {
-            selector
+        public void NewTransformAdded(ITransformCollectionSelector selector)
+            => (selector as TransformCollection)
                 .GetEditableTransforms()
                 .Do(t =>
                 {
@@ -32,7 +27,9 @@ namespace StringTransforms.Services
                         t.Editing += EditingTransform;
                     }
                 });
-        }
+
+        public void SetEditingEvent(EventHandler editingEventHandler)
+            => Editing += editingEventHandler;
 
         private void EditingTransform(object sender, EventArgs e)
         {
@@ -48,6 +45,7 @@ namespace StringTransforms.Services
 
             editing.Save(props);
             editing = null;
+
             return true;
         }
 
@@ -59,9 +57,6 @@ namespace StringTransforms.Services
             }
         }
 
-        public void CancelEdit()
-        {
-            editing = null;
-        }
+        public void CancelEdit() => editing = null;
     }
 }

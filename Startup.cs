@@ -7,7 +7,7 @@ namespace emanuel.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection ConfigureServices(this IServiceCollection services) =>
+        public static IServiceCollection ConfigureTextrServices(this IServiceCollection services) =>
             services
                 .AddSingleton<Form, TextTransforms>()
                 .AddSingleton<ITransformService, TransformService>()

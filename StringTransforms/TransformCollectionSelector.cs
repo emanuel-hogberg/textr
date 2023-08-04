@@ -3,18 +3,13 @@ using System;
 
 namespace StringTransforms
 {
-    public class TransformCollectionSelector
+    public class TransformCollectionSelector : ITransformCollectionSelector
     {
         public int SelectedIndex { get; internal set; }
 
         internal void UpdateResult()
         {
-            throw new NotImplementedException();
-        }
-
-        internal IEditableTransform GetEditableTransforms()
-        {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }
