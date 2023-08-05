@@ -12,13 +12,13 @@ namespace StringTransforms.Services
         private EditableTransform editing = null;
         private event EventHandler Editing;
 
-        private EditEventService()
+        public EditEventService()
         {
 
         }
 
-        public void NewTransformAdded(ITransformCollectionSelector selector)
-            => (selector as TransformCollection)
+        public void NewTransformAdded(ITransformCollection transforms)
+            => (transforms as TransformCollection)
                 .GetEditableTransforms()
                 .Do(t =>
                 {

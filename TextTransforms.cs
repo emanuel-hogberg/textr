@@ -56,10 +56,12 @@ namespace emanuel
             else
             {
                 _transformService.AddTransform(transform, _transformCollection);
-                _editEventService.NewTransformAdded(_transformCollection.GetSelector());
+
+                _editEventService.NewTransformAdded(_transformCollection);
             }
 
             UpdateResult();
+
             return this;
         }
 
@@ -67,7 +69,7 @@ namespace emanuel
         {
             txtResult.Text = ApplyTransforms();
             lstTransforms.DataSource = null;
-            lstTransforms.DataSource = _transformCollection;
+            lstTransforms.DataSource = _transformCollection.AsDataSource();
         }
 
         private string ApplyTransforms()

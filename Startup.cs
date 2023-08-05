@@ -9,9 +9,10 @@ namespace emanuel.Extensions
     {
         public static IServiceCollection ConfigureTextrServices(this IServiceCollection services) =>
             services
-                .AddSingleton<Form, TextTransforms>()
+                .AddSingleton<IEditEventService,  EditEventService>()
                 .AddSingleton<ITransformService, TransformService>()
                 .AddSingleton<ITransformFactoryService, TransformFactoryService>()
-                .AddSingleton<ITransformMacroFactoryService, TransformMacroFactoryService>();
+                .AddSingleton<ITransformMacroFactoryService, TransformMacroFactoryService>()
+                .AddSingleton<Form, TextTransforms>();
     }
 }

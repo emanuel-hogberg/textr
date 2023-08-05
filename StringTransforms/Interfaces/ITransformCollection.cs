@@ -1,7 +1,10 @@
-﻿namespace StringTransforms.Interfaces
+﻿using System.Collections.Generic;
+
+namespace StringTransforms.Interfaces
 {
     public interface ITransformCollection
     {
+        IList<string> AsDataSource();
         void Clear();
 
         //void MoveSelectedTransform(bool up);

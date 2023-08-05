@@ -88,5 +88,10 @@ namespace StringTransforms
             => transforms
                 .Where(t => t is EditableTransform)
                 .Select(t => t as EditableTransform);
+
+        public IList<string> AsDataSource()
+            => transforms
+                .Select(t => t.ToString())
+                .ToList();
     }
 }

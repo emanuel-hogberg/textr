@@ -23,7 +23,6 @@ namespace StringTransforms.Services
             //{
             transforms.Concrete().AddTransform(transform);
             
-
             return this;
         }
 
