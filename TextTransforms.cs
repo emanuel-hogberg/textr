@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using emanuel.Extensions;
 using emanuel.Macros;
@@ -9,7 +8,6 @@ using JiraHelper;
 using textr.Helpers;
 using textr.Transforms;
 using StringTransforms.Interfaces;
-using StringTransforms.Services;
 using StringTransforms;
 
 namespace emanuel
@@ -19,6 +17,7 @@ namespace emanuel
         IEditableProperties _editing = null;
         private string _mathTooltip = string.Empty;
         private TextBox _txtSelectionTarget = null;
+        //TODO: use factories if applicable
         private ITransformFactoryService _transformFactoryService;
         private ITransformMacroFactoryService _transformMacroFactoryService;
         private ITransformService _transformService;
@@ -35,6 +34,7 @@ namespace emanuel
             _transformMacroFactoryService = transformMacroFactoryService;
             _transformService = transformService;
             _editEventService = editEventService;
+
             InitializeComponent();
             InitEditableTransforms();
 
@@ -60,16 +60,27 @@ namespace emanuel
                 _editEventService.NewTransformAdded(_transformCollection);
             }
 
-            UpdateResult();
+            UpdateTransforms();
 
             return this;
         }
 
+        private void UpdateTransforms()
+        {
+            var index = _transformCollection.GetSelector().GetIndex();
+
+            lstTransforms.DataSource = null;
+            lstTransforms.DataSource = _transformCollection.AsDataSource();
+
+            lstTransforms.SelectedIndex = Math.Min(index, _transformCollection.Count - 1);
+
+            UpdateResult();
+        }
+
+
         private void UpdateResult()
         {
             txtResult.Text = ApplyTransforms();
-            lstTransforms.DataSource = null;
-            lstTransforms.DataSource = _transformCollection.AsDataSource();
         }
 
         private string ApplyTransforms()
@@ -182,26 +193,36 @@ namespace emanuel
         private void BtnUndoTransform_Click(object sender, EventArgs e)
         {
             _transformService.Undo(_transformCollection);
+
+            UpdateTransforms();
         }
 
         private void BtnClearTransforms_Click(object sender, EventArgs e)
         {
             _transformService.RemoveAllTransforms(_transformCollection);
+
+            UpdateTransforms();
         }
 
         private void BtnRemoveSelectedTransform_Click(object sender, EventArgs e)
         {
             _transformService.RemoveTranform(_transformCollection);
+
+            UpdateTransforms();
         }
 
         private void BtnMoveTransformUp_Click(object sender, EventArgs e)
         {
             _transformService.MoveSelectedTransform(_transformCollection, up: true);
+
+            UpdateTransforms();
         }
 
         private void BtnMoveTransformDown_Click(object sender, EventArgs e)
         {
             _transformService.MoveSelectedTransform(_transformCollection, up: false);
+
+            UpdateTransforms();
         }
 
         private void BtnBatchEdit_Click(object sender, EventArgs e)
@@ -385,7 +406,9 @@ namespace emanuel
 
         private void LstTransforms_SelectedValueChanged(object sender, EventArgs e)
         {
-            btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is EditableTransform);
+            btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is IEditableTransform);
+
+            _transformCollection.GetSelector().SetIndex(lstTransforms.SelectedIndex);
         }
 
         private void TxtFind_KeyPress(object sender, KeyPressEventArgs e)

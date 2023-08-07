@@ -4,7 +4,9 @@ namespace StringTransforms.Interfaces
 {
     public interface ITransformCollection
     {
-        IList<string> AsDataSource();
+        int Count { get; }
+
+        IList<ITransform> AsDataSource();
         void Clear();
 
         //void MoveSelectedTransform(bool up);
