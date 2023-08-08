@@ -1,6 +1,6 @@
-﻿using StringTransforms.Interfaces;
+﻿using Microsoft.Extensions.DependencyInjection;
+using StringTransforms.Interfaces;
 using StringTransforms.Services;
-using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
 
 namespace emanuel.Extensions
@@ -9,7 +9,7 @@ namespace emanuel.Extensions
     {
         public static IServiceCollection ConfigureTextrServices(this IServiceCollection services) =>
             services
-                .AddSingleton<IEditEventService,  EditEventService>()
+                .AddSingleton<IEditEventService, EditEventService>()
                 .AddSingleton<ITransformService, TransformService>()
                 .AddSingleton<ITransformFactoryService, TransformFactoryService>()
                 .AddSingleton<ITransformMacroFactoryService, TransformMacroFactoryService>()

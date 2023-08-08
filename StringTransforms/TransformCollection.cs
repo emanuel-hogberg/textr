@@ -1,6 +1,5 @@
 ﻿using emanuel.Extensions;
 using StringTransforms.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +33,6 @@ namespace StringTransforms
                     transforms.Remove(t);
                     transforms.Insert(i - 1, t);
 
-                    selector.UpdateResult();
                     selector.SelectedIndex = i - 1;
                 }
             }
@@ -46,7 +44,6 @@ namespace StringTransforms
                     transforms.Remove(t);
                     transforms.Insert(i + 1, t);
 
-                    selector.UpdateResult();
                     selector.SelectedIndex = i + 1;
                 }
             }
@@ -80,7 +77,7 @@ namespace StringTransforms
             {
                 updatedText = t.Transform(updatedText);
             }
-            
+
             return updatedText;
         }
 

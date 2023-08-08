@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using emanuel.Extensions;
+﻿using emanuel.Extensions;
 using emanuel.Macros;
 using emanuel.Transforms;
 using JiraHelper;
+using StringTransforms;
+using StringTransforms.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using textr.Helpers;
 using textr.Transforms;
-using StringTransforms.Interfaces;
-using StringTransforms;
 
 namespace emanuel
 {

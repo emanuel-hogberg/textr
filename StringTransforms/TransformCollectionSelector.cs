@@ -1,5 +1,4 @@
 ﻿using StringTransforms.Interfaces;
-using System;
 
 namespace StringTransforms
 {
@@ -14,9 +13,5 @@ namespace StringTransforms
 
         public int GetIndex()
             => SelectedIndex;
-        internal void UpdateResult()
-        {
-            // throw new NotImplementedException();
-        }
     }
 }
