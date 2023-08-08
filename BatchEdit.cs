@@ -5,9 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using emanuel.Extensions;
-using emanuel.Transforms;
 using StringTransforms.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace emanuel
 {

@@ -15,14 +15,8 @@ namespace StringTransforms.Services
         }
         public ITransformService AddTransform(ITransform transform, ITransformCollection transforms)
         {
-            //if (_editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
-            //{
-            //    StopEditing();
-            //}
-            //else
-            //{
             transforms.Concrete().AddTransform(transform);
-            
+
             return this;
         }
 
