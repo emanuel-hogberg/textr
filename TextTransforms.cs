@@ -294,6 +294,7 @@ namespace emanuel
         private void BatchEdit_TransformFound(object sender, EventArgs e)
         {
             var be = (BatchEdit)sender;
+
             AddMacro(be.FoundTransforms);
         }
 
@@ -558,6 +559,22 @@ namespace emanuel
             chkXmlCasing.Text = chkXmlCasing.Checked
                 ? "<PascalCase>"
                 : "<anyCase>";
+        }
+
+        private void btnGremlin_Click(object sender, EventArgs e)
+        {
+            GremlinMacros.GremlinFormat()
+                .Do(list => AddMacro(list));
+        }
+
+        private void btnToMd5_Click(object sender, EventArgs e)
+        {
+            AddTransform(new Base64EncodeTransform());
+        }
+
+        private void btnFromBase64_Click(object sender, EventArgs e)
+        {
+            AddTransform(new Base64DecodeTransform());
         }
     }
 }

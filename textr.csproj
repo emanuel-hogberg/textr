@@ -91,6 +91,7 @@
     <Compile Include="BatchEdit.Designer.cs">
       <DependentUpon>BatchEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editables\EditEventController.cs" />
     <Compile Include="Extensions\Base64Extensions.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Macros\GremlinMacros.cs" />

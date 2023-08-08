@@ -1,4 +1,6 @@
-﻿using System;
+﻿using emanuel.Extensions;
+using emanuel.Transforms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,24 +20,7 @@ namespace emanuel
             txtSource.Text = source;
         }
         public event EventHandler TransformFound;
-        private IBatchEditLineTransform foundTransform;
-        public List<ITransform> FoundTransforms
-        {
-            get => foundTransform
-                .With(transform =>
-                {
-                    transform.OnlyViewAffectedLines = true;
-                    transform.Predecessor = null;
-                })
-                .Forward(t => chkChangeAsteriskIntoParagraph.Checked ?
-                    new List<ITransform>()
-                    {
-                        findReplaceAsterisk,
-                        t,
-                        new FindReplaceTransform("§", "*")
-                    }
-                : new List<ITransform>() { t });
-        }
+        public List<ITransform> FoundTransforms { get; private set; }
 
         private bool justOpened = true;
         private bool transformNotChanged = true;
@@ -167,12 +152,86 @@ namespace emanuel
 
         private void btnUseAsTransform_Click(object sender, EventArgs e)
         {
-            if (TransformFound != null && Lines.Any(line => line.Match))
+            if (!Lines.Any(line => line.Match))
             {
-                foundTransform = Lines.First(line => line.Match);
-                TransformFound(this, new EventArgs());
-                this.Close();
+                return;
             }
+
+            FoundTransforms = Lines
+                .First(line => line.Match)
+                .With(t =>
+                {
+                    t.OnlyViewAffectedLines = true;
+                    t.Predecessor = null;
+                })
+                .Forward(t => chkChangeAsteriskIntoParagraph.Checked
+                    ? new List<ITransform>()
+                    {
+                        findReplaceAsterisk,
+                        t,
+                        new FindReplaceTransform("§", "*")
+                    }
+                    : new List<ITransform>() { t });
+
+            TransformFound(this, new EventArgs());
+
+            this.Close();
+        }
+
+        private void btnReplace_Click(object sender, EventArgs e)
+        {
+            var regex = new Regex("(.+),(.+)");
+            var lines = Lines
+                .Where(line => regex.IsMatch(line.Result));
+
+            if (lines?.Any() != true)
+            {
+                lblCosmosHint.Text = "Please ensure some lines are in the form \"+*,+*\"";
+
+                return;
+            }
+
+            if (txtCosmos.Text.Length - txtCosmos.Text.Replace("*", string.Empty).Length != 1)
+            {
+                lblCosmosHint.Text = "Please include one * here:";
+                txtCosmos.Focus();
+
+                return;
+            }
+
+            FoundTransforms = lines
+                .Select(line =>
+                {
+                    var groups = regex.Match(line.Result).Groups;
+
+                    if (groups.Count != 3)
+                    {
+                        return null;
+                    }
+
+                    var text = $",{groups[1].Value}";
+                    var replaceWith = $",'{groups[2].Value}'";
+                    if (!string.IsNullOrEmpty(txtCosmos.Text))
+                    {
+                        text = txtCosmos.Text.Replace("*", text);
+                        replaceWith = txtCosmos.Text.Replace("*", replaceWith);
+                    }
+
+                    return new FindReplaceTransform(text, replaceWith);
+                })
+                .Where(line => line != null)
+                .ToList<ITransform>();
+            FoundTransforms.Insert(0, new FindReplaceTransform(", ", ","));
+            FoundTransforms.InsertRange(FoundTransforms.Count, new[]
+            {
+                new FindReplaceTransform("'true'", "true"),
+                new FindReplaceTransform("'false'", "false"),
+                new FindReplaceTransform("(label)", "('label')"),
+            });
+
+            TransformFound(this, new EventArgs());
+
+            Close();
         }
 
         private void ChangeBatchEditMode()
@@ -214,6 +273,12 @@ namespace emanuel
             Lines
                 .Do(line => line.Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null);
             UpdateResult(UpdatePart.Selection);
+        }
+
+        private void btnCosmosFromVs_Click(object sender, EventArgs e)
+        {
+            txtSelection.Text = "+		[*]	{[*, *]}*";
+            txtTransform.Text = "\\**,*\\*";
         }
     }
 }

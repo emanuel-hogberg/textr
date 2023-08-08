@@ -43,6 +43,10 @@
             this.btnReInit = new System.Windows.Forms.Button();
             this.chkChangeAsteriskIntoParagraph = new System.Windows.Forms.CheckBox();
             this.lblHint = new System.Windows.Forms.Label();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.txtCosmos = new System.Windows.Forms.TextBox();
+            this.lblCosmosHint = new System.Windows.Forms.Label();
+            this.btnCosmosFromVs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSource
@@ -87,10 +91,10 @@
             // 
             // btnCopyToClipboard
             // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(782, 315);
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(704, 363);
             this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(78, 50);
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(78, 46);
             this.btnCopyToClipboard.TabIndex = 4;
             this.btnCopyToClipboard.Text = "Copy to clipboard";
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
@@ -98,7 +102,7 @@
             // 
             // btnUseAsTransform
             // 
-            this.btnUseAsTransform.Location = new System.Drawing.Point(782, 368);
+            this.btnUseAsTransform.Location = new System.Drawing.Point(785, 363);
             this.btnUseAsTransform.Margin = new System.Windows.Forms.Padding(1);
             this.btnUseAsTransform.Name = "btnUseAsTransform";
             this.btnUseAsTransform.Size = new System.Drawing.Size(78, 46);
@@ -179,7 +183,7 @@
             // chkChangeAsteriskIntoParagraph
             // 
             this.chkChangeAsteriskIntoParagraph.AutoSize = true;
-            this.chkChangeAsteriskIntoParagraph.Location = new System.Drawing.Point(623, 390);
+            this.chkChangeAsteriskIntoParagraph.Location = new System.Drawing.Point(511, 390);
             this.chkChangeAsteriskIntoParagraph.Name = "chkChangeAsteriskIntoParagraph";
             this.chkChangeAsteriskIntoParagraph.Size = new System.Drawing.Size(155, 17);
             this.chkChangeAsteriskIntoParagraph.TabIndex = 12;
@@ -197,11 +201,53 @@
             this.lblHint.TabIndex = 13;
             this.lblHint.Text = "Hint: ";
             // 
+            // btnReplace
+            // 
+            this.btnReplace.Location = new System.Drawing.Point(785, 315);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(78, 42);
+            this.btnReplace.TabIndex = 14;
+            this.btnReplace.Text = "Use as replacements";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
+            // 
+            // txtCosmos
+            // 
+            this.txtCosmos.Location = new System.Drawing.Point(739, 335);
+            this.txtCosmos.Name = "txtCosmos";
+            this.txtCosmos.Size = new System.Drawing.Size(40, 20);
+            this.txtCosmos.TabIndex = 15;
+            this.txtCosmos.Text = "*)";
+            // 
+            // lblCosmosHint
+            // 
+            this.lblCosmosHint.AutoSize = true;
+            this.lblCosmosHint.Location = new System.Drawing.Point(673, 317);
+            this.lblCosmosHint.Name = "lblCosmosHint";
+            this.lblCosmosHint.Size = new System.Drawing.Size(109, 13);
+            this.lblCosmosHint.TabIndex = 16;
+            this.lblCosmosHint.Text = "unfold gremlin params";
+            this.lblCosmosHint.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btnCosmosFromVs
+            // 
+            this.btnCosmosFromVs.Location = new System.Drawing.Point(607, 333);
+            this.btnCosmosFromVs.Name = "btnCosmosFromVs";
+            this.btnCosmosFromVs.Size = new System.Drawing.Size(126, 23);
+            this.btnCosmosFromVs.TabIndex = 17;
+            this.btnCosmosFromVs.Text = "from vs quick watch list";
+            this.btnCosmosFromVs.UseVisualStyleBackColor = true;
+            this.btnCosmosFromVs.Click += new System.EventHandler(this.btnCosmosFromVs_Click);
+            // 
             // BatchEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 419);
+            this.Controls.Add(this.btnCosmosFromVs);
+            this.Controls.Add(this.lblCosmosHint);
+            this.Controls.Add(this.txtCosmos);
+            this.Controls.Add(this.btnReplace);
             this.Controls.Add(this.lblHint);
             this.Controls.Add(this.chkChangeAsteriskIntoParagraph);
             this.Controls.Add(this.btnReInit);
@@ -241,5 +287,9 @@
         private System.Windows.Forms.Button btnReInit;
         private System.Windows.Forms.CheckBox chkChangeAsteriskIntoParagraph;
         private System.Windows.Forms.Label lblHint;
+        private System.Windows.Forms.Button btnReplace;
+        private System.Windows.Forms.TextBox txtCosmos;
+        private System.Windows.Forms.Label lblCosmosHint;
+        private System.Windows.Forms.Button btnCosmosFromVs;
     }
 }

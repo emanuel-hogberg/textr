@@ -56,6 +56,8 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnToBase64 = new System.Windows.Forms.Button();
+            this.btnGremlin = new System.Windows.Forms.Button();
             this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.btnXmlToJson = new System.Windows.Forms.Button();
             this.btnJsonToXml = new System.Windows.Forms.Button();
@@ -80,6 +82,7 @@
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
+            this.btnFromBase64 = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -88,15 +91,15 @@
             // 
             // txtMain
             // 
-            this.txtMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMain.Location = new System.Drawing.Point(2, 2);
             this.txtMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 33);
             this.txtMain.Multiline = true;
             this.txtMain.Name = "txtMain";
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMain.Size = new System.Drawing.Size(629, 943);
+            this.txtMain.Size = new System.Drawing.Size(343, 609);
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
@@ -113,15 +116,15 @@
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(629, 943);
+            this.txtResult.Size = new System.Drawing.Size(343, 609);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
             this.txtResult.Enter += new System.EventHandler(this.txtResult_Enter);
             // 
             // btnCopyToClipboard
             // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(6, 295);
-            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(5, 207);
+            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
             this.btnCopyToClipboard.Size = new System.Drawing.Size(174, 87);
             this.btnCopyToClipboard.TabIndex = 2;
@@ -142,8 +145,8 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(0, 875);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
+            this.btnApply.Location = new System.Drawing.Point(1, 567);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(1);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(174, 66);
             this.btnApply.TabIndex = 4;
@@ -154,8 +157,8 @@
             // chkAutoApply
             // 
             this.chkAutoApply.AutoSize = true;
-            this.chkAutoApply.Location = new System.Drawing.Point(-4, 847);
-            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(2);
+            this.chkAutoApply.Location = new System.Drawing.Point(-1, 552);
+            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(1);
             this.chkAutoApply.Name = "chkAutoApply";
             this.chkAutoApply.Size = new System.Drawing.Size(130, 29);
             this.chkAutoApply.TabIndex = 5;
@@ -285,8 +288,8 @@
             // 
             // btnBatchEdit
             // 
-            this.btnBatchEdit.Location = new System.Drawing.Point(194, 318);
-            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBatchEdit.Location = new System.Drawing.Point(108, 219);
+            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(1);
             this.btnBatchEdit.Name = "btnBatchEdit";
             this.btnBatchEdit.Size = new System.Drawing.Size(138, 65);
             this.btnBatchEdit.TabIndex = 19;
@@ -331,8 +334,8 @@
             // 
             // tblLayout
             // 
-            this.tblLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tblLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tblLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tblLayout.ColumnCount = 4;
@@ -349,8 +352,8 @@
             this.tblLayout.Name = "tblLayout";
             this.tblLayout.RowCount = 2;
             this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tblLayout.Size = new System.Drawing.Size(1868, 1015);
+            this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblLayout.Size = new System.Drawing.Size(1019, 648);
             this.tblLayout.TabIndex = 23;
             // 
             // pnlActions
@@ -362,14 +365,14 @@
             this.pnlActions.Location = new System.Drawing.Point(1446, 2);
             this.pnlActions.Margin = new System.Windows.Forms.Padding(2);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(420, 974);
+            this.pnlActions.Size = new System.Drawing.Size(230, 626);
             this.pnlActions.TabIndex = 0;
             // 
             // txtInfo
             // 
             this.txtInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtInfo.Location = new System.Drawing.Point(0, 531);
-            this.txtInfo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo.Location = new System.Drawing.Point(0, 335);
+            this.txtInfo.Margin = new System.Windows.Forms.Padding(1);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
             this.txtInfo.Size = new System.Drawing.Size(420, 29);
@@ -383,12 +386,15 @@
             this.lstTransforms.Location = new System.Drawing.Point(0, 0);
             this.lstTransforms.Margin = new System.Windows.Forms.Padding(2);
             this.lstTransforms.Name = "lstTransforms";
-            this.lstTransforms.Size = new System.Drawing.Size(420, 556);
+            this.lstTransforms.Size = new System.Drawing.Size(230, 329);
             this.lstTransforms.TabIndex = 21;
             this.lstTransforms.SelectedValueChanged += new System.EventHandler(this.LstTransforms_SelectedValueChanged);
             // 
             // pnlActionButtons
             // 
+            this.pnlActionButtons.Controls.Add(this.btnFromBase64);
+            this.pnlActionButtons.Controls.Add(this.btnToBase64);
+            this.pnlActionButtons.Controls.Add(this.btnGremlin);
             this.pnlActionButtons.Controls.Add(this.chkXmlCasing);
             this.pnlActionButtons.Controls.Add(this.btnXmlToJson);
             this.pnlActionButtons.Controls.Add(this.btnJsonToXml);
@@ -411,21 +417,40 @@
             this.pnlActionButtons.Controls.Add(this.btnBatchEdit);
             this.pnlActionButtons.Controls.Add(this.lblMacros);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 560);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 355);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(1);
             this.pnlActionButtons.Name = "pnlActionButtons";
-            this.pnlActionButtons.Size = new System.Drawing.Size(420, 414);
+            this.pnlActionButtons.Size = new System.Drawing.Size(230, 271);
             this.pnlActionButtons.TabIndex = 20;
+            // 
+            // btnToBase64
+            // 
+            this.btnToBase64.Location = new System.Drawing.Point(11, 170);
+            this.btnToBase64.Name = "btnToBase64";
+            this.btnToBase64.Size = new System.Drawing.Size(52, 23);
+            this.btnToBase64.TabIndex = 33;
+            this.btnToBase64.Text = "=> 64";
+            this.btnToBase64.UseVisualStyleBackColor = true;
+            this.btnToBase64.Click += new System.EventHandler(this.btnToMd5_Click);
+            // 
+            // btnGremlin
+            // 
+            this.btnGremlin.Location = new System.Drawing.Point(5, 114);
+            this.btnGremlin.Name = "btnGremlin";
+            this.btnGremlin.Size = new System.Drawing.Size(75, 23);
+            this.btnGremlin.TabIndex = 34;
+            this.btnGremlin.Text = "gremlin";
+            this.btnGremlin.UseVisualStyleBackColor = true;
+            this.btnGremlin.Click += new System.EventHandler(this.btnGremlin_Click);
             // 
             // chkXmlCasing
             // 
             this.chkXmlCasing.AutoSize = true;
             this.chkXmlCasing.Checked = true;
             this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkXmlCasing.Location = new System.Drawing.Point(180, 253);
-            this.chkXmlCasing.Margin = new System.Windows.Forms.Padding(6);
+            this.chkXmlCasing.Location = new System.Drawing.Point(121, 170);
             this.chkXmlCasing.Name = "chkXmlCasing";
-            this.chkXmlCasing.Size = new System.Drawing.Size(168, 29);
+            this.chkXmlCasing.Size = new System.Drawing.Size(94, 17);
             this.chkXmlCasing.TabIndex = 34;
             this.chkXmlCasing.Text = "<PascalCase>";
             this.chkXmlCasing.UseVisualStyleBackColor = true;
@@ -433,8 +458,7 @@
             // 
             // btnXmlToJson
             // 
-            this.btnXmlToJson.Location = new System.Drawing.Point(308, 212);
-            this.btnXmlToJson.Margin = new System.Windows.Forms.Padding(6);
+            this.btnXmlToJson.Location = new System.Drawing.Point(191, 148);
             this.btnXmlToJson.Name = "btnXmlToJson";
             this.btnXmlToJson.Size = new System.Drawing.Size(59, 42);
             this.btnXmlToJson.TabIndex = 33;
@@ -444,8 +468,7 @@
             // 
             // btnJsonToXml
             // 
-            this.btnJsonToXml.Location = new System.Drawing.Point(180, 212);
-            this.btnJsonToXml.Margin = new System.Windows.Forms.Padding(6);
+            this.btnJsonToXml.Location = new System.Drawing.Point(121, 148);
             this.btnJsonToXml.Name = "btnJsonToXml";
             this.btnJsonToXml.Size = new System.Drawing.Size(130, 42);
             this.btnJsonToXml.TabIndex = 32;
@@ -455,8 +478,7 @@
             // 
             // btnJira
             // 
-            this.btnJira.Location = new System.Drawing.Point(339, 340);
-            this.btnJira.Margin = new System.Windows.Forms.Padding(6);
+            this.btnJira.Location = new System.Drawing.Point(187, 231);
             this.btnJira.Name = "btnJira";
             this.btnJira.Size = new System.Drawing.Size(81, 42);
             this.btnJira.TabIndex = 24;
@@ -466,8 +488,7 @@
             // 
             // btnAsciiFrom
             // 
-            this.btnAsciiFrom.Location = new System.Drawing.Point(99, 212);
-            this.btnAsciiFrom.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAsciiFrom.Location = new System.Drawing.Point(62, 145);
             this.btnAsciiFrom.Name = "btnAsciiFrom";
             this.btnAsciiFrom.Size = new System.Drawing.Size(70, 42);
             this.btnAsciiFrom.TabIndex = 31;
@@ -533,8 +554,7 @@
             // 
             // btnAsciiTo
             // 
-            this.btnAsciiTo.Location = new System.Drawing.Point(6, 210);
-            this.btnAsciiTo.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAsciiTo.Location = new System.Drawing.Point(11, 144);
             this.btnAsciiTo.Name = "btnAsciiTo";
             this.btnAsciiTo.Size = new System.Drawing.Size(95, 44);
             this.btnAsciiTo.TabIndex = 2;
@@ -577,8 +597,8 @@
             // 
             // pnlTransforms
             // 
-            this.pnlTransforms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlTransforms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTransforms.Controls.Add(this.btnMath);
             this.pnlTransforms.Controls.Add(this.btnCopyTab);
@@ -604,13 +624,12 @@
             this.pnlTransforms.Location = new System.Drawing.Point(635, 2);
             this.pnlTransforms.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTransforms.Name = "pnlTransforms";
-            this.pnlTransforms.Size = new System.Drawing.Size(174, 974);
+            this.pnlTransforms.Size = new System.Drawing.Size(95, 626);
             this.pnlTransforms.TabIndex = 1;
             // 
             // btnMath
             // 
-            this.btnMath.Location = new System.Drawing.Point(4, 803);
-            this.btnMath.Margin = new System.Windows.Forms.Padding(6);
+            this.btnMath.Location = new System.Drawing.Point(2, 503);
             this.btnMath.Name = "btnMath";
             this.btnMath.Size = new System.Drawing.Size(165, 37);
             this.btnMath.TabIndex = 32;
@@ -698,18 +717,27 @@
             // 
             this.lblStatusBar.AutoSize = true;
             this.lblStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblStatusBar.Location = new System.Drawing.Point(0, 1057);
-            this.lblStatusBar.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblStatusBar.Location = new System.Drawing.Point(0, 671);
             this.lblStatusBar.Name = "lblStatusBar";
             this.lblStatusBar.Size = new System.Drawing.Size(220, 25);
             this.lblStatusBar.TabIndex = 24;
             this.lblStatusBar.Text = "Left textbox: Line: Char:";
             // 
+            // btnFromBase64
+            // 
+            this.btnFromBase64.Location = new System.Drawing.Point(62, 170);
+            this.btnFromBase64.Name = "btnFromBase64";
+            this.btnFromBase64.Size = new System.Drawing.Size(38, 23);
+            this.btnFromBase64.TabIndex = 35;
+            this.btnFromBase64.Text = "<=";
+            this.btnFromBase64.UseVisualStyleBackColor = true;
+            this.btnFromBase64.Click += new System.EventHandler(this.btnFromBase64_Click);
+            // 
             // TextTransforms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1930, 1082);
+            this.ClientSize = new System.Drawing.Size(1053, 684);
             this.Controls.Add(this.lblStatusBar);
             this.Controls.Add(this.tblLayout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -782,6 +810,9 @@
         private System.Windows.Forms.Button btnXmlToJson;
         private System.Windows.Forms.Button btnJsonToXml;
         private System.Windows.Forms.CheckBox chkXmlCasing;
+        private System.Windows.Forms.Button btnGremlin;
+        private System.Windows.Forms.Button btnToBase64;
+        private System.Windows.Forms.Button btnFromBase64;
     }
 }
 
