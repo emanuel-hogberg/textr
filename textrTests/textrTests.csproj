@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>textrTests</RootNamespace>
     <AssemblyName>textrTests</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StringTransforms\StringTransforms.csproj">
+      <Project>{ee4d1143-9a3e-4cb2-aeed-b4e565ee123b}</Project>
+      <Name>StringTransforms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\textr.csproj">
       <Project>{59fee518-c2a5-4215-a006-36f4e7ab8d3c}</Project>
       <Name>textr</Name>
