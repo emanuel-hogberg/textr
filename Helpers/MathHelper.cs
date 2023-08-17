@@ -1,6 +1,6 @@
-﻿using System;
-using emanuel.Extensions;
+﻿using emanuel.Extensions;
 using org.mariuszgromada.math.mxparser;
+using System;
 
 namespace textr.Helpers
 {

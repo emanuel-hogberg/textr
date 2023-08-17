@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using emanuel.Transforms;
+using StringTransforms.Interfaces;
 
 namespace emanuel.Macros
 {

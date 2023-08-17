@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using StringTransforms.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace emanuel
 {
@@ -208,7 +209,7 @@ namespace emanuel
                     }
 
                     var text = $",{groups[1].Value}";
-                    var replaceWith = $",'{groups[2].Value }'";
+                    var replaceWith = $",'{groups[2].Value}'";
                     if (!string.IsNullOrEmpty(txtCosmos.Text))
                     {
                         text = txtCosmos.Text.Replace("*", text);

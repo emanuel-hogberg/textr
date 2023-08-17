@@ -1,4 +1,6 @@
-﻿namespace emanuel.Transforms
+﻿using StringTransforms.Interfaces;
+
+namespace emanuel.Transforms
 {
     public interface IBatchEditLineTransform : ITransform
     {

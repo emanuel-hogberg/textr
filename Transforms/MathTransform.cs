@@ -1,4 +1,4 @@
-﻿using emanuel.Transforms;
+﻿using StringTransforms.Interfaces;
 using textr.Helpers;
 
 namespace textr.Transforms

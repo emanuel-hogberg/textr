@@ -1,7 +1,6 @@
-﻿using System;
+﻿using emanuel.Extensions;
+using System;
 using System.Linq;
-using emanuel.Extensions;
-using emanuel.Transforms;
 using textr.Extensions;
 
 namespace textr.Transforms

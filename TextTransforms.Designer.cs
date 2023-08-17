@@ -56,6 +56,7 @@
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lstTransforms = new System.Windows.Forms.ListBox();
             this.pnlActionButtons = new System.Windows.Forms.Panel();
+            this.btnFromBase64 = new System.Windows.Forms.Button();
             this.btnToBase64 = new System.Windows.Forms.Button();
             this.btnGremlin = new System.Windows.Forms.Button();
             this.chkXmlCasing = new System.Windows.Forms.CheckBox();
@@ -82,7 +83,6 @@
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
-            this.btnFromBase64 = new System.Windows.Forms.Button();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
             this.pnlActionButtons.SuspendLayout();
@@ -94,12 +94,12 @@
             this.txtMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMain.Location = new System.Drawing.Point(1, 1);
-            this.txtMain.Margin = new System.Windows.Forms.Padding(1, 1, 1, 18);
+            this.txtMain.Location = new System.Drawing.Point(2, 2);
+            this.txtMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 33);
             this.txtMain.Multiline = true;
             this.txtMain.Name = "txtMain";
             this.txtMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtMain.Size = new System.Drawing.Size(343, 609);
+            this.txtMain.Size = new System.Drawing.Size(534, 1028);
             this.txtMain.TabIndex = 0;
             this.txtMain.Click += new System.EventHandler(this.TxtMain_Click);
             this.txtMain.TextChanged += new System.EventHandler(this.TxtMain_TextChanged);
@@ -110,23 +110,24 @@
             // txtResult
             // 
             this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResult.Location = new System.Drawing.Point(443, 1);
-            this.txtResult.Margin = new System.Windows.Forms.Padding(1, 1, 1, 18);
+            this.txtResult.Location = new System.Drawing.Point(740, 2);
+            this.txtResult.Margin = new System.Windows.Forms.Padding(2, 2, 2, 33);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(343, 609);
+            this.txtResult.Size = new System.Drawing.Size(534, 1028);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextChanged += new System.EventHandler(this.TxtResult_TextChanged);
             this.txtResult.Enter += new System.EventHandler(this.txtResult_Enter);
             // 
             // btnCopyToClipboard
             // 
-            this.btnCopyToClipboard.Location = new System.Drawing.Point(5, 207);
-            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCopyToClipboard.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCopyToClipboard.Location = new System.Drawing.Point(0, 459);
+            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(95, 47);
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(355, 87);
             this.btnCopyToClipboard.TabIndex = 2;
             this.btnCopyToClipboard.Text = "Copy to clipboard";
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
@@ -134,10 +135,10 @@
             // 
             // btnRemoveNewLines
             // 
-            this.btnRemoveNewLines.Location = new System.Drawing.Point(0, 1);
-            this.btnRemoveNewLines.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRemoveNewLines.Location = new System.Drawing.Point(9, 2);
+            this.btnRemoveNewLines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveNewLines.Name = "btnRemoveNewLines";
-            this.btnRemoveNewLines.Size = new System.Drawing.Size(80, 41);
+            this.btnRemoveNewLines.Size = new System.Drawing.Size(147, 76);
             this.btnRemoveNewLines.TabIndex = 3;
             this.btnRemoveNewLines.Text = "Remove new lines";
             this.btnRemoveNewLines.UseVisualStyleBackColor = true;
@@ -145,10 +146,11 @@
             // 
             // btnApply
             // 
-            this.btnApply.Location = new System.Drawing.Point(1, 567);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(1);
+            this.btnApply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnApply.Location = new System.Drawing.Point(19, 975);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(95, 36);
+            this.btnApply.Size = new System.Drawing.Size(174, 66);
             this.btnApply.TabIndex = 4;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -156,11 +158,12 @@
             // 
             // chkAutoApply
             // 
+            this.chkAutoApply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkAutoApply.AutoSize = true;
-            this.chkAutoApply.Location = new System.Drawing.Point(-1, 552);
-            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(1);
+            this.chkAutoApply.Location = new System.Drawing.Point(27, 942);
+            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkAutoApply.Name = "chkAutoApply";
-            this.chkAutoApply.Size = new System.Drawing.Size(75, 17);
+            this.chkAutoApply.Size = new System.Drawing.Size(130, 29);
             this.chkAutoApply.TabIndex = 5;
             this.chkAutoApply.Text = "auto-apply";
             this.chkAutoApply.UseVisualStyleBackColor = true;
@@ -168,38 +171,38 @@
             // lblFindReplace
             // 
             this.lblFindReplace.AutoSize = true;
-            this.lblFindReplace.Location = new System.Drawing.Point(0, 51);
-            this.lblFindReplace.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblFindReplace.Location = new System.Drawing.Point(9, 94);
+            this.lblFindReplace.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFindReplace.Name = "lblFindReplace";
-            this.lblFindReplace.Size = new System.Drawing.Size(82, 13);
+            this.lblFindReplace.Size = new System.Drawing.Size(149, 25);
             this.lblFindReplace.TabIndex = 7;
             this.lblFindReplace.Text = "Find + Replace:";
             // 
             // txtFind
             // 
-            this.txtFind.Location = new System.Drawing.Point(2, 65);
-            this.txtFind.Margin = new System.Windows.Forms.Padding(1);
+            this.txtFind.Location = new System.Drawing.Point(13, 120);
+            this.txtFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(90, 20);
+            this.txtFind.Size = new System.Drawing.Size(162, 29);
             this.txtFind.TabIndex = 8;
             this.txtFind.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtFind_KeyPress);
             // 
             // txtReplace
             // 
-            this.txtReplace.Location = new System.Drawing.Point(2, 83);
-            this.txtReplace.Margin = new System.Windows.Forms.Padding(1);
+            this.txtReplace.Location = new System.Drawing.Point(13, 153);
+            this.txtReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtReplace.Name = "txtReplace";
-            this.txtReplace.Size = new System.Drawing.Size(90, 20);
+            this.txtReplace.Size = new System.Drawing.Size(162, 29);
             this.txtReplace.TabIndex = 9;
             this.txtReplace.Click += new System.EventHandler(this.txtReplace_Click);
             this.txtReplace.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtReplace_KeyPress);
             // 
             // btnUndoTransform
             // 
-            this.btnUndoTransform.Location = new System.Drawing.Point(5, 3);
-            this.btnUndoTransform.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUndoTransform.Location = new System.Drawing.Point(9, 6);
+            this.btnUndoTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUndoTransform.Name = "btnUndoTransform";
-            this.btnUndoTransform.Size = new System.Drawing.Size(49, 35);
+            this.btnUndoTransform.Size = new System.Drawing.Size(90, 65);
             this.btnUndoTransform.TabIndex = 10;
             this.btnUndoTransform.Text = "undo last";
             this.btnUndoTransform.UseVisualStyleBackColor = true;
@@ -207,58 +210,58 @@
             // 
             // txtNewLineAfterXOccurences
             // 
-            this.txtNewLineAfterXOccurences.Location = new System.Drawing.Point(1, 168);
-            this.txtNewLineAfterXOccurences.Margin = new System.Windows.Forms.Padding(1);
+            this.txtNewLineAfterXOccurences.Location = new System.Drawing.Point(11, 310);
+            this.txtNewLineAfterXOccurences.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNewLineAfterXOccurences.Name = "txtNewLineAfterXOccurences";
-            this.txtNewLineAfterXOccurences.Size = new System.Drawing.Size(45, 20);
+            this.txtNewLineAfterXOccurences.Size = new System.Drawing.Size(79, 29);
             this.txtNewLineAfterXOccurences.TabIndex = 11;
             this.txtNewLineAfterXOccurences.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNewLineAfterXOccurences_KeyPress);
             // 
             // txtNewLineAfterXOccurencesOfY
             // 
-            this.txtNewLineAfterXOccurencesOfY.Location = new System.Drawing.Point(2, 199);
-            this.txtNewLineAfterXOccurencesOfY.Margin = new System.Windows.Forms.Padding(1);
+            this.txtNewLineAfterXOccurencesOfY.Location = new System.Drawing.Point(13, 367);
+            this.txtNewLineAfterXOccurencesOfY.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNewLineAfterXOccurencesOfY.Name = "txtNewLineAfterXOccurencesOfY";
-            this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(90, 20);
+            this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(162, 29);
             this.txtNewLineAfterXOccurencesOfY.TabIndex = 12;
             this.txtNewLineAfterXOccurencesOfY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNewLineAfterXOccurencesOfY_KeyPress);
             // 
             // lblNewLineAfterX
             // 
             this.lblNewLineAfterX.AutoSize = true;
-            this.lblNewLineAfterX.Location = new System.Drawing.Point(-1, 154);
-            this.lblNewLineAfterX.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblNewLineAfterX.Location = new System.Drawing.Point(7, 284);
+            this.lblNewLineAfterX.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNewLineAfterX.Name = "lblNewLineAfterX";
-            this.lblNewLineAfterX.Size = new System.Drawing.Size(75, 13);
+            this.lblNewLineAfterX.Size = new System.Drawing.Size(135, 25);
             this.lblNewLineAfterX.TabIndex = 13;
             this.lblNewLineAfterX.Text = "New line after:";
             // 
             // lblNewLineOccurence
             // 
             this.lblNewLineOccurence.AutoSize = true;
-            this.lblNewLineOccurence.Location = new System.Drawing.Point(0, 185);
-            this.lblNewLineOccurence.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblNewLineOccurence.Location = new System.Drawing.Point(9, 342);
+            this.lblNewLineOccurence.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNewLineOccurence.Name = "lblNewLineOccurence";
-            this.lblNewLineOccurence.Size = new System.Drawing.Size(78, 13);
+            this.lblNewLineOccurence.Size = new System.Drawing.Size(140, 25);
             this.lblNewLineOccurence.TabIndex = 14;
             this.lblNewLineOccurence.Text = "occurences of:";
             // 
             // lblMacros
             // 
             this.lblMacros.AutoSize = true;
-            this.lblMacros.Location = new System.Drawing.Point(5, 48);
-            this.lblMacros.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblMacros.Location = new System.Drawing.Point(9, 89);
+            this.lblMacros.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMacros.Name = "lblMacros";
-            this.lblMacros.Size = new System.Drawing.Size(45, 13);
+            this.lblMacros.Size = new System.Drawing.Size(83, 25);
             this.lblMacros.TabIndex = 15;
             this.lblMacros.Text = "Macros:";
             // 
             // btnMacroSqlQuery
             // 
-            this.btnMacroSqlQuery.Location = new System.Drawing.Point(5, 66);
-            this.btnMacroSqlQuery.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMacroSqlQuery.Location = new System.Drawing.Point(7, 162);
+            this.btnMacroSqlQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMacroSqlQuery.Name = "btnMacroSqlQuery";
-            this.btnMacroSqlQuery.Size = new System.Drawing.Size(68, 44);
+            this.btnMacroSqlQuery.Size = new System.Drawing.Size(125, 81);
             this.btnMacroSqlQuery.TabIndex = 16;
             this.btnMacroSqlQuery.Text = "Sql formatter";
             this.btnMacroSqlQuery.UseVisualStyleBackColor = true;
@@ -266,10 +269,10 @@
             // 
             // btnMacroSqlSelectFormatter
             // 
-            this.btnMacroSqlSelectFormatter.Location = new System.Drawing.Point(74, 62);
-            this.btnMacroSqlSelectFormatter.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMacroSqlSelectFormatter.Location = new System.Drawing.Point(136, 132);
+            this.btnMacroSqlSelectFormatter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMacroSqlSelectFormatter.Name = "btnMacroSqlSelectFormatter";
-            this.btnMacroSqlSelectFormatter.Size = new System.Drawing.Size(69, 27);
+            this.btnMacroSqlSelectFormatter.Size = new System.Drawing.Size(126, 50);
             this.btnMacroSqlSelectFormatter.TabIndex = 17;
             this.btnMacroSqlSelectFormatter.Text = "SELECT";
             this.btnMacroSqlSelectFormatter.UseVisualStyleBackColor = true;
@@ -277,10 +280,10 @@
             // 
             // btnClearTransforms
             // 
-            this.btnClearTransforms.Location = new System.Drawing.Point(187, 37);
-            this.btnClearTransforms.Margin = new System.Windows.Forms.Padding(1);
+            this.btnClearTransforms.Location = new System.Drawing.Point(282, 73);
+            this.btnClearTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClearTransforms.Name = "btnClearTransforms";
-            this.btnClearTransforms.Size = new System.Drawing.Size(43, 35);
+            this.btnClearTransforms.Size = new System.Drawing.Size(79, 65);
             this.btnClearTransforms.TabIndex = 18;
             this.btnClearTransforms.Text = "clear";
             this.btnClearTransforms.UseVisualStyleBackColor = true;
@@ -288,10 +291,10 @@
             // 
             // btnBatchEdit
             // 
-            this.btnBatchEdit.Location = new System.Drawing.Point(108, 219);
-            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(1);
+            this.btnBatchEdit.Location = new System.Drawing.Point(214, 390);
+            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBatchEdit.Name = "btnBatchEdit";
-            this.btnBatchEdit.Size = new System.Drawing.Size(75, 35);
+            this.btnBatchEdit.Size = new System.Drawing.Size(138, 65);
             this.btnBatchEdit.TabIndex = 19;
             this.btnBatchEdit.Text = "Batch edit";
             this.btnBatchEdit.UseVisualStyleBackColor = true;
@@ -299,10 +302,10 @@
             // 
             // btnNewLineChars
             // 
-            this.btnNewLineChars.Location = new System.Drawing.Point(1, 270);
-            this.btnNewLineChars.Margin = new System.Windows.Forms.Padding(1);
+            this.btnNewLineChars.Location = new System.Drawing.Point(12, 654);
+            this.btnNewLineChars.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNewLineChars.Name = "btnNewLineChars";
-            this.btnNewLineChars.Size = new System.Drawing.Size(95, 37);
+            this.btnNewLineChars.Size = new System.Drawing.Size(174, 56);
             this.btnNewLineChars.TabIndex = 20;
             this.btnNewLineChars.Text = "\\n or \\r to new line";
             this.btnNewLineChars.UseVisualStyleBackColor = true;
@@ -313,10 +316,10 @@
             this.chkCaseSensitive.AutoSize = true;
             this.chkCaseSensitive.Checked = true;
             this.chkCaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCaseSensitive.Location = new System.Drawing.Point(0, 223);
-            this.chkCaseSensitive.Margin = new System.Windows.Forms.Padding(1);
+            this.chkCaseSensitive.Location = new System.Drawing.Point(9, 412);
+            this.chkCaseSensitive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkCaseSensitive.Name = "chkCaseSensitive";
-            this.chkCaseSensitive.Size = new System.Drawing.Size(94, 17);
+            this.chkCaseSensitive.Size = new System.Drawing.Size(166, 29);
             this.chkCaseSensitive.TabIndex = 21;
             this.chkCaseSensitive.Text = "Case sensitive";
             this.chkCaseSensitive.UseVisualStyleBackColor = true;
@@ -324,10 +327,10 @@
             // chkBeforeOrAfter
             // 
             this.chkBeforeOrAfter.AutoSize = true;
-            this.chkBeforeOrAfter.Location = new System.Drawing.Point(73, 155);
-            this.chkBeforeOrAfter.Margin = new System.Windows.Forms.Padding(1);
+            this.chkBeforeOrAfter.Location = new System.Drawing.Point(143, 286);
+            this.chkBeforeOrAfter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chkBeforeOrAfter.Name = "chkBeforeOrAfter";
-            this.chkBeforeOrAfter.Size = new System.Drawing.Size(15, 14);
+            this.chkBeforeOrAfter.Size = new System.Drawing.Size(22, 21);
             this.chkBeforeOrAfter.TabIndex = 22;
             this.chkBeforeOrAfter.UseVisualStyleBackColor = true;
             this.chkBeforeOrAfter.CheckedChanged += new System.EventHandler(this.ChkBeforeOrAfter_CheckedChanged);
@@ -340,20 +343,20 @@
             this.tblLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tblLayout.ColumnCount = 4;
             this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-            this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
+            this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
             this.tblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tblLayout.Controls.Add(this.pnlActions, 3, 0);
             this.tblLayout.Controls.Add(this.txtMain, 0, 0);
             this.tblLayout.Controls.Add(this.pnlTransforms, 1, 0);
             this.tblLayout.Controls.Add(this.txtResult, 2, 0);
-            this.tblLayout.Location = new System.Drawing.Point(16, 14);
-            this.tblLayout.Margin = new System.Windows.Forms.Padding(1);
+            this.tblLayout.Location = new System.Drawing.Point(29, 26);
+            this.tblLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tblLayout.Name = "tblLayout";
             this.tblLayout.RowCount = 2;
             this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblLayout.Size = new System.Drawing.Size(1019, 648);
+            this.tblLayout.Size = new System.Drawing.Size(1635, 1083);
             this.tblLayout.TabIndex = 23;
             // 
             // pnlActions
@@ -362,30 +365,31 @@
             this.pnlActions.Controls.Add(this.lstTransforms);
             this.pnlActions.Controls.Add(this.pnlActionButtons);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(788, 1);
-            this.pnlActions.Margin = new System.Windows.Forms.Padding(1);
+            this.pnlActions.Location = new System.Drawing.Point(1278, 2);
+            this.pnlActions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(230, 626);
+            this.pnlActions.Size = new System.Drawing.Size(355, 1059);
             this.pnlActions.TabIndex = 0;
             // 
             // txtInfo
             // 
             this.txtInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtInfo.Location = new System.Drawing.Point(0, 335);
-            this.txtInfo.Margin = new System.Windows.Forms.Padding(1);
+            this.txtInfo.Location = new System.Drawing.Point(0, 484);
+            this.txtInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(230, 20);
+            this.txtInfo.Size = new System.Drawing.Size(355, 29);
             this.txtInfo.TabIndex = 22;
             // 
             // lstTransforms
             // 
             this.lstTransforms.Dock = System.Windows.Forms.DockStyle.Top;
             this.lstTransforms.FormattingEnabled = true;
+            this.lstTransforms.ItemHeight = 24;
             this.lstTransforms.Location = new System.Drawing.Point(0, 0);
-            this.lstTransforms.Margin = new System.Windows.Forms.Padding(1);
+            this.lstTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstTransforms.Name = "lstTransforms";
-            this.lstTransforms.Size = new System.Drawing.Size(230, 329);
+            this.lstTransforms.Size = new System.Drawing.Size(355, 484);
             this.lstTransforms.TabIndex = 21;
             this.lstTransforms.SelectedValueChanged += new System.EventHandler(this.LstTransforms_SelectedValueChanged);
             // 
@@ -416,17 +420,29 @@
             this.pnlActionButtons.Controls.Add(this.btnBatchEdit);
             this.pnlActionButtons.Controls.Add(this.lblMacros);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlActionButtons.Location = new System.Drawing.Point(0, 355);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(1);
+            this.pnlActionButtons.Location = new System.Drawing.Point(0, 513);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlActionButtons.Name = "pnlActionButtons";
-            this.pnlActionButtons.Size = new System.Drawing.Size(230, 271);
+            this.pnlActionButtons.Size = new System.Drawing.Size(355, 546);
             this.pnlActionButtons.TabIndex = 20;
+            // 
+            // btnFromBase64
+            // 
+            this.btnFromBase64.Location = new System.Drawing.Point(152, 331);
+            this.btnFromBase64.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFromBase64.Name = "btnFromBase64";
+            this.btnFromBase64.Size = new System.Drawing.Size(57, 33);
+            this.btnFromBase64.TabIndex = 35;
+            this.btnFromBase64.Text = "<=";
+            this.btnFromBase64.UseVisualStyleBackColor = true;
+            this.btnFromBase64.Click += new System.EventHandler(this.btnFromBase64_Click);
             // 
             // btnToBase64
             // 
-            this.btnToBase64.Location = new System.Drawing.Point(11, 170);
+            this.btnToBase64.Location = new System.Drawing.Point(14, 332);
+            this.btnToBase64.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnToBase64.Name = "btnToBase64";
-            this.btnToBase64.Size = new System.Drawing.Size(52, 23);
+            this.btnToBase64.Size = new System.Drawing.Size(95, 33);
             this.btnToBase64.TabIndex = 33;
             this.btnToBase64.Text = "=> 64";
             this.btnToBase64.UseVisualStyleBackColor = true;
@@ -434,9 +450,10 @@
             // 
             // btnGremlin
             // 
-            this.btnGremlin.Location = new System.Drawing.Point(5, 114);
+            this.btnGremlin.Location = new System.Drawing.Point(6, 114);
+            this.btnGremlin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGremlin.Name = "btnGremlin";
-            this.btnGremlin.Size = new System.Drawing.Size(75, 23);
+            this.btnGremlin.Size = new System.Drawing.Size(124, 42);
             this.btnGremlin.TabIndex = 34;
             this.btnGremlin.Text = "gremlin";
             this.btnGremlin.UseVisualStyleBackColor = true;
@@ -447,9 +464,10 @@
             this.chkXmlCasing.AutoSize = true;
             this.chkXmlCasing.Checked = true;
             this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkXmlCasing.Location = new System.Drawing.Point(121, 170);
+            this.chkXmlCasing.Location = new System.Drawing.Point(184, 245);
+            this.chkXmlCasing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkXmlCasing.Name = "chkXmlCasing";
-            this.chkXmlCasing.Size = new System.Drawing.Size(94, 17);
+            this.chkXmlCasing.Size = new System.Drawing.Size(168, 29);
             this.chkXmlCasing.TabIndex = 34;
             this.chkXmlCasing.Text = "<PascalCase>";
             this.chkXmlCasing.UseVisualStyleBackColor = true;
@@ -457,9 +475,10 @@
             // 
             // btnXmlToJson
             // 
-            this.btnXmlToJson.Location = new System.Drawing.Point(191, 148);
+            this.btnXmlToJson.Location = new System.Drawing.Point(152, 371);
+            this.btnXmlToJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXmlToJson.Name = "btnXmlToJson";
-            this.btnXmlToJson.Size = new System.Drawing.Size(32, 23);
+            this.btnXmlToJson.Size = new System.Drawing.Size(59, 42);
             this.btnXmlToJson.TabIndex = 33;
             this.btnXmlToJson.Text = "<=";
             this.btnXmlToJson.UseVisualStyleBackColor = true;
@@ -467,9 +486,10 @@
             // 
             // btnJsonToXml
             // 
-            this.btnJsonToXml.Location = new System.Drawing.Point(121, 148);
+            this.btnJsonToXml.Location = new System.Drawing.Point(14, 371);
+            this.btnJsonToXml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnJsonToXml.Name = "btnJsonToXml";
-            this.btnJsonToXml.Size = new System.Drawing.Size(71, 23);
+            this.btnJsonToXml.Size = new System.Drawing.Size(130, 42);
             this.btnJsonToXml.TabIndex = 32;
             this.btnJsonToXml.Text = "json => xml";
             this.btnJsonToXml.UseVisualStyleBackColor = true;
@@ -477,9 +497,10 @@
             // 
             // btnJira
             // 
-            this.btnJira.Location = new System.Drawing.Point(187, 231);
+            this.btnJira.Location = new System.Drawing.Point(271, 280);
+            this.btnJira.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnJira.Name = "btnJira";
-            this.btnJira.Size = new System.Drawing.Size(44, 23);
+            this.btnJira.Size = new System.Drawing.Size(81, 42);
             this.btnJira.TabIndex = 24;
             this.btnJira.Text = "jira";
             this.btnJira.UseVisualStyleBackColor = true;
@@ -487,9 +508,10 @@
             // 
             // btnAsciiFrom
             // 
-            this.btnAsciiFrom.Location = new System.Drawing.Point(62, 145);
+            this.btnAsciiFrom.Location = new System.Drawing.Point(136, 282);
+            this.btnAsciiFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAsciiFrom.Name = "btnAsciiFrom";
-            this.btnAsciiFrom.Size = new System.Drawing.Size(38, 23);
+            this.btnAsciiFrom.Size = new System.Drawing.Size(70, 42);
             this.btnAsciiFrom.TabIndex = 31;
             this.btnAsciiFrom.Text = "<=";
             this.btnAsciiFrom.UseVisualStyleBackColor = true;
@@ -497,9 +519,10 @@
             // 
             // btnMoveTransformDown
             // 
-            this.btnMoveTransformDown.Location = new System.Drawing.Point(102, 19);
+            this.btnMoveTransformDown.Location = new System.Drawing.Point(187, 35);
+            this.btnMoveTransformDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnMoveTransformDown.Name = "btnMoveTransformDown";
-            this.btnMoveTransformDown.Size = new System.Drawing.Size(42, 21);
+            this.btnMoveTransformDown.Size = new System.Drawing.Size(77, 39);
             this.btnMoveTransformDown.TabIndex = 29;
             this.btnMoveTransformDown.Text = "down";
             this.btnMoveTransformDown.UseVisualStyleBackColor = true;
@@ -507,9 +530,10 @@
             // 
             // btnMoveTransformUp
             // 
-            this.btnMoveTransformUp.Location = new System.Drawing.Point(102, 0);
+            this.btnMoveTransformUp.Location = new System.Drawing.Point(187, 0);
+            this.btnMoveTransformUp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnMoveTransformUp.Name = "btnMoveTransformUp";
-            this.btnMoveTransformUp.Size = new System.Drawing.Size(42, 23);
+            this.btnMoveTransformUp.Size = new System.Drawing.Size(77, 42);
             this.btnMoveTransformUp.TabIndex = 28;
             this.btnMoveTransformUp.Text = "up";
             this.btnMoveTransformUp.UseVisualStyleBackColor = true;
@@ -517,9 +541,10 @@
             // 
             // btnAddTableNames
             // 
-            this.btnAddTableNames.Location = new System.Drawing.Point(74, 88);
+            this.btnAddTableNames.Location = new System.Drawing.Point(136, 191);
+            this.btnAddTableNames.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnAddTableNames.Name = "btnAddTableNames";
-            this.btnAddTableNames.Size = new System.Drawing.Size(69, 23);
+            this.btnAddTableNames.Size = new System.Drawing.Size(126, 42);
             this.btnAddTableNames.TabIndex = 24;
             this.btnAddTableNames.Text = "tbl names";
             this.btnAddTableNames.UseVisualStyleBackColor = true;
@@ -528,10 +553,10 @@
             // btnEditSelectedTransform
             // 
             this.btnEditSelectedTransform.Enabled = false;
-            this.btnEditSelectedTransform.Location = new System.Drawing.Point(183, 2);
-            this.btnEditSelectedTransform.Margin = new System.Windows.Forms.Padding(1);
+            this.btnEditSelectedTransform.Location = new System.Drawing.Point(277, 2);
+            this.btnEditSelectedTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditSelectedTransform.Name = "btnEditSelectedTransform";
-            this.btnEditSelectedTransform.Size = new System.Drawing.Size(46, 35);
+            this.btnEditSelectedTransform.Size = new System.Drawing.Size(84, 65);
             this.btnEditSelectedTransform.TabIndex = 23;
             this.btnEditSelectedTransform.Text = "Edit";
             this.btnEditSelectedTransform.UseVisualStyleBackColor = true;
@@ -539,10 +564,10 @@
             // 
             // btnMacroSqlValues
             // 
-            this.btnMacroSqlValues.Location = new System.Drawing.Point(141, 89);
-            this.btnMacroSqlValues.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMacroSqlValues.Location = new System.Drawing.Point(258, 193);
+            this.btnMacroSqlValues.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMacroSqlValues.Name = "btnMacroSqlValues";
-            this.btnMacroSqlValues.Size = new System.Drawing.Size(51, 22);
+            this.btnMacroSqlValues.Size = new System.Drawing.Size(94, 41);
             this.btnMacroSqlValues.TabIndex = 24;
             this.btnMacroSqlValues.Text = "Values()";
             this.btnMacroSqlValues.UseVisualStyleBackColor = true;
@@ -550,9 +575,10 @@
             // 
             // btnAsciiTo
             // 
-            this.btnAsciiTo.Location = new System.Drawing.Point(11, 144);
+            this.btnAsciiTo.Location = new System.Drawing.Point(14, 280);
+            this.btnAsciiTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAsciiTo.Name = "btnAsciiTo";
-            this.btnAsciiTo.Size = new System.Drawing.Size(52, 24);
+            this.btnAsciiTo.Size = new System.Drawing.Size(95, 44);
             this.btnAsciiTo.TabIndex = 2;
             this.btnAsciiTo.Text = "=> Ascii";
             this.btnAsciiTo.UseVisualStyleBackColor = true;
@@ -560,10 +586,10 @@
             // 
             // btnRemoveSelectedTransform
             // 
-            this.btnRemoveSelectedTransform.Location = new System.Drawing.Point(69, 3);
-            this.btnRemoveSelectedTransform.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRemoveSelectedTransform.Location = new System.Drawing.Point(126, 6);
+            this.btnRemoveSelectedTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveSelectedTransform.Name = "btnRemoveSelectedTransform";
-            this.btnRemoveSelectedTransform.Size = new System.Drawing.Size(31, 35);
+            this.btnRemoveSelectedTransform.Size = new System.Drawing.Size(57, 65);
             this.btnRemoveSelectedTransform.TabIndex = 22;
             this.btnRemoveSelectedTransform.Text = "del";
             this.btnRemoveSelectedTransform.UseVisualStyleBackColor = true;
@@ -571,10 +597,10 @@
             // 
             // btnMacroListStringComma
             // 
-            this.btnMacroListStringComma.Location = new System.Drawing.Point(141, 73);
-            this.btnMacroListStringComma.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMacroListStringComma.Location = new System.Drawing.Point(258, 164);
+            this.btnMacroListStringComma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMacroListStringComma.Name = "btnMacroListStringComma";
-            this.btnMacroListStringComma.Size = new System.Drawing.Size(42, 20);
+            this.btnMacroListStringComma.Size = new System.Drawing.Size(77, 37);
             this.btnMacroListStringComma.TabIndex = 27;
             this.btnMacroListStringComma.Text = "\'List\',";
             this.btnMacroListStringComma.UseVisualStyleBackColor = true;
@@ -582,10 +608,10 @@
             // 
             // btnMacroListComma
             // 
-            this.btnMacroListComma.Location = new System.Drawing.Point(141, 56);
-            this.btnMacroListComma.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMacroListComma.Location = new System.Drawing.Point(258, 132);
+            this.btnMacroListComma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMacroListComma.Name = "btnMacroListComma";
-            this.btnMacroListComma.Size = new System.Drawing.Size(42, 19);
+            this.btnMacroListComma.Size = new System.Drawing.Size(77, 35);
             this.btnMacroListComma.TabIndex = 20;
             this.btnMacroListComma.Text = "List,";
             this.btnMacroListComma.UseVisualStyleBackColor = true;
@@ -617,17 +643,19 @@
             this.pnlTransforms.Controls.Add(this.txtNewLineAfterXOccurencesOfY);
             this.pnlTransforms.Controls.Add(this.lblNewLineAfterX);
             this.pnlTransforms.Controls.Add(this.lblNewLineOccurence);
-            this.pnlTransforms.Location = new System.Drawing.Point(346, 1);
-            this.pnlTransforms.Margin = new System.Windows.Forms.Padding(1);
+            this.pnlTransforms.Location = new System.Drawing.Point(540, 2);
+            this.pnlTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlTransforms.Name = "pnlTransforms";
-            this.pnlTransforms.Size = new System.Drawing.Size(95, 626);
+            this.pnlTransforms.Size = new System.Drawing.Size(196, 1059);
             this.pnlTransforms.TabIndex = 1;
             // 
             // btnMath
             // 
-            this.btnMath.Location = new System.Drawing.Point(2, 503);
+            this.btnMath.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMath.Location = new System.Drawing.Point(22, 891);
+            this.btnMath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMath.Name = "btnMath";
-            this.btnMath.Size = new System.Drawing.Size(90, 20);
+            this.btnMath.Size = new System.Drawing.Size(165, 37);
             this.btnMath.TabIndex = 32;
             this.btnMath.Text = "Math expr";
             this.btnMath.UseVisualStyleBackColor = true;
@@ -637,9 +665,10 @@
             // 
             // btnCopyTab
             // 
-            this.btnCopyTab.Location = new System.Drawing.Point(0, 246);
+            this.btnCopyTab.Location = new System.Drawing.Point(9, 454);
+            this.btnCopyTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCopyTab.Name = "btnCopyTab";
-            this.btnCopyTab.Size = new System.Drawing.Size(95, 22);
+            this.btnCopyTab.Size = new System.Drawing.Size(174, 41);
             this.btnCopyTab.TabIndex = 30;
             this.btnCopyTab.Text = "Tab to clipboard";
             this.btnCopyTab.UseVisualStyleBackColor = true;
@@ -647,9 +676,10 @@
             // 
             // btnParagraphToAsterisk
             // 
-            this.btnParagraphToAsterisk.Location = new System.Drawing.Point(51, 386);
+            this.btnParagraphToAsterisk.Location = new System.Drawing.Point(101, 716);
+            this.btnParagraphToAsterisk.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnParagraphToAsterisk.Name = "btnParagraphToAsterisk";
-            this.btnParagraphToAsterisk.Size = new System.Drawing.Size(41, 23);
+            this.btnParagraphToAsterisk.Size = new System.Drawing.Size(75, 42);
             this.btnParagraphToAsterisk.TabIndex = 29;
             this.btnParagraphToAsterisk.Text = "§=>*";
             this.btnParagraphToAsterisk.UseVisualStyleBackColor = true;
@@ -658,18 +688,19 @@
             // lblTruncate
             // 
             this.lblTruncate.AutoSize = true;
-            this.lblTruncate.Location = new System.Drawing.Point(1, 123);
-            this.lblTruncate.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTruncate.Location = new System.Drawing.Point(11, 227);
+            this.lblTruncate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTruncate.Name = "lblTruncate";
-            this.lblTruncate.Size = new System.Drawing.Size(50, 13);
+            this.lblTruncate.Size = new System.Drawing.Size(90, 25);
             this.lblTruncate.TabIndex = 26;
             this.lblTruncate.Text = "Truncate";
             // 
             // btnAsteriskToParagraph
             // 
-            this.btnAsteriskToParagraph.Location = new System.Drawing.Point(3, 386);
+            this.btnAsteriskToParagraph.Location = new System.Drawing.Point(13, 716);
+            this.btnAsteriskToParagraph.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnAsteriskToParagraph.Name = "btnAsteriskToParagraph";
-            this.btnAsteriskToParagraph.Size = new System.Drawing.Size(45, 23);
+            this.btnAsteriskToParagraph.Size = new System.Drawing.Size(82, 42);
             this.btnAsteriskToParagraph.TabIndex = 28;
             this.btnAsteriskToParagraph.Text = "*=>§";
             this.btnAsteriskToParagraph.UseVisualStyleBackColor = true;
@@ -677,19 +708,19 @@
             // 
             // txtTruncate
             // 
-            this.txtTruncate.Location = new System.Drawing.Point(2, 136);
-            this.txtTruncate.Margin = new System.Windows.Forms.Padding(1);
+            this.txtTruncate.Location = new System.Drawing.Point(13, 251);
+            this.txtTruncate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTruncate.Name = "txtTruncate";
-            this.txtTruncate.Size = new System.Drawing.Size(94, 20);
+            this.txtTruncate.Size = new System.Drawing.Size(169, 29);
             this.txtTruncate.TabIndex = 25;
             this.txtTruncate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTruncate_KeyPress);
             // 
             // btnRemoveBlankLines
             // 
-            this.btnRemoveBlankLines.Location = new System.Drawing.Point(2, 337);
-            this.btnRemoveBlankLines.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRemoveBlankLines.Location = new System.Drawing.Point(14, 557);
+            this.btnRemoveBlankLines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveBlankLines.Name = "btnRemoveBlankLines";
-            this.btnRemoveBlankLines.Size = new System.Drawing.Size(92, 33);
+            this.btnRemoveBlankLines.Size = new System.Drawing.Size(169, 61);
             this.btnRemoveBlankLines.TabIndex = 24;
             this.btnRemoveBlankLines.Text = "remove blank lines";
             this.btnRemoveBlankLines.UseVisualStyleBackColor = true;
@@ -697,10 +728,10 @@
             // 
             // btnDistinct
             // 
-            this.btnDistinct.Location = new System.Drawing.Point(2, 313);
-            this.btnDistinct.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDistinct.Location = new System.Drawing.Point(14, 513);
+            this.btnDistinct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDistinct.Name = "btnDistinct";
-            this.btnDistinct.Size = new System.Drawing.Size(92, 24);
+            this.btnDistinct.Size = new System.Drawing.Size(169, 44);
             this.btnDistinct.TabIndex = 23;
             this.btnDistinct.Text = "Distinct";
             this.btnDistinct.UseVisualStyleBackColor = true;
@@ -710,31 +741,22 @@
             // 
             this.lblStatusBar.AutoSize = true;
             this.lblStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblStatusBar.Location = new System.Drawing.Point(0, 671);
+            this.lblStatusBar.Location = new System.Drawing.Point(0, 1095);
+            this.lblStatusBar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatusBar.Name = "lblStatusBar";
-            this.lblStatusBar.Size = new System.Drawing.Size(119, 13);
+            this.lblStatusBar.Size = new System.Drawing.Size(220, 25);
             this.lblStatusBar.TabIndex = 24;
             this.lblStatusBar.Text = "Left textbox: Line: Char:";
             // 
-            // btnFromBase64
-            // 
-            this.btnFromBase64.Location = new System.Drawing.Point(62, 170);
-            this.btnFromBase64.Name = "btnFromBase64";
-            this.btnFromBase64.Size = new System.Drawing.Size(38, 23);
-            this.btnFromBase64.TabIndex = 35;
-            this.btnFromBase64.Text = "<=";
-            this.btnFromBase64.UseVisualStyleBackColor = true;
-            this.btnFromBase64.Click += new System.EventHandler(this.btnFromBase64_Click);
-            // 
             // TextTransforms
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 684);
+            this.ClientSize = new System.Drawing.Size(1670, 1120);
             this.Controls.Add(this.lblStatusBar);
             this.Controls.Add(this.tblLayout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TextTransforms";
             this.Text = "textr";
             this.tblLayout.ResumeLayout(false);

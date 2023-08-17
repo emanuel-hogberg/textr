@@ -1,64 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using emanuel.Extensions;
+﻿using emanuel.Extensions;
 using emanuel.Macros;
 using emanuel.Transforms;
-using textr.Editables;
 using JiraHelper;
+using StringTransforms;
+using StringTransforms.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using textr.Helpers;
 using textr.Transforms;
 
 namespace emanuel
 {
-    public partial class TextTransforms : Form
+    public partial class TextTransforms : Form, ITextTransformations
     {
         IEditableProperties _editing = null;
         private string _mathTooltip = string.Empty;
         private TextBox _txtSelectionTarget = null;
+        //TODO: use factories if applicable
+        private ITransformFactoryService _transformFactoryService;
+        private ITransformMacroFactoryService _transformMacroFactoryService;
+        private ITransformService _transformService;
+        private readonly IEditEventService _editEventService;
+        ITransformCollection _transformCollection;
 
-        public TextTransforms()
+        public TextTransforms(
+            ITransformFactoryService transformFactoryService,
+            ITransformMacroFactoryService transformMacroFactoryService,
+            ITransformService transformService,
+            IEditEventService editEventService)
         {
+            _transformFactoryService = transformFactoryService;
+            _transformMacroFactoryService = transformMacroFactoryService;
+            _transformService = transformService;
+            _editEventService = editEventService;
+
             InitializeComponent();
             InitEditableTransforms();
+
+            _transformCollection = _transformService.GetNewTransformCollection();
         }
 
-        readonly List<ITransform> transforms = new List<ITransform>();
         public string MainText { get => txtMain.Text; }
 
         private TextTransforms AddTransform(ITransform transform)
         {
-            if (_editing != null && transform is EditableTransform && EditEventController.Instance.Save((transform as EditableTransform).GetEditableProperties()))
+            if (_editing != null &&
+                transform is EditableTransform &&
+                _editEventService
+                    .Save((transform as EditableTransform)
+                    .GetEditableProperties()))
             {
                 StopEditing();
             }
             else
             {
-                transforms.Add(transform);
-                EditEventController.Instance.NewTransformAdded(transforms);
+                _transformService.AddTransform(transform, _transformCollection);
+
+                _editEventService.NewTransformAdded(_transformCollection);
             }
 
-            UpdateResult();
+            UpdateTransforms();
+
             return this;
         }
+
+        private void UpdateTransforms()
+        {
+            var index = _transformCollection.GetSelector().GetIndex();
+
+            lstTransforms.DataSource = null;
+            lstTransforms.DataSource = _transformCollection.AsDataSource();
+
+            lstTransforms.SelectedIndex = Math.Min(index, _transformCollection.Count - 1);
+
+            UpdateResult();
+        }
+
 
         private void UpdateResult()
         {
             txtResult.Text = ApplyTransforms();
-            lstTransforms.DataSource = null;
-            lstTransforms.DataSource = transforms;
         }
 
         private string ApplyTransforms()
-        {
-            string r = txtMain.Text;
-            foreach(ITransform t in transforms)
-            {
-                r = t.Transform(r);
-            }
-            return r;
-        }
+        => _transformService.ApplyTransforms(_transformCollection, txtMain.Text);
 
         #region text changed
         private void TxtResult_TextChanged(object sender, EventArgs e)
@@ -166,68 +192,37 @@ namespace emanuel
         }
         private void BtnUndoTransform_Click(object sender, EventArgs e)
         {
-            if (transforms.Any())
-                transforms.Remove(transforms.Last());
-            UpdateResult();
+            _transformService.Undo(_transformCollection);
+
+            UpdateTransforms();
         }
 
         private void BtnClearTransforms_Click(object sender, EventArgs e)
         {
-            transforms.Clear();
-            UpdateResult();
-        }
+            _transformService.RemoveAllTransforms(_transformCollection);
 
-        private void IfValidIndexSelected(Action<int> action)
-            => lstTransforms.SelectedIndex
-                .Do(i =>
-                {
-                    if (i.Between(0, transforms.Count - 1))
-                        action(i);
-                });
+            UpdateTransforms();
+        }
 
         private void BtnRemoveSelectedTransform_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                transforms.RemoveAt(i);
-                UpdateResult();
-                if (i.Between(0, transforms.Count - 1))
-                    lstTransforms.SelectedIndex = i;
-                if (i == transforms.Count && transforms.Any())
-                    lstTransforms.SelectedIndex = i - 1;
-            });
+            _transformService.RemoveTranform(_transformCollection);
+
+            UpdateTransforms();
         }
 
         private void BtnMoveTransformUp_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                if (i > 0)
-                {
-                    var t = transforms[i];
-                    transforms.Remove(t);
-                    transforms.Insert(i - 1, t);
+            _transformService.MoveSelectedTransform(_transformCollection, up: true);
 
-                    UpdateResult();
-                    lstTransforms.SelectedIndex = i - 1;
-                }
-            });
+            UpdateTransforms();
         }
 
         private void BtnMoveTransformDown_Click(object sender, EventArgs e)
         {
-            IfValidIndexSelected(i =>
-            {
-                if (i < transforms.Count - 1)
-                {
-                    var t = transforms[i];
-                    transforms.Remove(t);
-                    transforms.Insert(i + 1, t);
+            _transformService.MoveSelectedTransform(_transformCollection, up: false);
 
-                    UpdateResult();
-                    lstTransforms.SelectedIndex = i + 1;
-                }
-            });
+            UpdateTransforms();
         }
 
         private void BtnBatchEdit_Click(object sender, EventArgs e)
@@ -321,9 +316,10 @@ namespace emanuel
 
         private void InitEditableTransforms()
         {
-            EditEventController.Instance.Editing += EditEventcontroller_Editing;
-            EditEventController.Instance.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
-            EditEventController.Instance.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
+            _editEventService.SetEditingEvent(EditEventcontroller_Editing);
+
+            _editEventService.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
+            _editEventService.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
         }
 
         private void EditEventcontroller_Editing(object sender, EventArgs e)
@@ -345,7 +341,7 @@ namespace emanuel
 
         public TextTransforms ApplyEdits()
         {
-            transforms.Clear();
+            _transformCollection.Clear();
             txtMain.Text = txtResult.Text;
             return this;
         }
@@ -393,7 +389,7 @@ namespace emanuel
             }
             else
             {
-                EditEventController.Instance.CancelEdit();
+                _editEventService.CancelEdit();
                 StopEditing();
                 txtInfo.Text = "Cancelled edit.";
             }
@@ -411,7 +407,9 @@ namespace emanuel
 
         private void LstTransforms_SelectedValueChanged(object sender, EventArgs e)
         {
-            btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is EditableTransform);
+            btnEditSelectedTransform.Enabled = (lstTransforms.SelectedItem is IEditableTransform);
+
+            _transformCollection.GetSelector().SetIndex(lstTransforms.SelectedIndex);
         }
 
         private void TxtFind_KeyPress(object sender, KeyPressEventArgs e)

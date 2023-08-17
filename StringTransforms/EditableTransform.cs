@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StringTransforms.Interfaces;
+using System;
 
-namespace emanuel.Transforms
+namespace StringTransforms
 {
-    public abstract class EditableTransform : ITransform
+    public abstract class EditableTransform : IEditableTransform
     {
         public IEditableProperties Edit()
         {
@@ -16,17 +13,12 @@ namespace emanuel.Transforms
             return GetEditableProperties();
         }
         public abstract void Save(IEditableProperties amendments);
-        internal abstract IEditableProperties GetEditableProperties();
+        public abstract IEditableProperties GetEditableProperties();
 
         public abstract string Transform(string text);
 
         public event EventHandler Editing;
 
         public bool IsBeingEdited { get; private set; }
-    }
-
-    public interface IEditableProperties
-    {
-
     }
 }

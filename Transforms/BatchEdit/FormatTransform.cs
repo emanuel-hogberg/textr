@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using emanuel.Extensions;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using emanuel.Extensions;
 
 namespace emanuel.Transforms
 {
