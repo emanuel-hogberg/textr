@@ -6,10 +6,12 @@ using System.Text.Json.Nodes;
 
 namespace StringTransforms.Transforms
 {
-    public class JsonXmlTransform : ITransform
+    internal class JsonXmlTransform : IJsonXmlTransform
     {
-        public static readonly string DeserializeRootElementName = "__Root__";
+        private const string DeserializeRootElementName = "__Root__";
         public bool PascalCasing { get; set; }
+
+        string IJsonXmlTransform.DeserializeRootElementName => DeserializeRootElementName;
 
         public string Transform(string text)
         {

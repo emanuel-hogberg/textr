@@ -6,16 +6,16 @@ using StringTransforms.Transforms;
 
 namespace StringTransforms.Macros
 {
-    public static class SqlMacros
+    internal static class SqlMacros
     {
-        public static List<ITransform> SqlSelectFormat()
+        public static List<ITransform> CreateSqlSelectFormat()
         => new Macros()
             .AddTransform(new RemoveNewLineTransform())
             .AddTransform(new FindReplaceTransform(",", ", "))
             .AddTransform(new NewLineAfterXOccurencesOfY(5, ", "))
             .ToList();
 
-        public static List<ITransform> SqlQueryFormat()
+        public static List<ITransform> CreateSqlQueryFormat()
         => new Macros()
             .AddTransform(new FindReplaceTransform(",", ", "))
             .AddTransform(new FindReplaceTransform("select", "SELECT\n", false))
@@ -37,21 +37,21 @@ namespace StringTransforms.Macros
             .AddTransform(new TruncateTransform() { Truncate = Environment.NewLine })
             .AddTransform(new TruncateTransform() { Truncate = "," });
 
-        public static List<ITransform> SqlListStringComma()
+        public static List<ITransform> CreateSqlListStringComma()
         => SqlGroupTransformList(new GroupTransform("123")
                 .Select("*")
                 .SetTransform("'*',") as GroupTransform)
             .ToList();
 
-        public static List<ITransform> SqlListComma()
+        public static List<ITransform> CreateSqlListComma()
         => SqlGroupTransformList(new GroupTransform("123")
                 .Select("*")
                 .SetTransform("*,") as GroupTransform)
             .ToList();
 
-        public static List<ITransform> SqlValues()
+        public static List<ITransform> CreateSqlValues()
         => new Macros()
-            .AddTransforms(SqlListComma())
+            .AddTransforms(CreateSqlListComma())
             .AddTransform(new RemoveNewLineTransform())
             .AddTransform(new FindReplaceTransform(", ", "), ("))
             .AddTransform(new GroupTransform("123")
@@ -61,7 +61,7 @@ namespace StringTransforms.Macros
             .AddTransform(new NewLineCharFix())
             .ToList();
 
-        public static List<ITransform> SqlAddTableNamesToSelect()
+        public static List<ITransform> CreateSqlAddTableNamesToSelect()
         => new Macros()
             .AddTransform(new FindReplaceTransform("*", "§"))
             .AddTransform(new FindReplaceTransform("select", "SELECT"))

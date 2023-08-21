@@ -3,6 +3,7 @@ using JiraHelper;
 using StringTransforms;
 using StringTransforms.Interfaces;
 using StringTransforms.Macros;
+using StringTransforms.Services;
 using StringTransforms.Transforms;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace emanuel
         private TextBox _txtSelectionTarget = null;
         //TODO: use factories if applicable
         private ITransformFactoryService _transformFactoryService;
-        private ITransformMacroFactoryService _transformMacroFactoryService;
+        private IMacroFactoryService _macroFactoryService;
         private ITransformService _transformService;
         private readonly IEditEventService _editEventService;
         private readonly IMathService _mathService;
@@ -25,13 +26,13 @@ namespace emanuel
 
         public TextTransforms(
             ITransformFactoryService transformFactoryService,
-            ITransformMacroFactoryService transformMacroFactoryService,
+            IMacroFactoryService macroFactoryService,
             ITransformService transformService,
             IEditEventService editEventService,
             IMathService mathService)
         {
             _transformFactoryService = transformFactoryService;
-            _transformMacroFactoryService = transformMacroFactoryService;
+            _macroFactoryService = macroFactoryService;
             _transformService = transformService;
             _editEventService = editEventService;
             _mathService = mathService;
@@ -133,7 +134,7 @@ namespace emanuel
         {
             if (EnterPressed(e))
             {
-                AddTransform(new FindReplaceTransform(txtFind.Text, txtReplace.Text, chkCaseSensitive.Checked));
+                AddTransform(_transformFactoryService.CreateFindReplaceTransform(txtFind.Text, txtReplace.Text, chkCaseSensitive.Checked));
             }
         }
 
@@ -143,7 +144,7 @@ namespace emanuel
             {
                 if (int.TryParse(txtNewLineAfterXOccurences.Text.Trim(), out int occurences))
                 {
-                    AddTransform(new NewLineAfterXOccurencesOfY(occurences, txtNewLineAfterXOccurencesOfY.Text, chkCaseSensitive.Checked, chkBeforeOrAfter.Checked));
+                    AddTransform(_transformFactoryService.CreateNewLineAfterXOccurencesOfY(occurences, txtNewLineAfterXOccurencesOfY.Text, chkCaseSensitive.Checked, chkBeforeOrAfter.Checked));
                 }
                 else
                 {
@@ -155,12 +156,7 @@ namespace emanuel
         {
             if (EnterPressed(e))
             {
-                AddTransform(new TruncateTransform()
-                {
-                    FromStart = chkBeforeOrAfter.Checked,
-                    IgnoreCase = !chkCaseSensitive.Checked,
-                    Truncate = txtTruncate.Text
-                });
+                AddTransform(_transformFactoryService.CreateTruncateTransform(chkBeforeOrAfter.Checked, !chkCaseSensitive.Checked, txtTruncate.Text));
             }
         }
 
@@ -175,7 +171,7 @@ namespace emanuel
 
         private void BtnRemoveNewLines_Click(object sender, EventArgs e)
         {
-            AddTransform(new RemoveNewLineTransform());
+            AddTransform(_transformFactoryService.CreateRemoveNewLineTransform());
         }
 
         private void BtnCopyToClipboard_Click(object sender, EventArgs e)
@@ -228,24 +224,24 @@ namespace emanuel
 
         private void BtnBatchEdit_Click(object sender, EventArgs e)
         {
-            var be = new BatchEdit(txtResult.Text);
+            var be = new BatchEdit(_transformFactoryService, txtResult.Text);
             be.TransformFound += BatchEdit_TransformFound;
             be.Show();
         }
 
         private void BtnNewLineChars_Click(object sender, EventArgs e)
         {
-            AddTransform(new NewLineCharFix());
+            AddTransform(_transformFactoryService.CreateNewLineCharFix());
         }
 
         private void BtnDistinct_Click(object sender, EventArgs e)
         {
-            AddTransform(new DistinctTransform());
+            AddTransform(_transformFactoryService.CreateDistinctTransform());
         }
 
         private void BtnRemoveBlankLines_Click(object sender, EventArgs e)
         {
-            AddTransform(new RemoveBlankLinesTransform());
+            AddTransform(_transformFactoryService.CreateRemoveBlankLinesTransform());
         }
 
         #endregion
@@ -256,36 +252,36 @@ namespace emanuel
 
         private void BtnMacroListStringComma_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlListStringComma()
+            _macroFactoryService.CreateSqlListStringComma()
                 .Do(list => AddMacro(list));
         }
 
         private void BtnMacroListComma_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlListComma()
+            _macroFactoryService.CreateSqlListComma()
                 .Do(list => AddMacro(list));
         }
 
         private void BtnMacroSqlSelectFormatter_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlSelectFormat()
+            _macroFactoryService.CreateSqlSelectFormat()
                 .Do(list => AddMacro(list));
         }
 
         private void BtnMacroSqlQuery_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlQueryFormat()
+            _macroFactoryService.CreateSqlQueryFormat()
                 .Do(list => AddMacro(list));
         }
         private void BtnMacroSqlValues_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlValues()
+            _macroFactoryService.CreateSqlValues()
                 .Do(list => AddMacro(list));
         }
 
         private void BtnAddTableNames_Click(object sender, EventArgs e)
         {
-            SqlMacros.SqlAddTableNamesToSelect()
+            _macroFactoryService.CreateSqlAddTableNamesToSelect()
                 .Do(list => AddMacro(list));
         }
 
@@ -319,8 +315,8 @@ namespace emanuel
         {
             _editEventService.SetEditingEvent(EditEventcontroller_Editing);
 
-            _editEventService.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
-            _editEventService.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
+            _editEventService.RegisterEditableType(FindReplaceEdit.Transform, Edit_FindReplaceTransform);
+            _editEventService.RegisterEditableType(TruncateEdit.Transform, Edit_TruncateTransform);
         }
 
         private void EditEventcontroller_Editing(object sender, EventArgs e)
@@ -352,19 +348,23 @@ namespace emanuel
 
         private void Edit_FindReplaceTransform(IEditableProperties props)
         {
-            var p = props as FindReplaceTransform.FindReplaceEdit;
+            var p = props as FindReplaceProperties;
+
             txtFind.Text = p.Find;
             txtReplace.Text = p.Replace;
             chkCaseSensitive.Checked = p.CaseSensitive;
+
             txtFind.Select();
         }
 
         private void Edit_TruncateTransform(IEditableProperties props)
         {
-            var p = props as TruncateTransform.TruncateEdit;
+            var p = props as TruncateProperties;
+
             txtTruncate.Text = p.Truncate;
             chkBeforeOrAfter.Checked = p.FromStart;
             chkCaseSensitive.Checked = p.IgnoreCase;
+
             txtTruncate.Select();
         }
 
@@ -398,12 +398,12 @@ namespace emanuel
 
         private void BtnAsteriskToParagraph_Click(object sender, EventArgs e)
         {
-            AddTransform(new FindReplaceTransform("*", "§"));
+            AddTransform(_transformFactoryService.CreateFindReplaceTransform("*", "§"));
         }
 
         private void BtnParagraphToAsterisk_Click(object sender, EventArgs e)
         {
-            AddTransform(new FindReplaceTransform("§", "*"));
+            AddTransform(_transformFactoryService.CreateFindReplaceTransform("§", "*"));
         }
 
         private void LstTransforms_SelectedValueChanged(object sender, EventArgs e)
@@ -477,27 +477,27 @@ namespace emanuel
 
         private void btnAsciiTo_Click(object sender, EventArgs e)
         {
-            AddTransform(new FindReplaceTransform("\u00e5", @"\u00e5"))
-                .AddTransform(new FindReplaceTransform("\u00e4", @"\u00e4"))
-                .AddTransform(new FindReplaceTransform("\u00f6", @"\u00f6"))
-                .AddTransform(new FindReplaceTransform("\u00c5", @"\u00c5"))
-                .AddTransform(new FindReplaceTransform("\u00c4", @"\u00c4"))
-                .AddTransform(new FindReplaceTransform("\u00d6", @"\u00d6"));
+            AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00e5", @"\u00e5"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00e4", @"\u00e4"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00f6", @"\u00f6"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00c5", @"\u00c5"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00c4", @"\u00c4"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform("\u00d6", @"\u00d6"));
         }
 
         private void btnAsciiFrom_Click(object sender, EventArgs e)
         {
-            AddTransform(new FindReplaceTransform(@"\u00e5", "\u00e5"))
-                .AddTransform(new FindReplaceTransform(@"\u00e4", "\u00e4"))
-                .AddTransform(new FindReplaceTransform(@"\u00f6", "\u00f6"))
-                .AddTransform(new FindReplaceTransform(@"\u00c5", "\u00c5"))
-                .AddTransform(new FindReplaceTransform(@"\u00c4", "\u00c4"))
-                .AddTransform(new FindReplaceTransform(@"\u00d6", "\u00d6"));
+            AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00e5", "\u00e5"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00e4", "\u00e4"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00f6", "\u00f6"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00c5", "\u00c5"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00c4", "\u00c4"))
+                .AddTransform(_transformFactoryService.CreateFindReplaceTransform(@"\u00d6", "\u00d6"));
         }
 
         private void btnMath_Click(object sender, EventArgs e)
         {
-            AddTransform(new MathTransform(_mathService));
+            AddTransform(_transformFactoryService.CreateMathTransform(_mathService));
         }
 
         private void btnMath_MouseEnter(object sender, EventArgs e)
@@ -538,21 +538,21 @@ namespace emanuel
 
         private void btnJsonToXml_Click(object sender, EventArgs e)
         {
-            AddTransform(new JsonXmlTransform
-            {
-                PascalCasing = chkXmlCasing.Checked
-            });
+            var jsonXmlTransform = _transformFactoryService.CreateJsonXmlTransform(chkXmlCasing.Checked);
+
+            AddTransform(jsonXmlTransform);
 
             if (txtFind.Text.Length == 0 && txtReplace.Text.Length == 0)
             {
-                txtFind.Text = JsonXmlTransform.DeserializeRootElementName;
+                txtFind.Text = jsonXmlTransform.DeserializeRootElementName;
+
                 txtReplace.Select();
             }
         }
 
         private void btnXmlToJson_Click(object sender, EventArgs e)
         {
-            AddTransform(new XmlJsonTransform());
+            AddTransform(_transformFactoryService.CreateXmlJsonTransform());
         }
 
         private void chkXmlCasing_CheckedChanged(object sender, EventArgs e)
@@ -564,18 +564,18 @@ namespace emanuel
 
         private void btnGremlin_Click(object sender, EventArgs e)
         {
-            GremlinMacros.GremlinFormat()
+            _macroFactoryService.CreateGremlinFormat()
                 .Do(list => AddMacro(list));
         }
 
         private void btnToMd5_Click(object sender, EventArgs e)
         {
-            AddTransform(new Base64EncodeTransform());
+            AddTransform(_transformFactoryService.CreateBase64EncodeTransform());
         }
 
         private void btnFromBase64_Click(object sender, EventArgs e)
         {
-            AddTransform(new Base64DecodeTransform());
+            AddTransform(_transformFactoryService.CreateBase64DecodeTransform());
         }
     }
 }

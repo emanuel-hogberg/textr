@@ -3,7 +3,7 @@ using StringTransforms.Interfaces;
 
 namespace StringTransforms.Macros
 {
-    public class Macros
+    internal class Macros
     {
         List<ITransform> transforms = new List<ITransform>();
 

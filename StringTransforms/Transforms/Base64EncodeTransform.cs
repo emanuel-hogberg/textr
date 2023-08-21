@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace StringTransforms.Transforms
 {
-    public class Base64EncodeTransform : ListTransform
+    internal class Base64EncodeTransform : ListTransform
     {
         public override string TransformList(string[] lines)
             => lines
@@ -15,7 +15,7 @@ namespace StringTransforms.Transforms
         public override string ToString()
             => "Encode each line as base 64";
     }
-    public class Base64DecodeTransform : ListTransform
+    internal class Base64DecodeTransform : ListTransform
     {
         public override string TransformList(string[] lines)
             => lines

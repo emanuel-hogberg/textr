@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StringTransforms.Interfaces;
 using StringTransforms.Services;
-using StringTransforms.Transforms;
 using System;
 
 namespace textrTests
@@ -10,12 +9,14 @@ namespace textrTests
     public class MathTests
     {
         readonly IMathService _mathService = new MathService();
+        private readonly ITransformFactoryService _transformFactoryService = new TransformFactoryService();
 
         [TestMethod]
         public void MathTransform_Addition_Equals()
         {
             const string Sum = "2 + 2";
-            var transform = new MathTransform(_mathService);
+
+            var transform = _transformFactoryService.CreateMathTransform(_mathService);
 
             var calculationResult = transform.Transform(Sum);
 

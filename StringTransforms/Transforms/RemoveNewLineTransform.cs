@@ -3,7 +3,7 @@ using System;
 
 namespace StringTransforms.Transforms
 {
-    public class RemoveNewLineTransform : ITransform
+    internal class RemoveNewLineTransform : ITransform
     {
         public string Transform(string text)
             => text.Replace(Environment.NewLine, " ");

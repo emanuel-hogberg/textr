@@ -13,7 +13,7 @@ namespace emanuel.Extensions
                 .AddSingleton<IEditEventService, EditEventService>()
                 .AddSingleton<ITransformService, TransformService>()
                 .AddSingleton<ITransformFactoryService, TransformFactoryService>()
-                .AddSingleton<ITransformMacroFactoryService, TransformMacroFactoryService>()
+                .AddSingleton<IMacroFactoryService, MacroFactoryService>()
                 .AddSingleton<Form, TextTransforms>();
     }
 }

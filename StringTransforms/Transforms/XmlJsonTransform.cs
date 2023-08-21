@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace StringTransforms.Transforms
 {
-    public class XmlJsonTransform : ITransform
+    internal class XmlJsonTransform : ITransform
     {
         public string Transform(string text)
         {

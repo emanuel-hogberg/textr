@@ -3,7 +3,7 @@ using System;
 
 namespace StringTransforms.Transforms
 {
-    public class NewLineCharFix : ITransform
+    internal class NewLineCharFix : ITransform
     {
         public string Transform(string text)
             => text

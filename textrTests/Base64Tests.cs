@@ -1,18 +1,21 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StringTransforms.Transforms;
+using StringTransforms.Interfaces;
+using StringTransforms.Services;
 
 namespace textrTests
 {
     [TestClass]
     public class Base64Tests
     {
+        private readonly ITransformFactoryService _transformFactoryService = new TransformFactoryService();
+
         [TestMethod]
         public void Base64Transform_EncodeDecode_Match()
         {
             const string TestString = "Hallå!";
 
-            var encoder = new Base64EncodeTransform();
-            var decoder = new Base64DecodeTransform();
+            var encoder = _transformFactoryService.CreateBase64EncodeTransform();
+            var decoder = _transformFactoryService.CreateBase64DecodeTransform();
 
             var encoded = encoder.Transform(TestString);
 

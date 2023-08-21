@@ -2,7 +2,7 @@
 
 namespace StringTransforms.Transforms
 {
-    public class MathTransform : ITransform
+    internal class MathTransform : ITransform
     {
         private readonly IMathService _mathService;
 
