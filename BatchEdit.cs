@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using StringTransforms.Interfaces;
 using System.Text.RegularExpressions;
+using StringTransforms.Transforms;
 
 namespace emanuel
 {

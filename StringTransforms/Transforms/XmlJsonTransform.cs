@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-using StringTransforms.Interfaces;
+﻿using StringTransforms.Interfaces;
 using System;
+using System.Text.Json;
 using System.Xml;
 
-namespace textr.Transforms
+namespace StringTransforms.Transforms
 {
-    class XmlJsonTransform : ITransform
+    public class XmlJsonTransform : ITransform
     {
         public string Transform(string text)
         {
@@ -32,7 +32,7 @@ namespace textr.Transforms
 
             try
             {
-                return JsonConvert.SerializeXmlNode(node);
+                return JsonSerializer.Serialize(node);
             }
             catch (Exception ex)
             {

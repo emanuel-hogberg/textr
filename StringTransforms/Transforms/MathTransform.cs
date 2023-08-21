@@ -1,11 +1,21 @@
 ﻿using emanuel.Extensions;
-using org.mariuszgromada.math.mxparser;
+using StringTransforms.Interfaces;
 using System;
+using Expression = org.mariuszgromada.math.mxparser.Expression;
 
-namespace textr.Helpers
+namespace StringTransforms.Transforms
 {
-    static class MathHelper
+    public class MathTransform : ITransform
     {
+        public string Transform(string text)
+            => SplitOutHooks(text) +
+               " = " +
+               (MathExpression(text, out string error, out double calculation)
+                   ? calculation.ToString()
+                   : error);
+
+        public override string ToString()
+            => "Math expression (use <> for partial expression)";
         public static bool MathExpression(string stringExpression, out string error, out double calculation)
         {
             var expression = stringExpression

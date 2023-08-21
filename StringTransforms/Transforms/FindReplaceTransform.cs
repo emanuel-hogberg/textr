@@ -2,9 +2,9 @@
 using StringTransforms;
 using StringTransforms.Interfaces;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
-    class FindReplaceTransform : EditableTransform
+    public class FindReplaceTransform : EditableTransform
     {
         private string find;
         private string replace;

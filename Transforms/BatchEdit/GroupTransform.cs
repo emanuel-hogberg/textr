@@ -3,7 +3,6 @@ using StringTransforms.Interfaces;
 using System;
 using System.Linq;
 using System.Text;
-using textr.Transforms;
 
 namespace emanuel.Transforms
 {

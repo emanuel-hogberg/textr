@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
-    class NewLineAfterXOccurencesOfY : ITransform
+    public class NewLineAfterXOccurencesOfY : ITransform
     {
         public int Occurences { get; set; }
         public string Text { get; set; }
@@ -35,7 +35,7 @@ namespace emanuel.Transforms
                 {
                     var variants = new List<string>();
 
-                    while(t.IndexOf(Text, StringComparison.InvariantCultureIgnoreCase)
+                    while (t.IndexOf(Text, StringComparison.InvariantCultureIgnoreCase)
                         .AssignForwardIf(i => i >= 0, out int index))
                     {
                         variants.Add(t.Substring(index, Text.Length));
@@ -55,7 +55,7 @@ namespace emanuel.Transforms
             var split = text.Split(find, StringSplitOptions.None);
 
             int c = 0;
-            for(int i = 0; i < split.Count(); i++)
+            for (int i = 0; i < split.Count(); i++)
             {
                 string s = split[i];
 

@@ -1,9 +1,9 @@
 ﻿using StringTransforms.Interfaces;
 using System;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
-    class RemoveNewLineTransform : ITransform
+    public class RemoveNewLineTransform : ITransform
     {
         public string Transform(string text)
             => text.Replace(Environment.NewLine, " ");
