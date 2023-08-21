@@ -1,7 +1,7 @@
 ﻿using emanuel.Extensions;
 using StringTransforms.BatchTransforms;
 using StringTransforms.Interfaces;
-using StringTransforms.Transforms;
+using StringTransforms.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +13,14 @@ namespace emanuel
 {
     public partial class BatchEdit : Form
     {
-        public BatchEdit(string source = "")
+        public BatchEdit(ITransformFactoryService transformFactoryService, string source = "")
         {
             InitializeComponent();
+
+            _transformFactoryService = transformFactoryService;
+
+            _findReplaceAsterisk = _transformFactoryService.CreateFindReplaceTransform("*", "§");
+            _findReplaceParagraph = _transformFactoryService.CreateFindReplaceTransform("§", "*");
 
             txtSource.Text = source;
         }
@@ -31,7 +36,9 @@ namespace emanuel
 
         private List<IBatchEditLineTransform> Lines { get; set; }
 
-        private FindReplaceTransform findReplaceAsterisk = new FindReplaceTransform("*", "§");
+        private readonly ITransformFactoryService _transformFactoryService;
+        private readonly ITransform _findReplaceAsterisk;
+        private readonly ITransform _findReplaceParagraph;
 
         private enum UpdatePart
         {
@@ -103,7 +110,7 @@ namespace emanuel
         }
 
         private IBatchEditLineTransform NewTransform(string text)
-            => rdoSelection.Checked ? new GroupTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null } : new FormatTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null };
+            => rdoSelection.Checked ? new GroupTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? _findReplaceAsterisk : null } : new FormatTransform(text) { Predecessor = chkChangeAsteriskIntoParagraph.Checked ? _findReplaceAsterisk : null };
 
         private void UpdateResult(UpdatePart part)
         {
@@ -167,9 +174,9 @@ namespace emanuel
                 .Forward(t => chkChangeAsteriskIntoParagraph.Checked
                     ? new List<ITransform>()
                     {
-                        findReplaceAsterisk,
+                        _findReplaceAsterisk,
                         t,
-                        new FindReplaceTransform("§", "*")
+                        _findReplaceParagraph
                     }
                     : new List<ITransform>() { t });
 
@@ -217,16 +224,16 @@ namespace emanuel
                         replaceWith = txtCosmos.Text.Replace("*", replaceWith);
                     }
 
-                    return new FindReplaceTransform(text, replaceWith);
+                    return _transformFactoryService.CreateFindReplaceTransform(text, replaceWith);
                 })
                 .Where(line => line != null)
-                .ToList<ITransform>();
-            FoundTransforms.Insert(0, new FindReplaceTransform(", ", ","));
+                .ToList();
+            FoundTransforms.Insert(0, _transformFactoryService.CreateFindReplaceTransform(", ", ","));
             FoundTransforms.InsertRange(FoundTransforms.Count, new[]
             {
-                new FindReplaceTransform("'true'", "true"),
-                new FindReplaceTransform("'false'", "false"),
-                new FindReplaceTransform("(label)", "('label')"),
+                _transformFactoryService.CreateFindReplaceTransform("'true'", "true"),
+                _transformFactoryService.CreateFindReplaceTransform("'false'", "false"),
+                _transformFactoryService.CreateFindReplaceTransform("(label)", "('label')"),
             });
 
             TransformFound(this, new EventArgs());
@@ -271,7 +278,7 @@ namespace emanuel
         private void chkChangeAsteriskIntoParagraph_CheckedChanged(object sender, EventArgs e)
         {
             Lines
-                .Do(line => line.Predecessor = chkChangeAsteriskIntoParagraph.Checked ? findReplaceAsterisk : null);
+                .Do(line => line.Predecessor = chkChangeAsteriskIntoParagraph.Checked ? _findReplaceAsterisk : null);
             UpdateResult(UpdatePart.Selection);
         }
 

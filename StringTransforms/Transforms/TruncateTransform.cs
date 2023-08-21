@@ -11,7 +11,7 @@ namespace StringTransforms.Transforms
 
         public override void Save(IEditableProperties amendments)
         {
-            amendments.DoAs<TruncateEdit>(a =>
+            amendments.DoAs<TruncateProperties>(a =>
             {
                 Truncate = a.Truncate;
                 FromStart = a.FromStart;
@@ -39,13 +39,6 @@ namespace StringTransforms.Transforms
         }
 
         public override IEditableProperties GetEditableProperties()
-            => new TruncateEdit() { Truncate = Truncate, FromStart = FromStart, IgnoreCase = IgnoreCase };
-
-        public class TruncateEdit : IEditableProperties
-        {
-            public string Truncate { get; set; }
-            public bool FromStart { get; set; }
-            public bool IgnoreCase { get; set; }
-        }
+            => new TruncateProperties() { Truncate = Truncate, FromStart = FromStart, IgnoreCase = IgnoreCase };
     }
 }

@@ -13,7 +13,7 @@ namespace StringTransforms.Services
             => new DistinctTransform();
         public ITransform CreateFindReplaceTransform(string find, string replace, bool isChecked)
             => new FindReplaceTransform(find, replace, isChecked);
-        public ITransform CreateJsonXmlTransform(bool pascalCasing)
+        public IJsonXmlTransform CreateJsonXmlTransform(bool pascalCasing)
             => new JsonXmlTransform()
             {
                 PascalCasing = pascalCasing

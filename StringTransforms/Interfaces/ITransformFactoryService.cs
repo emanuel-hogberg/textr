@@ -6,7 +6,7 @@
         ITransform CreateBase64EncodeTransform();
         ITransform CreateDistinctTransform();
         ITransform CreateFindReplaceTransform(string find, string replace, bool caseSensitive = true);
-        ITransform CreateJsonXmlTransform(bool pascalCasing);
+        IJsonXmlTransform CreateJsonXmlTransform(bool pascalCasing);
         ITransform CreateMathTransform(IMathService mathService);
         ITransform CreateNewLineAfterXOccurencesOfY(int occurences, string text, bool caseSensitive, bool before);
         ITransform CreateNewLineCharFix();

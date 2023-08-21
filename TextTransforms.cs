@@ -224,7 +224,7 @@ namespace emanuel
 
         private void BtnBatchEdit_Click(object sender, EventArgs e)
         {
-            var be = new BatchEdit(txtResult.Text);
+            var be = new BatchEdit(_transformFactoryService, txtResult.Text);
             be.TransformFound += BatchEdit_TransformFound;
             be.Show();
         }
@@ -315,8 +315,8 @@ namespace emanuel
         {
             _editEventService.SetEditingEvent(EditEventcontroller_Editing);
 
-            _editEventService.RegisterEditableType(typeof(FindReplaceTransform), Edit_FindReplaceTransform);
-            _editEventService.RegisterEditableType(typeof(TruncateTransform), Edit_TruncateTransform);
+            _editEventService.RegisterEditableType(FindReplaceEdit.Transform, Edit_FindReplaceTransform);
+            _editEventService.RegisterEditableType(TruncateEdit.Transform, Edit_TruncateTransform);
         }
 
         private void EditEventcontroller_Editing(object sender, EventArgs e)
@@ -348,7 +348,7 @@ namespace emanuel
 
         private void Edit_FindReplaceTransform(IEditableProperties props)
         {
-            var p = props as FindReplaceTransform.FindReplaceEdit;
+            var p = props as FindReplaceProperties;
 
             txtFind.Text = p.Find;
             txtReplace.Text = p.Replace;
@@ -359,7 +359,7 @@ namespace emanuel
 
         private void Edit_TruncateTransform(IEditableProperties props)
         {
-            var p = props as TruncateTransform.TruncateEdit;
+            var p = props as TruncateProperties;
 
             txtTruncate.Text = p.Truncate;
             chkBeforeOrAfter.Checked = p.FromStart;
@@ -538,11 +538,13 @@ namespace emanuel
 
         private void btnJsonToXml_Click(object sender, EventArgs e)
         {
-            AddTransform(_transformFactoryService.CreateJsonXmlTransform(chkXmlCasing.Checked));
+            var jsonXmlTransform = _transformFactoryService.CreateJsonXmlTransform(chkXmlCasing.Checked);
+
+            AddTransform(jsonXmlTransform);
 
             if (txtFind.Text.Length == 0 && txtReplace.Text.Length == 0)
             {
-                txtFind.Text = JsonXmlTransform.DeserializeRootElementName;
+                txtFind.Text = jsonXmlTransform.DeserializeRootElementName;
 
                 txtReplace.Select();
             }
