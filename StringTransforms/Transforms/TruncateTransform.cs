@@ -2,7 +2,7 @@
 using StringTransforms;
 using StringTransforms.Interfaces;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
     public class TruncateTransform : EditableTransform
     {

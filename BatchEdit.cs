@@ -1,12 +1,13 @@
 ﻿using emanuel.Extensions;
-using emanuel.Transforms;
+using StringTransforms.BatchTransforms;
+using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
-using StringTransforms.Interfaces;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace emanuel
 {

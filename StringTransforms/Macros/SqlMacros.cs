@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using emanuel.Transforms;
+using StringTransforms.BatchTransforms;
 using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 
-namespace emanuel.Macros
+namespace StringTransforms.Macros
 {
     public static class SqlMacros
     {
@@ -60,7 +61,7 @@ namespace emanuel.Macros
             .AddTransform(new NewLineCharFix())
             .ToList();
 
-        internal static List<ITransform> SqlAddTableNamesToSelect()
+        public static List<ITransform> SqlAddTableNamesToSelect()
         => new Macros()
             .AddTransform(new FindReplaceTransform("*", "§"))
             .AddTransform(new FindReplaceTransform("select", "SELECT"))

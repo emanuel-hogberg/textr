@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using StringTransforms.Interfaces;
 
-namespace emanuel.Macros
+namespace StringTransforms.Macros
 {
     public class Macros
     {

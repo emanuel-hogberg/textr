@@ -1,9 +1,9 @@
 ﻿using emanuel.Extensions;
 using System.Linq;
 
-namespace emanuel.Transforms
+namespace StringTransforms.BatchTransforms
 {
-    class FormatTransform : GroupTransform
+    public class FormatTransform : GroupTransform
     {
         public FormatTransform(string line) : base(line)
         {
@@ -26,16 +26,16 @@ namespace emanuel.Transforms
                     })
                     .Forward(p => new
                     {
-                        Start = p.Start,
+                        p.Start,
                         End = index == select.Length - 1 ? string.Empty :
                             select.Substring(index + 1)
                     })
                     .Forward(p => (
-                        Start: p.Start,
+                        p.Start,
                         Match: Line.Substring(p.Start.Length, Line.Length - p.Start.Length - p.End.Length),
-                        End: p.End));
+                        p.End));
 
-                if (Line == parts.Start + parts.Match + parts.End && 
+                if (Line == parts.Start + parts.Match + parts.End &&
                     select == parts.Start + "*" + parts.End)
                 {
                     Selection = string.Concat(parts.Start, parts.Match.ToUpper(), parts.End);
@@ -52,7 +52,7 @@ namespace emanuel.Transforms
                     bool crunched = false;
                     string rest = transform;
                     Result = string.Empty;
-                    while(rest.Crunch("*")
+                    while (rest.Crunch("*")
                         .AssignForward(out var crunch)
                         .Forward(c => c.Tail != string.Empty || c.Found))
                     {

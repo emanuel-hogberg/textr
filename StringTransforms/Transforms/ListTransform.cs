@@ -1,7 +1,7 @@
 ﻿using StringTransforms.Interfaces;
 using System;
 
-namespace textr.Transforms
+namespace StringTransforms.Transforms
 {
     public abstract class ListTransform : ITransform
     {

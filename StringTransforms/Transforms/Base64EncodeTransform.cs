@@ -1,9 +1,9 @@
 ﻿using emanuel.Extensions;
+using StringTransforms.Extensions;
 using System;
 using System.Linq;
-using textr.Extensions;
 
-namespace textr.Transforms
+namespace StringTransforms.Transforms
 {
     public class Base64EncodeTransform : ListTransform
     {

@@ -1,9 +1,8 @@
 ﻿using emanuel.Extensions;
 using System;
 using System.Linq;
-using textr.Transforms;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
     public class RemoveBlankLinesTransform : ListTransform
     {

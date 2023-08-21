@@ -1,7 +1,7 @@
 ﻿using StringTransforms.Interfaces;
 using System;
 
-namespace emanuel.Transforms
+namespace StringTransforms.Transforms
 {
     public class NewLineCharFix : ITransform
     {

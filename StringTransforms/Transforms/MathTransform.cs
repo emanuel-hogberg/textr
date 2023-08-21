@@ -1,14 +1,18 @@
 ﻿using StringTransforms.Interfaces;
-using textr.Helpers;
 
-namespace textr.Transforms
+namespace StringTransforms.Transforms
 {
     public class MathTransform : ITransform
     {
+        private readonly IMathService _mathService;
+
+        public MathTransform(IMathService mathService)
+            => _mathService = mathService;
+
         public string Transform(string text)
-            => MathHelper.SplitOutHooks(text) +
+            => _mathService.SplitOutHooks(text) +
                " = " +
-               (MathHelper.MathExpression(text, out string error, out double calculation)
+               (_mathService.MathExpression(text, out string error, out double calculation)
                    ? calculation.ToString()
                    : error);
 

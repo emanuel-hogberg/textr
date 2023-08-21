@@ -125,7 +125,7 @@
             // 
             this.btnCopyToClipboard.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCopyToClipboard.Location = new System.Drawing.Point(0, 459);
-            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCopyToClipboard.Margin = new System.Windows.Forms.Padding(2);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
             this.btnCopyToClipboard.Size = new System.Drawing.Size(355, 87);
             this.btnCopyToClipboard.TabIndex = 2;
@@ -136,7 +136,7 @@
             // btnRemoveNewLines
             // 
             this.btnRemoveNewLines.Location = new System.Drawing.Point(9, 2);
-            this.btnRemoveNewLines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemoveNewLines.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveNewLines.Name = "btnRemoveNewLines";
             this.btnRemoveNewLines.Size = new System.Drawing.Size(147, 76);
             this.btnRemoveNewLines.TabIndex = 3;
@@ -148,7 +148,7 @@
             // 
             this.btnApply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnApply.Location = new System.Drawing.Point(19, 975);
-            this.btnApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(2);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(174, 66);
             this.btnApply.TabIndex = 4;
@@ -161,7 +161,7 @@
             this.chkAutoApply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.chkAutoApply.AutoSize = true;
             this.chkAutoApply.Location = new System.Drawing.Point(27, 942);
-            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkAutoApply.Margin = new System.Windows.Forms.Padding(2);
             this.chkAutoApply.Name = "chkAutoApply";
             this.chkAutoApply.Size = new System.Drawing.Size(130, 29);
             this.chkAutoApply.TabIndex = 5;
@@ -181,7 +181,7 @@
             // txtFind
             // 
             this.txtFind.Location = new System.Drawing.Point(13, 120);
-            this.txtFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFind.Margin = new System.Windows.Forms.Padding(2);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(162, 29);
             this.txtFind.TabIndex = 8;
@@ -190,7 +190,7 @@
             // txtReplace
             // 
             this.txtReplace.Location = new System.Drawing.Point(13, 153);
-            this.txtReplace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtReplace.Margin = new System.Windows.Forms.Padding(2);
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(162, 29);
             this.txtReplace.TabIndex = 9;
@@ -200,7 +200,7 @@
             // btnUndoTransform
             // 
             this.btnUndoTransform.Location = new System.Drawing.Point(9, 6);
-            this.btnUndoTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUndoTransform.Margin = new System.Windows.Forms.Padding(2);
             this.btnUndoTransform.Name = "btnUndoTransform";
             this.btnUndoTransform.Size = new System.Drawing.Size(90, 65);
             this.btnUndoTransform.TabIndex = 10;
@@ -211,7 +211,7 @@
             // txtNewLineAfterXOccurences
             // 
             this.txtNewLineAfterXOccurences.Location = new System.Drawing.Point(11, 310);
-            this.txtNewLineAfterXOccurences.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNewLineAfterXOccurences.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewLineAfterXOccurences.Name = "txtNewLineAfterXOccurences";
             this.txtNewLineAfterXOccurences.Size = new System.Drawing.Size(79, 29);
             this.txtNewLineAfterXOccurences.TabIndex = 11;
@@ -220,7 +220,7 @@
             // txtNewLineAfterXOccurencesOfY
             // 
             this.txtNewLineAfterXOccurencesOfY.Location = new System.Drawing.Point(13, 367);
-            this.txtNewLineAfterXOccurencesOfY.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNewLineAfterXOccurencesOfY.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewLineAfterXOccurencesOfY.Name = "txtNewLineAfterXOccurencesOfY";
             this.txtNewLineAfterXOccurencesOfY.Size = new System.Drawing.Size(162, 29);
             this.txtNewLineAfterXOccurencesOfY.TabIndex = 12;
@@ -259,7 +259,7 @@
             // btnMacroSqlQuery
             // 
             this.btnMacroSqlQuery.Location = new System.Drawing.Point(7, 162);
-            this.btnMacroSqlQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMacroSqlQuery.Margin = new System.Windows.Forms.Padding(2);
             this.btnMacroSqlQuery.Name = "btnMacroSqlQuery";
             this.btnMacroSqlQuery.Size = new System.Drawing.Size(125, 81);
             this.btnMacroSqlQuery.TabIndex = 16;
@@ -269,10 +269,10 @@
             // 
             // btnMacroSqlSelectFormatter
             // 
-            this.btnMacroSqlSelectFormatter.Location = new System.Drawing.Point(136, 132);
-            this.btnMacroSqlSelectFormatter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMacroSqlSelectFormatter.Location = new System.Drawing.Point(136, 133);
+            this.btnMacroSqlSelectFormatter.Margin = new System.Windows.Forms.Padding(2);
             this.btnMacroSqlSelectFormatter.Name = "btnMacroSqlSelectFormatter";
-            this.btnMacroSqlSelectFormatter.Size = new System.Drawing.Size(126, 50);
+            this.btnMacroSqlSelectFormatter.Size = new System.Drawing.Size(110, 50);
             this.btnMacroSqlSelectFormatter.TabIndex = 17;
             this.btnMacroSqlSelectFormatter.Text = "SELECT";
             this.btnMacroSqlSelectFormatter.UseVisualStyleBackColor = true;
@@ -281,7 +281,7 @@
             // btnClearTransforms
             // 
             this.btnClearTransforms.Location = new System.Drawing.Point(282, 73);
-            this.btnClearTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClearTransforms.Margin = new System.Windows.Forms.Padding(2);
             this.btnClearTransforms.Name = "btnClearTransforms";
             this.btnClearTransforms.Size = new System.Drawing.Size(79, 65);
             this.btnClearTransforms.TabIndex = 18;
@@ -292,7 +292,7 @@
             // btnBatchEdit
             // 
             this.btnBatchEdit.Location = new System.Drawing.Point(214, 390);
-            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBatchEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnBatchEdit.Name = "btnBatchEdit";
             this.btnBatchEdit.Size = new System.Drawing.Size(138, 65);
             this.btnBatchEdit.TabIndex = 19;
@@ -303,7 +303,7 @@
             // btnNewLineChars
             // 
             this.btnNewLineChars.Location = new System.Drawing.Point(12, 654);
-            this.btnNewLineChars.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNewLineChars.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewLineChars.Name = "btnNewLineChars";
             this.btnNewLineChars.Size = new System.Drawing.Size(174, 56);
             this.btnNewLineChars.TabIndex = 20;
@@ -317,7 +317,7 @@
             this.chkCaseSensitive.Checked = true;
             this.chkCaseSensitive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCaseSensitive.Location = new System.Drawing.Point(9, 412);
-            this.chkCaseSensitive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkCaseSensitive.Margin = new System.Windows.Forms.Padding(2);
             this.chkCaseSensitive.Name = "chkCaseSensitive";
             this.chkCaseSensitive.Size = new System.Drawing.Size(166, 29);
             this.chkCaseSensitive.TabIndex = 21;
@@ -328,7 +328,7 @@
             // 
             this.chkBeforeOrAfter.AutoSize = true;
             this.chkBeforeOrAfter.Location = new System.Drawing.Point(143, 286);
-            this.chkBeforeOrAfter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkBeforeOrAfter.Margin = new System.Windows.Forms.Padding(2);
             this.chkBeforeOrAfter.Name = "chkBeforeOrAfter";
             this.chkBeforeOrAfter.Size = new System.Drawing.Size(22, 21);
             this.chkBeforeOrAfter.TabIndex = 22;
@@ -351,7 +351,7 @@
             this.tblLayout.Controls.Add(this.pnlTransforms, 1, 0);
             this.tblLayout.Controls.Add(this.txtResult, 2, 0);
             this.tblLayout.Location = new System.Drawing.Point(29, 26);
-            this.tblLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblLayout.Margin = new System.Windows.Forms.Padding(2);
             this.tblLayout.Name = "tblLayout";
             this.tblLayout.RowCount = 2;
             this.tblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -366,7 +366,7 @@
             this.pnlActions.Controls.Add(this.pnlActionButtons);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(1278, 2);
-            this.pnlActions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlActions.Margin = new System.Windows.Forms.Padding(2);
             this.pnlActions.Name = "pnlActions";
             this.pnlActions.Size = new System.Drawing.Size(355, 1059);
             this.pnlActions.TabIndex = 0;
@@ -375,7 +375,7 @@
             // 
             this.txtInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtInfo.Location = new System.Drawing.Point(0, 484);
-            this.txtInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtInfo.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
             this.txtInfo.Size = new System.Drawing.Size(355, 29);
@@ -387,7 +387,7 @@
             this.lstTransforms.FormattingEnabled = true;
             this.lstTransforms.ItemHeight = 24;
             this.lstTransforms.Location = new System.Drawing.Point(0, 0);
-            this.lstTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstTransforms.Margin = new System.Windows.Forms.Padding(2);
             this.lstTransforms.Name = "lstTransforms";
             this.lstTransforms.Size = new System.Drawing.Size(355, 484);
             this.lstTransforms.TabIndex = 21;
@@ -421,7 +421,7 @@
             this.pnlActionButtons.Controls.Add(this.lblMacros);
             this.pnlActionButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlActionButtons.Location = new System.Drawing.Point(0, 513);
-            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlActionButtons.Margin = new System.Windows.Forms.Padding(2);
             this.pnlActionButtons.Name = "pnlActionButtons";
             this.pnlActionButtons.Size = new System.Drawing.Size(355, 546);
             this.pnlActionButtons.TabIndex = 20;
@@ -429,7 +429,7 @@
             // btnFromBase64
             // 
             this.btnFromBase64.Location = new System.Drawing.Point(152, 331);
-            this.btnFromBase64.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFromBase64.Margin = new System.Windows.Forms.Padding(4);
             this.btnFromBase64.Name = "btnFromBase64";
             this.btnFromBase64.Size = new System.Drawing.Size(57, 33);
             this.btnFromBase64.TabIndex = 35;
@@ -440,7 +440,7 @@
             // btnToBase64
             // 
             this.btnToBase64.Location = new System.Drawing.Point(14, 332);
-            this.btnToBase64.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnToBase64.Margin = new System.Windows.Forms.Padding(4);
             this.btnToBase64.Name = "btnToBase64";
             this.btnToBase64.Size = new System.Drawing.Size(95, 33);
             this.btnToBase64.TabIndex = 33;
@@ -451,7 +451,7 @@
             // btnGremlin
             // 
             this.btnGremlin.Location = new System.Drawing.Point(6, 114);
-            this.btnGremlin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGremlin.Margin = new System.Windows.Forms.Padding(4);
             this.btnGremlin.Name = "btnGremlin";
             this.btnGremlin.Size = new System.Drawing.Size(124, 42);
             this.btnGremlin.TabIndex = 34;
@@ -465,7 +465,7 @@
             this.chkXmlCasing.Checked = true;
             this.chkXmlCasing.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkXmlCasing.Location = new System.Drawing.Point(184, 245);
-            this.chkXmlCasing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkXmlCasing.Margin = new System.Windows.Forms.Padding(4);
             this.chkXmlCasing.Name = "chkXmlCasing";
             this.chkXmlCasing.Size = new System.Drawing.Size(168, 29);
             this.chkXmlCasing.TabIndex = 34;
@@ -476,7 +476,7 @@
             // btnXmlToJson
             // 
             this.btnXmlToJson.Location = new System.Drawing.Point(152, 371);
-            this.btnXmlToJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXmlToJson.Margin = new System.Windows.Forms.Padding(4);
             this.btnXmlToJson.Name = "btnXmlToJson";
             this.btnXmlToJson.Size = new System.Drawing.Size(59, 42);
             this.btnXmlToJson.TabIndex = 33;
@@ -487,7 +487,7 @@
             // btnJsonToXml
             // 
             this.btnJsonToXml.Location = new System.Drawing.Point(14, 371);
-            this.btnJsonToXml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnJsonToXml.Margin = new System.Windows.Forms.Padding(4);
             this.btnJsonToXml.Name = "btnJsonToXml";
             this.btnJsonToXml.Size = new System.Drawing.Size(130, 42);
             this.btnJsonToXml.TabIndex = 32;
@@ -498,7 +498,7 @@
             // btnJira
             // 
             this.btnJira.Location = new System.Drawing.Point(271, 280);
-            this.btnJira.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnJira.Margin = new System.Windows.Forms.Padding(4);
             this.btnJira.Name = "btnJira";
             this.btnJira.Size = new System.Drawing.Size(81, 42);
             this.btnJira.TabIndex = 24;
@@ -509,7 +509,7 @@
             // btnAsciiFrom
             // 
             this.btnAsciiFrom.Location = new System.Drawing.Point(136, 282);
-            this.btnAsciiFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAsciiFrom.Margin = new System.Windows.Forms.Padding(4);
             this.btnAsciiFrom.Name = "btnAsciiFrom";
             this.btnAsciiFrom.Size = new System.Drawing.Size(70, 42);
             this.btnAsciiFrom.TabIndex = 31;
@@ -520,7 +520,7 @@
             // btnMoveTransformDown
             // 
             this.btnMoveTransformDown.Location = new System.Drawing.Point(187, 35);
-            this.btnMoveTransformDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMoveTransformDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnMoveTransformDown.Name = "btnMoveTransformDown";
             this.btnMoveTransformDown.Size = new System.Drawing.Size(77, 39);
             this.btnMoveTransformDown.TabIndex = 29;
@@ -531,7 +531,7 @@
             // btnMoveTransformUp
             // 
             this.btnMoveTransformUp.Location = new System.Drawing.Point(187, 0);
-            this.btnMoveTransformUp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMoveTransformUp.Margin = new System.Windows.Forms.Padding(6);
             this.btnMoveTransformUp.Name = "btnMoveTransformUp";
             this.btnMoveTransformUp.Size = new System.Drawing.Size(77, 42);
             this.btnMoveTransformUp.TabIndex = 28;
@@ -542,7 +542,7 @@
             // btnAddTableNames
             // 
             this.btnAddTableNames.Location = new System.Drawing.Point(136, 191);
-            this.btnAddTableNames.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAddTableNames.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddTableNames.Name = "btnAddTableNames";
             this.btnAddTableNames.Size = new System.Drawing.Size(126, 42);
             this.btnAddTableNames.TabIndex = 24;
@@ -554,7 +554,7 @@
             // 
             this.btnEditSelectedTransform.Enabled = false;
             this.btnEditSelectedTransform.Location = new System.Drawing.Point(277, 2);
-            this.btnEditSelectedTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditSelectedTransform.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditSelectedTransform.Name = "btnEditSelectedTransform";
             this.btnEditSelectedTransform.Size = new System.Drawing.Size(84, 65);
             this.btnEditSelectedTransform.TabIndex = 23;
@@ -565,7 +565,7 @@
             // btnMacroSqlValues
             // 
             this.btnMacroSqlValues.Location = new System.Drawing.Point(258, 193);
-            this.btnMacroSqlValues.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMacroSqlValues.Margin = new System.Windows.Forms.Padding(2);
             this.btnMacroSqlValues.Name = "btnMacroSqlValues";
             this.btnMacroSqlValues.Size = new System.Drawing.Size(94, 41);
             this.btnMacroSqlValues.TabIndex = 24;
@@ -576,7 +576,7 @@
             // btnAsciiTo
             // 
             this.btnAsciiTo.Location = new System.Drawing.Point(14, 280);
-            this.btnAsciiTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAsciiTo.Margin = new System.Windows.Forms.Padding(4);
             this.btnAsciiTo.Name = "btnAsciiTo";
             this.btnAsciiTo.Size = new System.Drawing.Size(95, 44);
             this.btnAsciiTo.TabIndex = 2;
@@ -587,7 +587,7 @@
             // btnRemoveSelectedTransform
             // 
             this.btnRemoveSelectedTransform.Location = new System.Drawing.Point(126, 6);
-            this.btnRemoveSelectedTransform.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemoveSelectedTransform.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveSelectedTransform.Name = "btnRemoveSelectedTransform";
             this.btnRemoveSelectedTransform.Size = new System.Drawing.Size(57, 65);
             this.btnRemoveSelectedTransform.TabIndex = 22;
@@ -598,7 +598,7 @@
             // btnMacroListStringComma
             // 
             this.btnMacroListStringComma.Location = new System.Drawing.Point(258, 164);
-            this.btnMacroListStringComma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMacroListStringComma.Margin = new System.Windows.Forms.Padding(2);
             this.btnMacroListStringComma.Name = "btnMacroListStringComma";
             this.btnMacroListStringComma.Size = new System.Drawing.Size(77, 37);
             this.btnMacroListStringComma.TabIndex = 27;
@@ -609,7 +609,7 @@
             // btnMacroListComma
             // 
             this.btnMacroListComma.Location = new System.Drawing.Point(258, 132);
-            this.btnMacroListComma.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMacroListComma.Margin = new System.Windows.Forms.Padding(2);
             this.btnMacroListComma.Name = "btnMacroListComma";
             this.btnMacroListComma.Size = new System.Drawing.Size(77, 35);
             this.btnMacroListComma.TabIndex = 20;
@@ -644,7 +644,7 @@
             this.pnlTransforms.Controls.Add(this.lblNewLineAfterX);
             this.pnlTransforms.Controls.Add(this.lblNewLineOccurence);
             this.pnlTransforms.Location = new System.Drawing.Point(540, 2);
-            this.pnlTransforms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlTransforms.Margin = new System.Windows.Forms.Padding(2);
             this.pnlTransforms.Name = "pnlTransforms";
             this.pnlTransforms.Size = new System.Drawing.Size(196, 1059);
             this.pnlTransforms.TabIndex = 1;
@@ -653,7 +653,7 @@
             // 
             this.btnMath.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMath.Location = new System.Drawing.Point(22, 891);
-            this.btnMath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMath.Margin = new System.Windows.Forms.Padding(4);
             this.btnMath.Name = "btnMath";
             this.btnMath.Size = new System.Drawing.Size(165, 37);
             this.btnMath.TabIndex = 32;
@@ -666,7 +666,7 @@
             // btnCopyTab
             // 
             this.btnCopyTab.Location = new System.Drawing.Point(9, 454);
-            this.btnCopyTab.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCopyTab.Margin = new System.Windows.Forms.Padding(6);
             this.btnCopyTab.Name = "btnCopyTab";
             this.btnCopyTab.Size = new System.Drawing.Size(174, 41);
             this.btnCopyTab.TabIndex = 30;
@@ -677,7 +677,7 @@
             // btnParagraphToAsterisk
             // 
             this.btnParagraphToAsterisk.Location = new System.Drawing.Point(101, 716);
-            this.btnParagraphToAsterisk.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnParagraphToAsterisk.Margin = new System.Windows.Forms.Padding(6);
             this.btnParagraphToAsterisk.Name = "btnParagraphToAsterisk";
             this.btnParagraphToAsterisk.Size = new System.Drawing.Size(75, 42);
             this.btnParagraphToAsterisk.TabIndex = 29;
@@ -698,7 +698,7 @@
             // btnAsteriskToParagraph
             // 
             this.btnAsteriskToParagraph.Location = new System.Drawing.Point(13, 716);
-            this.btnAsteriskToParagraph.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAsteriskToParagraph.Margin = new System.Windows.Forms.Padding(6);
             this.btnAsteriskToParagraph.Name = "btnAsteriskToParagraph";
             this.btnAsteriskToParagraph.Size = new System.Drawing.Size(82, 42);
             this.btnAsteriskToParagraph.TabIndex = 28;
@@ -709,7 +709,7 @@
             // txtTruncate
             // 
             this.txtTruncate.Location = new System.Drawing.Point(13, 251);
-            this.txtTruncate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTruncate.Margin = new System.Windows.Forms.Padding(2);
             this.txtTruncate.Name = "txtTruncate";
             this.txtTruncate.Size = new System.Drawing.Size(169, 29);
             this.txtTruncate.TabIndex = 25;
@@ -718,7 +718,7 @@
             // btnRemoveBlankLines
             // 
             this.btnRemoveBlankLines.Location = new System.Drawing.Point(14, 557);
-            this.btnRemoveBlankLines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRemoveBlankLines.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveBlankLines.Name = "btnRemoveBlankLines";
             this.btnRemoveBlankLines.Size = new System.Drawing.Size(169, 61);
             this.btnRemoveBlankLines.TabIndex = 24;
@@ -729,7 +729,7 @@
             // btnDistinct
             // 
             this.btnDistinct.Location = new System.Drawing.Point(14, 513);
-            this.btnDistinct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDistinct.Margin = new System.Windows.Forms.Padding(2);
             this.btnDistinct.Name = "btnDistinct";
             this.btnDistinct.Size = new System.Drawing.Size(169, 44);
             this.btnDistinct.TabIndex = 23;
@@ -756,7 +756,7 @@
             this.Controls.Add(this.lblStatusBar);
             this.Controls.Add(this.tblLayout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TextTransforms";
             this.Text = "textr";
             this.tblLayout.ResumeLayout(false);

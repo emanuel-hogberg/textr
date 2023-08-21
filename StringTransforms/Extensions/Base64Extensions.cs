@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace textr.Extensions
+namespace StringTransforms.Extensions
 {
     static class Base64Extensions
     {
