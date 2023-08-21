@@ -1,10 +1,9 @@
 ﻿using emanuel.Extensions;
-using StringTransforms;
 using StringTransforms.Interfaces;
 
 namespace StringTransforms.Transforms
 {
-    public class TruncateTransform : EditableTransform
+    internal class TruncateTransform : EditableTransform
     {
         public string Truncate { get; set; }
         public bool FromStart { get; set; }

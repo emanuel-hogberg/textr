@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace StringTransforms.Transforms
 {
-    public class DistinctTransform : ListTransform
+    internal class DistinctTransform : ListTransform
     {
         override public string TransformList(string[] lines)
             => lines

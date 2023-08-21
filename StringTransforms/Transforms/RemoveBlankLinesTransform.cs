@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace StringTransforms.Transforms
 {
-    public class RemoveBlankLinesTransform : ListTransform
+    internal class RemoveBlankLinesTransform : ListTransform
     {
         public override string TransformList(string[] lines)
             => lines

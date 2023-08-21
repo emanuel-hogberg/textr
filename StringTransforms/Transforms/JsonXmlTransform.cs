@@ -6,7 +6,7 @@ using System.Text.Json.Nodes;
 
 namespace StringTransforms.Transforms
 {
-    public class JsonXmlTransform : ITransform
+    internal class JsonXmlTransform : ITransform
     {
         public static readonly string DeserializeRootElementName = "__Root__";
         public bool PascalCasing { get; set; }

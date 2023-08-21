@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace StringTransforms.Macros
 {
-    public static class GremlinMacros
+    internal static class GremlinMacros
     {
-        public static List<ITransform> GremlinFormat()
+        public static List<ITransform> CreateGremlinFormat()
         => new Macros()
             .AddTransform(new NewLineAfterXOccurencesOfY(1, ".has", caseSensitive: false, before: true))
             .AddTransform(new NewLineAfterXOccurencesOfY(1, ".in(", caseSensitive: false, before: true))

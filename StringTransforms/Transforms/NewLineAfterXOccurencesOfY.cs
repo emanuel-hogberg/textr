@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace StringTransforms.Transforms
 {
-    public class NewLineAfterXOccurencesOfY : ITransform
+    internal class NewLineAfterXOccurencesOfY : ITransform
     {
         public int Occurences { get; set; }
         public string Text { get; set; }

@@ -1,10 +1,9 @@
 ﻿using emanuel.Extensions;
-using StringTransforms;
 using StringTransforms.Interfaces;
 
 namespace StringTransforms.Transforms
 {
-    public class FindReplaceTransform : EditableTransform
+    internal class FindReplaceTransform : EditableTransform
     {
         private string find;
         private string replace;
