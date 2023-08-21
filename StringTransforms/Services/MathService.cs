@@ -9,6 +9,8 @@ namespace StringTransforms.Services
 {
     public class MathService : IMathService
     {
+        private LicenseCheck _licenseCheck;
+
         public MathService()
         {
             if (!License.checkIfUseTypeConfirmed())
@@ -19,12 +21,31 @@ namespace StringTransforms.Services
 
         public string GetLicense() => License.getUseTypeConfirmationMessage();
 
+        private void CheckLicenseConfirmed()
+        {
+            switch (_licenseCheck)
+            {
+                case LicenseCheck.Error:
+
+                    throw new MathLicenseException();
+
+                case LicenseCheck.NotChecked:
+
+                    if (!License.checkIfUseTypeConfirmed())
+                    {
+                        _licenseCheck = LicenseCheck.Error;
+
+                        throw new MathLicenseException();
+                    }
+
+                    _licenseCheck = LicenseCheck.Checked;
+                    break;
+            }
+        }
+
         public bool MathExpression(string stringExpression, out string error, out double calculation)
         {
-            if (!License.checkIfUseTypeConfirmed())
-            {
-                throw new MathLicenseException();
-            }
+            CheckLicenseConfirmed();
 
             var expression = stringExpression
                 .Forward(t => SplitOutHooks(t))
@@ -64,6 +85,13 @@ namespace StringTransforms.Services
             => t.Contains("<") && t.Contains(">")
                 ? t.Split('<', '>')[1]
                 : t;
+
+        enum LicenseCheck
+        {
+            NotChecked,
+            Checked,
+            Error
+        }
 
         [Serializable]
         private class MathLicenseException : Exception
