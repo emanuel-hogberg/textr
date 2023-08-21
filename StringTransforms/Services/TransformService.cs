@@ -23,21 +23,6 @@ namespace StringTransforms.Services
         public string ApplyTransforms(ITransformCollection transforms, string text)
             => transforms.Concrete().ApplyTransforms(text);
 
-        public void Clear(ITransformCollection transforms)
-        {
-            transforms.Concrete().Clear();
-        }
-
-        public ITransformService EditTransform(ITransform transform, ITransformCollection transforms)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITransformService EditTransform(ITransformCollection transforms)
-        {
-            throw new NotImplementedException();
-        }
-
         public ITransformService MoveSelectedTransform(ITransformCollection transforms, bool up)
         {
             IfValidIndexSelected(transforms, () =>
