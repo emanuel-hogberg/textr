@@ -61,9 +61,6 @@
     <Compile Include="BatchEdit.Designer.cs">
       <DependentUpon>BatchEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Macros\GremlinMacros.cs" />
-    <Compile Include="Macros\Macros.cs" />
-    <Compile Include="Macros\SqlMacros.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TextTransforms.cs">
       <SubType>Form</SubType>

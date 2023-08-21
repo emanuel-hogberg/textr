@@ -2,7 +2,7 @@
 using StringTransforms.Transforms;
 using System.Collections.Generic;
 
-namespace emanuel.Macros
+namespace StringTransforms.Macros
 {
     public static class GremlinMacros
     {

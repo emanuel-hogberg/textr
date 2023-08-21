@@ -1,8 +1,8 @@
 ﻿using emanuel.Extensions;
-using emanuel.Macros;
 using JiraHelper;
 using StringTransforms;
 using StringTransforms.Interfaces;
+using StringTransforms.Macros;
 using StringTransforms.Transforms;
 using System;
 using System.Collections.Generic;
