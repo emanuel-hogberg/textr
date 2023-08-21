@@ -73,9 +73,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transforms\BatchEdit\FormatTransform.cs" />
-    <Compile Include="Transforms\BatchEdit\GroupTransform.cs" />
-    <Compile Include="Transforms\BatchEdit\IBatchEditLineTransform.cs" />
     <EmbeddedResource Include="BatchEdit.resx">
       <DependentUpon>BatchEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,5 +130,6 @@
       <Version>13.0.2</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

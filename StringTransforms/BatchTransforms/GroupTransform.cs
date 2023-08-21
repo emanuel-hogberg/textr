@@ -1,10 +1,11 @@
 ﻿using emanuel.Extensions;
 using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 using System;
 using System.Linq;
 using System.Text;
 
-namespace emanuel.Transforms
+namespace StringTransforms.BatchTransforms
 {
     public class GroupTransform : ListTransform, IBatchEditLineTransform
     {

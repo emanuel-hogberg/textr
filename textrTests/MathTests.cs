@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StringTransforms.Transforms;
 using textr.Transforms;
 
 namespace textrTests

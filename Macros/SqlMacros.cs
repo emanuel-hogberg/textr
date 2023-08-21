@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using emanuel.Transforms;
+using StringTransforms.BatchTransforms;
 using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 
 namespace emanuel.Macros
 {

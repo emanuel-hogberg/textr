@@ -1,7 +1,6 @@
-﻿using System;
+﻿using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 using System.Collections.Generic;
-using emanuel.Transforms;
-using StringTransforms.Interfaces;
 
 namespace emanuel.Macros
 {

@@ -3,6 +3,7 @@ using emanuel.Macros;
 using JiraHelper;
 using StringTransforms;
 using StringTransforms.Interfaces;
+using StringTransforms.Transforms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -19,18 +20,21 @@ namespace emanuel
         private ITransformMacroFactoryService _transformMacroFactoryService;
         private ITransformService _transformService;
         private readonly IEditEventService _editEventService;
+        private readonly IMathService _mathService;
         ITransformCollection _transformCollection;
 
         public TextTransforms(
             ITransformFactoryService transformFactoryService,
             ITransformMacroFactoryService transformMacroFactoryService,
             ITransformService transformService,
-            IEditEventService editEventService)
+            IEditEventService editEventService,
+            IMathService mathService)
         {
             _transformFactoryService = transformFactoryService;
             _transformMacroFactoryService = transformMacroFactoryService;
             _transformService = transformService;
             _editEventService = editEventService;
+            _mathService = mathService;
 
             InitializeComponent();
             InitEditableTransforms();
@@ -493,14 +497,14 @@ namespace emanuel
 
         private void btnMath_Click(object sender, EventArgs e)
         {
-            AddTransform(new MathTransform());
+            AddTransform(new MathTransform(_mathService));
         }
 
         private void btnMath_MouseEnter(object sender, EventArgs e)
         {
             string selection = txtMain.SelectionLength > 0 ?
                 txtMain.SelectedText :
-                MathHelper.SplitOutHooks(txtMain.Text);
+                _mathService.SplitOutHooks(txtMain.Text);
 
             if (string.IsNullOrEmpty(selection))
             {
@@ -510,7 +514,7 @@ namespace emanuel
             {
                 string resultString = "error";
 
-                if (MathHelper.MathExpression(selection, out string error, out double result))
+                if (_mathService.MathExpression(selection, out string error, out double result))
                 {
                     resultString = result.ToString();
                 }

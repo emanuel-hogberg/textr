@@ -1,6 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using emanuel.Transforms;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StringTransforms.BatchTransforms;
+using StringTransforms.Interfaces;
+using System;
 
 namespace textrTests
 {
@@ -46,10 +47,10 @@ namespace textrTests
         const string transformMulti2 = "*leet*thiis";
         const string transformMulti3 = "leet*thiis*";
         const string resultMulti = "hello leet's test thiis thing out";
-        
+
         const string matchMulti4 = "he*l**out";
         const string transformMulti4 = "hey he*ll**out ok";
-        const string resultMulti4= "hey helllo let's test this thing out ok";
+        const string resultMulti4 = "hey helllo let's test this thing out ok";
 
 
         class Tester
@@ -161,7 +162,7 @@ namespace textrTests
                     .SetTransform(transform)
                     .Result == string.Empty,
                 "Test 1 failed: Empty transform did not produce empty result.");
-            
+
             // If the selection and transform have a mismatch, the result should equal the selection.
             transform = "hello";
             Assert.IsTrue(
@@ -170,7 +171,7 @@ namespace textrTests
                     .SetTransform(transform)
                     .Result == subject.Selection,
                 errorMsg(2));
-            
+
             (sel, transform) = ("out", "*oout*");
             Assert.IsTrue(
                 subject
