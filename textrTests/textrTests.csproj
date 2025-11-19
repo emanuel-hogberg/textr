@@ -71,7 +71,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <!-- PackageReference migrated from packages.config -->
+    <PackageReference Include="MathParser.org-mXparser" Version="5.2.1" />
+    <!-- Keep packages.config removed; MSTest adapter imported via SDK-style or package reference if needed -->
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
