@@ -1,11 +1,19 @@
 <Project>
   <PropertyGroup>
-    <!-- Enable use of preserialized resources for non-string resources (fixes MSB3823) -->
+    <!-- Enable use of preserialized resources for non-string resources -->
     <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
   <!-- Ensure System.Resources.Extensions is available at runtime for projects that embed non-string resources -->
   <ItemGroup>
-    <PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+  </ItemGroup>
+  
+  <!-- Add reference to System.Resources.Extensions for .NET Framework projects -->
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>$(NuGetPackageRoot)system.resources.extensions\8.0.0\lib\net462\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
 </Project>
