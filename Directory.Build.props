@@ -6,7 +6,6 @@
 
   <!-- Ensure System.Resources.Extensions is available at runtime for projects that embed non-string resources -->
   <ItemGroup>
-    <!-- Version 4.3.0 is compatible with .NET Framework 4.6+ and should work for .NET Framework 4.8 projects in this solution. -->
-    <PackageReference Include="System.Resources.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="4.6.0" />
   </ItemGroup>
 </Project>
