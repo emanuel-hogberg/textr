@@ -56,3 +56,4 @@ bin/
 obj/
 packages/
 *.csproj.user
+.vscode/settings.json
