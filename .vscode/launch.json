@@ -2,15 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Framework Launch (console)",
+      "name": "Launch textr (Windows Forms)",
       "type": "clr",
       "request": "launch",
       "program": "${workspaceFolder}/bin/Debug/textr.exe",
       "args": [],
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "build",
-      "stopAtEntry": false,
-      "console": "integratedTerminal"
+      "stopAtEntry": false
     }
   ]
 }
