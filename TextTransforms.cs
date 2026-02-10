@@ -244,6 +244,11 @@ namespace emanuel
             AddTransform(_transformFactoryService.CreateRemoveBlankLinesTransform());
         }
 
+        private void BtnSort_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateSortTransform());
+        }
+
         #endregion
 
         #region Macro button clicks
