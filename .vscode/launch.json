@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "Launch textr (Windows Forms)",
-      "type": "clr",
+      "type": "coreclr",
       "request": "launch",
-      "program": "${workspaceFolder}/bin/Debug/textr.exe",
+      "program": "${workspaceFolder}/bin/Debug/net8.0-windows/textr.exe",
       "args": [],
       "cwd": "${workspaceFolder}",
       "preLaunchTask": "build",
