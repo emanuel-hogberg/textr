@@ -82,6 +82,7 @@
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
@@ -630,6 +631,7 @@
             this.pnlTransforms.Controls.Add(this.txtTruncate);
             this.pnlTransforms.Controls.Add(this.btnRemoveBlankLines);
             this.pnlTransforms.Controls.Add(this.btnDistinct);
+            this.pnlTransforms.Controls.Add(this.btnSort);
             this.pnlTransforms.Controls.Add(this.btnRemoveNewLines);
             this.pnlTransforms.Controls.Add(this.btnApply);
             this.pnlTransforms.Controls.Add(this.chkAutoApply);
@@ -737,6 +739,17 @@
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.BtnDistinct_Click);
             // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(14, 622);
+            this.btnSort.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(169, 44);
+            this.btnSort.TabIndex = 33;
+            this.btnSort.Text = "Sort";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.BtnSort_Click);
+            // 
             // lblStatusBar
             // 
             this.lblStatusBar.AutoSize = true;
@@ -828,6 +841,7 @@
         private System.Windows.Forms.Button btnGremlin;
         private System.Windows.Forms.Button btnToBase64;
         private System.Windows.Forms.Button btnFromBase64;
+        private System.Windows.Forms.Button btnSort;
     }
 }
 

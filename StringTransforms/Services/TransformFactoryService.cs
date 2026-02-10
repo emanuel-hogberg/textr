@@ -28,6 +28,8 @@ namespace StringTransforms.Services
             => new RemoveBlankLinesTransform();
         public ITransform CreateRemoveNewLineTransform()
             => new RemoveNewLineTransform();
+        public ITransform CreateSortTransform()
+            => new SortTransform();
         public ITransform CreateTruncateTransform(bool fromStart, bool ignoreCase, string truncate)
             => new TruncateTransform()
             {
