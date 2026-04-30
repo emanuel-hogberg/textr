@@ -35,6 +35,8 @@ namespace StringTransforms.Services
                 IgnoreCase = ignoreCase,
                 Truncate = truncate
             };
+        public ITransform CreateSortJsonTransform()
+            => new SortJsonTransform();
         public ITransform CreateXmlJsonTransform()
             => new XmlJsonTransform();
     }
