@@ -13,18 +13,30 @@ namespace emanuel
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += (s, e) =>
+                MessageBox.Show(e.Exception.ToString(), "Unhandled Thread Exception");
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+                MessageBox.Show(e.ExceptionObject?.ToString(), "Unhandled Exception");
 
-            var services = new ServiceCollection();
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            var serviceProvider = services
-                .ConfigureTextrServices()
-                .BuildServiceProvider();
+                var services = new ServiceCollection();
 
-            var form = serviceProvider.GetRequiredService<Form>();
+                var serviceProvider = services
+                    .ConfigureTextrServices()
+                    .BuildServiceProvider();
 
-            Application.Run(form);
+                var form = serviceProvider.GetRequiredService<Form>();
+
+                Application.Run(form);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Startup Exception");
+            }
         }
     }
 }
