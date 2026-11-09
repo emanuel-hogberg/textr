@@ -11,7 +11,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-Command",
-                "$vswhere = Join-Path ([Environment]::GetFolderPath('ProgramFilesX86')) 'Microsoft Visual Studio\\Installer\\vswhere.exe'; $msbuild = & $vswhere -latest -prerelease -products * -requires Microsoft.Component.MSBuild -find 'MSBuild\\**\\Bin\\MSBuild.exe' | Select-Object -First 1; if (-not $msbuild) { Write-Error 'MSBuild not found (Visual Studio or Build Tools required)'; exit 1 }; & $msbuild textr.sln -restore -p:RestorePackagesConfig=true -p:Configuration=Debug -v:minimal -nologo; exit $LASTEXITCODE"
+                "$vswhere = Join-Path ([Environment]::GetFolderPath('ProgramFilesX86')) 'Microsoft Visual Studio\\Installer\\vswhere.exe'; $msbuild = & $vswhere -latest -prerelease -products * -version '[16.5,' -requires Microsoft.Component.MSBuild Microsoft.Net.Component.4.8.TargetingPack -find 'MSBuild\\**\\Bin\\MSBuild.exe' | Select-Object -First 1; if (-not $msbuild) { Write-Error 'MSBuild not found: needs Visual Studio or Build Tools 16.5+ with the .NET Framework 4.8 targeting pack'; exit 1 }; & $msbuild textr.sln -restore -p:RestorePackagesConfig=true -p:Configuration=Debug -v:minimal -nologo; exit $LASTEXITCODE"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
