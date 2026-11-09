@@ -12,6 +12,8 @@
         ITransform CreateNewLineCharFix();
         ITransform CreateRemoveBlankLinesTransform();
         ITransform CreateRemoveNewLineTransform();
+        ITransform CreateSortTransform();
+        ITransform CreateSortJsonTransform();
         ITransform CreateTruncateTransform(bool fromStart, bool ignoreCase, string truncate);
         ITransform CreateUrlToParamsTransform();
         ITransform CreateParamsToUrlTransform();

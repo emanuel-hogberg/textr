@@ -244,6 +244,11 @@ namespace emanuel
             AddTransform(_transformFactoryService.CreateRemoveBlankLinesTransform());
         }
 
+        private void BtnSort_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateSortTransform());
+        }
+
         #endregion
 
         #region Macro button clicks
@@ -563,6 +568,11 @@ namespace emanuel
         private void btnParamsToUrl_Click(object sender, EventArgs e)
         {
             AddTransform(_transformFactoryService.CreateParamsToUrlTransform());
+        }
+
+        private void btnSortJson_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateSortJsonTransform());
         }
 
         private void chkXmlCasing_CheckedChanged(object sender, EventArgs e)

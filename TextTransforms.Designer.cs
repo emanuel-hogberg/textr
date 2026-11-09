@@ -59,6 +59,7 @@
             this.btnFromBase64 = new System.Windows.Forms.Button();
             this.btnToBase64 = new System.Windows.Forms.Button();
             this.btnGremlin = new System.Windows.Forms.Button();
+            this.btnSortJson = new System.Windows.Forms.Button();
             this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.btnXmlToJson = new System.Windows.Forms.Button();
             this.btnJsonToXml = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             this.lblStatusBar = new System.Windows.Forms.Label();
             this.tblLayout.SuspendLayout();
             this.pnlActions.SuspendLayout();
@@ -400,6 +402,7 @@
             this.pnlActionButtons.Controls.Add(this.btnFromBase64);
             this.pnlActionButtons.Controls.Add(this.btnToBase64);
             this.pnlActionButtons.Controls.Add(this.btnGremlin);
+            this.pnlActionButtons.Controls.Add(this.btnSortJson);
             this.pnlActionButtons.Controls.Add(this.chkXmlCasing);
             this.pnlActionButtons.Controls.Add(this.btnXmlToJson);
             this.pnlActionButtons.Controls.Add(this.btnJsonToXml);
@@ -449,6 +452,17 @@
             this.btnToBase64.Text = "=> 64";
             this.btnToBase64.UseVisualStyleBackColor = true;
             this.btnToBase64.Click += new System.EventHandler(this.btnToMd5_Click);
+            // 
+            // btnSortJson
+            // 
+            this.btnSortJson.Location = new System.Drawing.Point(14, 421);
+            this.btnSortJson.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortJson.Name = "btnSortJson";
+            this.btnSortJson.Size = new System.Drawing.Size(130, 36);
+            this.btnSortJson.TabIndex = 36;
+            this.btnSortJson.Text = "sort json";
+            this.btnSortJson.UseVisualStyleBackColor = true;
+            this.btnSortJson.Click += new System.EventHandler(this.btnSortJson_Click);
             // 
             // btnGremlin
             // 
@@ -634,6 +648,7 @@
             this.pnlTransforms.Controls.Add(this.txtTruncate);
             this.pnlTransforms.Controls.Add(this.btnRemoveBlankLines);
             this.pnlTransforms.Controls.Add(this.btnDistinct);
+            this.pnlTransforms.Controls.Add(this.btnSort);
             this.pnlTransforms.Controls.Add(this.btnRemoveNewLines);
             this.pnlTransforms.Controls.Add(this.btnApply);
             this.pnlTransforms.Controls.Add(this.chkAutoApply);
@@ -763,6 +778,17 @@
             this.btnDistinct.UseVisualStyleBackColor = true;
             this.btnDistinct.Click += new System.EventHandler(this.BtnDistinct_Click);
             // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(14, 622);
+            this.btnSort.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(169, 44);
+            this.btnSort.TabIndex = 33;
+            this.btnSort.Text = "Sort";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.BtnSort_Click);
+            // 
             // lblStatusBar
             // 
             this.lblStatusBar.AutoSize = true;
@@ -856,6 +882,8 @@
         private System.Windows.Forms.Button btnGremlin;
         private System.Windows.Forms.Button btnToBase64;
         private System.Windows.Forms.Button btnFromBase64;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnSortJson;
     }
 }
 
