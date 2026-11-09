@@ -59,6 +59,7 @@
             this.btnFromBase64 = new System.Windows.Forms.Button();
             this.btnToBase64 = new System.Windows.Forms.Button();
             this.btnGremlin = new System.Windows.Forms.Button();
+            this.btnSortJson = new System.Windows.Forms.Button();
             this.chkXmlCasing = new System.Windows.Forms.CheckBox();
             this.btnXmlToJson = new System.Windows.Forms.Button();
             this.btnJsonToXml = new System.Windows.Forms.Button();
@@ -399,6 +400,7 @@
             this.pnlActionButtons.Controls.Add(this.btnFromBase64);
             this.pnlActionButtons.Controls.Add(this.btnToBase64);
             this.pnlActionButtons.Controls.Add(this.btnGremlin);
+            this.pnlActionButtons.Controls.Add(this.btnSortJson);
             this.pnlActionButtons.Controls.Add(this.chkXmlCasing);
             this.pnlActionButtons.Controls.Add(this.btnXmlToJson);
             this.pnlActionButtons.Controls.Add(this.btnJsonToXml);
@@ -448,6 +450,17 @@
             this.btnToBase64.Text = "=> 64";
             this.btnToBase64.UseVisualStyleBackColor = true;
             this.btnToBase64.Click += new System.EventHandler(this.btnToMd5_Click);
+            // 
+            // btnSortJson
+            // 
+            this.btnSortJson.Location = new System.Drawing.Point(14, 421);
+            this.btnSortJson.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortJson.Name = "btnSortJson";
+            this.btnSortJson.Size = new System.Drawing.Size(130, 36);
+            this.btnSortJson.TabIndex = 36;
+            this.btnSortJson.Text = "sort json";
+            this.btnSortJson.UseVisualStyleBackColor = true;
+            this.btnSortJson.Click += new System.EventHandler(this.btnSortJson_Click);
             // 
             // btnGremlin
             // 
@@ -842,6 +855,7 @@
         private System.Windows.Forms.Button btnToBase64;
         private System.Windows.Forms.Button btnFromBase64;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnSortJson;
     }
 }
 

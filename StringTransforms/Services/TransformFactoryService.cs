@@ -30,6 +30,8 @@ namespace StringTransforms.Services
             => new RemoveNewLineTransform();
         public ITransform CreateSortTransform()
             => new SortTransform();
+        public ITransform CreateSortJsonTransform()
+            => new SortJsonTransform();
         public ITransform CreateTruncateTransform(bool fromStart, bool ignoreCase, string truncate)
             => new TruncateTransform()
             {
