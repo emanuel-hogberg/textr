@@ -8,7 +8,7 @@ namespace textrTests
     [TestClass]
     public class UrlParamsTests
     {
-        private const string SearchUrl = "http://localhost:50001/api/Search/FlowSearch?logViewId=53&searchJson=%7B%22FilterGroups%22%3A%5B%7B%22Order%22%3A0%2C%22Operator%22%3A%22OR%22%2C%22Filters%22%3A%5B%7B%22Order%22%3A0%2C%22Id%22%3A26%2C%22Type%22%3A1%2C%22Operator%22%3A%22AND%22%2C%22MathematicalOperatorId%22%3A1%2C%22Value%22%3A%22GitBackup.Zip%22%7D%5D%7D%5D%2C%22NumberOfItems%22%3A100%2C%22Page%22%3A1%2C%22From%22%3A%222026-11-08T23%3A00%3A00Z%22%2C%22To%22%3A%222026-11-09T22%3A59%3A59Z%22%2C%22PostGroupFilterGroups%22%3A%5B%5D%2C%22DataSource%22%3A%7B%22LoadMessageTypeIds%22%3Atrue%2C%22LoadLogAgentIds%22%3Atrue%7D%2C%22GroupCountFilter%22%3A%7B%22From%22%3A0%2C%22To%22%3A0%7D%2C%22GroupSortByDescending%22%3Atrue%2C%22GroupHeaderLastEvent%22%3Afalse%2C%22DisplayGroupSummary%22%3Afalse%7D";
+        private const string SearchUrl = "https://example.com/api/products/search?categoryId=7&query=%7B%22Filters%22%3A%5B%7B%22Field%22%3A%22Name%22%2C%22Operator%22%3A%22Contains%22%2C%22Value%22%3A%22Widget.Pro%22%7D%5D%2C%22Page%22%3A1%2C%22PageSize%22%3A50%2C%22From%22%3A%222026-01-01T00%3A00%3A00Z%22%2C%22IncludeArchived%22%3Afalse%7D";
 
         private readonly ITransformFactoryService _transformFactoryService = new TransformFactoryService();
 
@@ -21,10 +21,10 @@ namespace textrTests
             var lines = ToParams(SearchUrl).Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
             Assert.AreEqual(3, lines.Length);
-            Assert.AreEqual("http://localhost:50001/api/Search/FlowSearch", lines[0]);
-            Assert.AreEqual("logViewId=53", lines[1]);
-            StringAssert.StartsWith(lines[2], "searchJson={\"FilterGroups\":[{\"Order\":0,");
-            StringAssert.Contains(lines[2], "\"From\":\"2026-11-08T23:00:00Z\"");
+            Assert.AreEqual("https://example.com/api/products/search", lines[0]);
+            Assert.AreEqual("categoryId=7", lines[1]);
+            StringAssert.StartsWith(lines[2], "query={\"Filters\":[{\"Field\":\"Name\",");
+            StringAssert.Contains(lines[2], "\"From\":\"2026-01-01T00:00:00Z\"");
         }
 
         [TestMethod]
@@ -36,11 +36,11 @@ namespace textrTests
         [TestMethod]
         public void ParamsToUrl_EditedValue_IsEncoded()
         {
-            var edited = ToParams(SearchUrl).Replace("GitBackup.Zip", "Git Backup&Zip");
+            var edited = ToParams(SearchUrl).Replace("Widget.Pro", "Widget Pro&Max");
 
             var url = ToUrl(edited);
 
-            StringAssert.Contains(url, "Git%20Backup%26Zip");
+            StringAssert.Contains(url, "Widget%20Pro%26Max");
             Assert.AreEqual(edited, ToParams(url));
         }
 
