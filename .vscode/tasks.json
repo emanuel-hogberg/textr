@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "detail": "Restore (incl. packages.config) and build textr.sln with Visual Studio's MSBuild, located via vswhere",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": [
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                "$vswhere = Join-Path ([Environment]::GetFolderPath('ProgramFilesX86')) 'Microsoft Visual Studio\\Installer\\vswhere.exe'; $msbuild = & $vswhere -latest -prerelease -products * -requires Microsoft.Component.MSBuild -find 'MSBuild\\**\\Bin\\MSBuild.exe' | Select-Object -First 1; if (-not $msbuild) { Write-Error 'MSBuild not found (Visual Studio or Build Tools required)'; exit 1 }; & $msbuild textr.sln -restore -p:RestorePackagesConfig=true -p:Configuration=Debug -v:minimal -nologo; exit $LASTEXITCODE"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
