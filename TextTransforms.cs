@@ -560,6 +560,16 @@ namespace emanuel
             AddTransform(_transformFactoryService.CreateXmlJsonTransform());
         }
 
+        private void btnUrlToParams_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateUrlToParamsTransform());
+        }
+
+        private void btnParamsToUrl_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateParamsToUrlTransform());
+        }
+
         private void btnSortJson_Click(object sender, EventArgs e)
         {
             AddTransform(_transformFactoryService.CreateSortJsonTransform());
