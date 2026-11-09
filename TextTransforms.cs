@@ -560,6 +560,11 @@ namespace emanuel
             AddTransform(_transformFactoryService.CreateXmlJsonTransform());
         }
 
+        private void btnSortJson_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateSortJsonTransform());
+        }
+
         private void chkXmlCasing_CheckedChanged(object sender, EventArgs e)
         {
             chkXmlCasing.Text = chkXmlCasing.Checked
