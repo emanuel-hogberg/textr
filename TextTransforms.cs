@@ -555,6 +555,16 @@ namespace emanuel
             AddTransform(_transformFactoryService.CreateXmlJsonTransform());
         }
 
+        private void btnUrlToParams_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateUrlToParamsTransform());
+        }
+
+        private void btnParamsToUrl_Click(object sender, EventArgs e)
+        {
+            AddTransform(_transformFactoryService.CreateParamsToUrlTransform());
+        }
+
         private void chkXmlCasing_CheckedChanged(object sender, EventArgs e)
         {
             chkXmlCasing.Text = chkXmlCasing.Checked

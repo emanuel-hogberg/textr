@@ -13,6 +13,8 @@
         ITransform CreateRemoveBlankLinesTransform();
         ITransform CreateRemoveNewLineTransform();
         ITransform CreateTruncateTransform(bool fromStart, bool ignoreCase, string truncate);
+        ITransform CreateUrlToParamsTransform();
+        ITransform CreateParamsToUrlTransform();
         ITransform CreateXmlJsonTransform();
     }
 }

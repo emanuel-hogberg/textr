@@ -35,6 +35,10 @@ namespace StringTransforms.Services
                 IgnoreCase = ignoreCase,
                 Truncate = truncate
             };
+        public ITransform CreateUrlToParamsTransform()
+            => new UrlToParamsTransform();
+        public ITransform CreateParamsToUrlTransform()
+            => new ParamsToUrlTransform();
         public ITransform CreateXmlJsonTransform()
             => new XmlJsonTransform();
     }

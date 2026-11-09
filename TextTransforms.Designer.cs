@@ -79,6 +79,8 @@
             this.btnParagraphToAsterisk = new System.Windows.Forms.Button();
             this.lblTruncate = new System.Windows.Forms.Label();
             this.btnAsteriskToParagraph = new System.Windows.Forms.Button();
+            this.btnUrlToParams = new System.Windows.Forms.Button();
+            this.btnParamsToUrl = new System.Windows.Forms.Button();
             this.txtTruncate = new System.Windows.Forms.TextBox();
             this.btnRemoveBlankLines = new System.Windows.Forms.Button();
             this.btnDistinct = new System.Windows.Forms.Button();
@@ -627,6 +629,8 @@
             this.pnlTransforms.Controls.Add(this.btnParagraphToAsterisk);
             this.pnlTransforms.Controls.Add(this.lblTruncate);
             this.pnlTransforms.Controls.Add(this.btnAsteriskToParagraph);
+            this.pnlTransforms.Controls.Add(this.btnUrlToParams);
+            this.pnlTransforms.Controls.Add(this.btnParamsToUrl);
             this.pnlTransforms.Controls.Add(this.txtTruncate);
             this.pnlTransforms.Controls.Add(this.btnRemoveBlankLines);
             this.pnlTransforms.Controls.Add(this.btnDistinct);
@@ -705,6 +709,28 @@
             this.btnAsteriskToParagraph.Text = "*=>§";
             this.btnAsteriskToParagraph.UseVisualStyleBackColor = true;
             this.btnAsteriskToParagraph.Click += new System.EventHandler(this.BtnAsteriskToParagraph_Click);
+            // 
+            // btnUrlToParams
+            // 
+            this.btnUrlToParams.Location = new System.Drawing.Point(13, 770);
+            this.btnUrlToParams.Margin = new System.Windows.Forms.Padding(6);
+            this.btnUrlToParams.Name = "btnUrlToParams";
+            this.btnUrlToParams.Size = new System.Drawing.Size(169, 42);
+            this.btnUrlToParams.TabIndex = 36;
+            this.btnUrlToParams.Text = "url => params";
+            this.btnUrlToParams.UseVisualStyleBackColor = true;
+            this.btnUrlToParams.Click += new System.EventHandler(this.btnUrlToParams_Click);
+            // 
+            // btnParamsToUrl
+            // 
+            this.btnParamsToUrl.Location = new System.Drawing.Point(13, 818);
+            this.btnParamsToUrl.Margin = new System.Windows.Forms.Padding(6);
+            this.btnParamsToUrl.Name = "btnParamsToUrl";
+            this.btnParamsToUrl.Size = new System.Drawing.Size(169, 42);
+            this.btnParamsToUrl.TabIndex = 37;
+            this.btnParamsToUrl.Text = "params => url";
+            this.btnParamsToUrl.UseVisualStyleBackColor = true;
+            this.btnParamsToUrl.Click += new System.EventHandler(this.btnParamsToUrl_Click);
             // 
             // txtTruncate
             // 
@@ -814,6 +840,8 @@
         private System.Windows.Forms.Button btnAddTableNames;
         private System.Windows.Forms.Button btnParagraphToAsterisk;
         private System.Windows.Forms.Button btnAsteriskToParagraph;
+        private System.Windows.Forms.Button btnUrlToParams;
+        private System.Windows.Forms.Button btnParamsToUrl;
         private System.Windows.Forms.Button btnMoveTransformDown;
         private System.Windows.Forms.Button btnMoveTransformUp;
         private System.Windows.Forms.Button btnCopyTab;
